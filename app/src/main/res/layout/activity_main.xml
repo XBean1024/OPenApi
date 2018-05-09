@@ -6,13 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:openDrawer="start">
 
+    <FrameLayout
+        android:background="@color/pink"
+        android:layout_above="@id/line"
+        android:id="@+id/fm_contariner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_above="@id/rg_main"
+        android:layout_width="match_parent"
+        android:background="@color/grey"
+        android:layout_height="1dp" />
     <RadioGroup
+        android:layout_alignParentBottom="true"
+        android:id="@+id/rg_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#FFC000"
+        android:background="#FFFFFF"
         android:orientation="horizontal">
 
         <RadioButton
@@ -23,7 +38,13 @@
             android:text="首页" />
 
         <RadioButton
-            android:id="@+id/rb_beauty"
+            android:id="@+id/rb_music"
+            style="@style/bottom_btn_style"
+            android:drawableTop="@drawable/musci_selector"
+            android:text="音乐" />
+
+        <RadioButton
+            android:id="@+id/rb_picture"
             style="@style/bottom_btn_style"
             android:drawableTop="@drawable/picture_selector"
             android:text="美图" />

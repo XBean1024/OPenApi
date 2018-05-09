@@ -1,2 +1,6 @@
-# OPenApi
-准备一个项目，做技术总结
+## OPenApi
+### 技术点总结
+##### 取消 RadioButton
+    android:button="@null"
+###
+

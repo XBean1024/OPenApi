@@ -3,6 +3,7 @@ package com.binny.openapi;
 import android.app.Application;
 import android.content.Context;
 
+import com.binny.openapi.util.JJLogger;
 import com.facebook.stetho.Stetho;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
@@ -21,6 +22,7 @@ public class APP extends Application {
     public void onCreate() {
         super.onCreate();
 
+        JJLogger.debug(true);
 
         initStetho(this);
 

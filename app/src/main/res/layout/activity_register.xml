@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/register_bg"
-    tools:context="com.binny.openapi.view.RegisterActivity">
+    tools:context=".mvp.ui.activity.register.RegisterActivity">
 
     <com.binny.openapi.custom.KeyValueLayout
         android:layout_marginTop="200dp"
         android:id="@+id/register_phone"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         app:value_hint="  必填"
@@ -30,7 +30,7 @@
         app:value_hint="  必填"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="50dp" />
     <Button
         android:onClick="register"
         android:layout_marginTop="40dp"
