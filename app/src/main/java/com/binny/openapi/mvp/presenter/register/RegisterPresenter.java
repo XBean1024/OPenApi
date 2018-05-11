@@ -2,8 +2,8 @@ package com.binny.openapi.mvp.presenter.register;
 
 import com.binny.openapi.mvp.bean.RegisterBean;
 import com.binny.openapi.mvp.callback.register.RegisterCallback;
-import com.binny.openapi.mvp.model.IRegisterModule;
-import com.binny.openapi.mvp.model.RegisterModule;
+import com.binny.openapi.mvp.model.register.IRegisterModel;
+import com.binny.openapi.mvp.model.register.RegisterModel;
 import com.binny.openapi.mvp.ui.activity.register.IRegisterView;
 
 import java.io.File;
@@ -14,18 +14,18 @@ import java.io.File;
  */
 public class RegisterPresenter implements IRegisterPresenter {
     private IRegisterView mRegister;
-    private IRegisterModule mRegisterModel;
+    private IRegisterModel mRegisterModel;
 
     public RegisterPresenter(IRegisterView register) {
         mRegister = register;
-        mRegisterModel = new RegisterModule();
+        mRegisterModel = new RegisterModel();
     }
     @Override
     public void getData(String phone, String passwd, String name, String text, String other, String other2, File imageFile) {
         mRegisterModel.requestRegister(new RegisterCallback() {
             @Override
             public void onSuccess(RegisterBean registerBean) {
-                mRegister.updateView(registerBean);
+                mRegister.onSuccess(registerBean);
             }
 
             @Override

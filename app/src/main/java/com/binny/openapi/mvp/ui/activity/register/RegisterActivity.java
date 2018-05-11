@@ -45,8 +45,10 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
         Log.i("[result]", "onError = 加载失败。。。。。" + result);
     }
 
+
+
     @Override
-    public void updateView(RegisterBean registerBean) {
+    public void onSuccess(RegisterBean registerBean) {
         Log.i("[beautyBean]", "updateView = " + registerBean.getMsg());
     }
 }

@@ -4,9 +4,9 @@ import com.binny.openapi.mvp.bean.RegisterBean;
 
 import java.io.File;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * author  binny

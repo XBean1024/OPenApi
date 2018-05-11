@@ -6,14 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".mvp.ui.activity.login.LoginActivity">
 
-    <com.binny.openapi.widget.SplashVideoView
-        android:id="@+id/login_video"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false" />
+    <!--<com.binny.openapi.widget.SplashVideoView-->
+        <!--android:id="@+id/login_video"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:clickable="false"-->
+        <!--android:focusable="false"-->
+        <!--android:focusableInTouchMode="false" />-->
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@mipmap/login_bg"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +26,7 @@
 
         <com.binny.openapi.custom.KeyValueLayout
             android:layout_marginTop="150dp"
-            android:id="@+id/register_phone"
+            android:id="@+id/login_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key_name="电话："
@@ -30,7 +34,7 @@
             app:value_length="11" />
 
         <com.binny.openapi.custom.KeyValueLayout
-            android:id="@+id/register_password"
+            android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key_name="密码："
@@ -38,6 +42,7 @@
             app:value_length="6" />
 
         <Button
+            android:onClick="login"
             android:layout_marginTop="20dp"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
@@ -64,6 +69,7 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:onClick="toRegister"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

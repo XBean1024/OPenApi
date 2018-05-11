@@ -1,4 +1,4 @@
-package com.binny.openapi;
+package com.binny.openapi.mvp.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.binny.openapi.R;
 import com.binny.openapi.mvp.ui.fragment.home.HomeFragment;
 import com.binny.openapi.mvp.ui.fragment.mine.MineFragment;
 import com.binny.openapi.mvp.ui.fragment.music.MusicFragment;

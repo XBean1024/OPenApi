@@ -39,7 +39,7 @@
         android:background="@drawable/shape_button"
         android:layout_centerHorizontal="true"
         android:text="注  册"
-        android:alpha="0.5"
+        android:alpha="0.8"
         android:fontFamily="monospace"
         android:textColor="@color/white"
         android:textSize="30sp"

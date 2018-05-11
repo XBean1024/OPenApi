@@ -5,13 +5,12 @@ import android.content.Context;
 
 import com.binny.openapi.util.JJLogger;
 import com.facebook.stetho.Stetho;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 
 import java.util.logging.Level;
 
 import io.flowup.FlowUp;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * author  binny
@@ -28,20 +27,8 @@ public class APP extends Application {
 
         initFlowUp(this);
 
-        initOkHttp(this);
-
     }
 
-    private void initOkHttp(Context context) {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        //log相关
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor("OkGo");
-        loggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);        //log打印级别，决定了log显示的详细程度
-        loggingInterceptor.setColorLevel(Level.OFF);                               //log颜色级别，决定了log在控制台显示的颜色
-        builder.addInterceptor(loggingInterceptor);
-        OkGo.getInstance().init((Application) context)
-                .setOkHttpClient(builder.build());
-    }
 
     private void initFlowUp(Context context) {
         FlowUp.Builder.with((Application) context)
