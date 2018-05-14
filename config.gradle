@@ -21,6 +21,9 @@ ext {
 
             retrofit2               : 'com.squareup.retrofit2:retrofit:2.3.0',
             retrofit2_converter_gson: 'com.squareup.retrofit2:converter-gson:2.3.0',
-            retrofit2_adapter_rxjava2: 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+            retrofit2_adapter_rxjava2: 'com.squareup.retrofit2:adapter-rxjava2:2.2.0',
+
+            //水波纹图片  https://github.com/scwang90/MultiWaveHeader
+            multi_wave_header:'com.scwang.wave:MultiWaveHeader:1.0.0-alpha-1'
     ]
 }

@@ -28,7 +28,7 @@ import com.binny.openapi.widget.SplashVideoView;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
-//    private com.binny.openapi.widget.SplashVideoView mSpalshVideo;
+    private com.binny.openapi.widget.SplashVideoView mSpalshVideo;
     private com.binny.openapi.custom.KeyValueLayout mLoginPhone;
     private com.binny.openapi.custom.KeyValueLayout mLoginPassword;
     private android.widget.TextView mItemTv;
@@ -44,52 +44,52 @@ public class LoginActivity extends AppCompatActivity implements ILoginView,Media
         this.mItemTv = (TextView) findViewById(R.id.item);
         this.mLoginPassword = (KeyValueLayout) findViewById(R.id.login_password);
         this.mLoginPhone = (KeyValueLayout) findViewById(R.id.login_phone);
-//        this.mSpalshVideo = (SplashVideoView) findViewById(R.id.login_video);
+        this.mSpalshVideo = (SplashVideoView) findViewById(R.id.login_video);
 
-//        initVideoView();
+        initVideoView();
     }
 
     @Override
     public void onCompletion(MediaPlayer mp) {
         //开始播放
-//        mSpalshVideo.start();
+        mSpalshVideo.start();
     }
 
     @Override
     public void onPrepared(MediaPlayer mp) {
         //开始播放
-//        mSpalshVideo.start();
+        mSpalshVideo.start();
     }
 
-//    private void initVideoView() {
-//        //设置屏幕常亮
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-//        mSpalshVideo.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.mqr);
-//        //设置相关的监听
-//        mSpalshVideo.setOnPreparedListener(this);
-//        mSpalshVideo.setOnCompletionListener(this);
-//
-//        String text = "登录即代表阅读并同意服务条款";
-//        int len = text.length();
-//        SpannableString spannableString = new SpannableString(text);
-//        mItemTv.setMovementMethod(LinkMovementMethod.getInstance());//必须设置否则无效
-//        spannableString.setSpan(new ClickableSpan() {
-//            @Override
-//            public void onClick(final View widget) {
-//                startActivity(new Intent(mActivity, ProtocolItemActivity.class));
-//            }
-//
-//            @Override
-//            public void updateDrawState(final TextPaint ds) {
-//                super.updateDrawState(ds);
-//                ds.setColor(Color.parseColor("#0061ff"));
-//                ds.setUnderlineText(false);    //去除超链接的下划线
-//            }
-//        }, len - 4, len, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        //改变选中文本的高亮颜色
-////        mItemTv.setHighlightColor(Color.BLUE);
-//        mItemTv.setText(spannableString);
-//    }
+    private void initVideoView() {
+        //设置屏幕常亮
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        mSpalshVideo.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.mqr);
+        //设置相关的监听
+        mSpalshVideo.setOnPreparedListener(this);
+        mSpalshVideo.setOnCompletionListener(this);
+
+        String text = "登录即代表阅读并同意服务条款";
+        int len = text.length();
+        SpannableString spannableString = new SpannableString(text);
+        mItemTv.setMovementMethod(LinkMovementMethod.getInstance());//必须设置否则无效
+        spannableString.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(final View widget) {
+                startActivity(new Intent(mActivity, ProtocolItemActivity.class));
+            }
+
+            @Override
+            public void updateDrawState(final TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setColor(Color.parseColor("#0061ff"));
+                ds.setUnderlineText(false);    //去除超链接的下划线
+            }
+        }, len - 4, len, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        //改变选中文本的高亮颜色
+//        mItemTv.setHighlightColor(Color.BLUE);
+        mItemTv.setText(spannableString);
+    }
 
     @Override
     public void onError(String result) {

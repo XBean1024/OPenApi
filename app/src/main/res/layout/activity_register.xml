@@ -8,9 +8,13 @@
     android:orientation="vertical"
     android:background="@mipmap/register_bg"
     tools:context=".mvp.ui.activity.register.RegisterActivity">
+    <com.scwang.wave.MultiWaveHeader
+        android:id="@+id/waveHeader"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"/>
 
     <com.binny.openapi.custom.KeyValueLayout
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="250dp"
         android:id="@+id/register_phone"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

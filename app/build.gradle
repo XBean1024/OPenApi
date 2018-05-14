@@ -16,6 +16,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        xiaomi {
+        }
     }
     lintOptions {
         abortOnError true
@@ -30,17 +32,14 @@ dependencies {
     implementation libs.constraint
     implementation libs.circleImageview
     implementation libs.gson
-
     compile libs.rxjava
     compile libs.rxandroid
-
     compile libs.retrofit2
     compile libs.retrofit2_converter_gson
     compile libs.retrofit2_adapter_rxjava2
-
+    compile libs.multi_wave_header
     //Flow Up
     compile 'io.flowup:android-sdk:1.0.0'
     testCompile 'io.flowup:android-sdk-no-op:1.0.0'
-
     compile 'com.facebook.stetho:stetho:1.5.0'
 }

@@ -45,6 +45,7 @@ public class KeyValueLayout extends RelativeLayout {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.KeyValueLayout);
         String key = array.getString(R.styleable.KeyValueLayout_key_name);
         String value_hint = array.getString(R.styleable.KeyValueLayout_value_hint);
+        String value_text = array.getString(R.styleable.KeyValueLayout_value_text);
         int value_length = array.getInteger(R.styleable.KeyValueLayout_value_length,16);
         array.recycle();
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -55,6 +56,9 @@ public class KeyValueLayout extends RelativeLayout {
         mValueEt.setFilters(new InputFilter[] { new InputFilter.LengthFilter(value_length) });
         if (!TextUtils.isEmpty(value_hint)) {
             mValueEt.setHint(value_hint);
+        }
+        if (!TextUtils.isEmpty(value_text)) {
+            mValueEt.setText(value_text);
         }
         Log.i("key", "init" + key);
 

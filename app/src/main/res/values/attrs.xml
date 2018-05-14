@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="KeyValueLayout">
         <attr name="key_name" format="string" />
+        <attr name="value_text" format="string" />
         <attr name="value_length" format="integer" />
         <attr name="value_hint" format="string" />
     </declare-styleable>
