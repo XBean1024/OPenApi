@@ -24,6 +24,7 @@ import com.binny.openapi.mvp.presenter.login.LoginPresenter;
 import com.binny.openapi.mvp.ui.activity.MainActivity;
 import com.binny.openapi.mvp.ui.activity.ProtocolItemActivity;
 import com.binny.openapi.mvp.ui.activity.register.RegisterActivity;
+import com.binny.openapi.util.JJLogger;
 import com.binny.openapi.widget.SplashVideoView;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
@@ -110,6 +111,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView,Media
     public void onSuccess(LoginBean loginBean) {
         int code = loginBean.getCode();
         if (code == 200) {
+            JJLogger.json("login",loginBean.getData().toString());
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }else {

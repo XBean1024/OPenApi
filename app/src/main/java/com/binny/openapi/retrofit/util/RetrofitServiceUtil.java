@@ -1,7 +1,7 @@
 package com.binny.openapi.retrofit.util;
 
 
-import com.binny.openapi.retrofit.api.ILoginService;
+import com.binny.openapi.retrofit.api.IUserService;
 import com.binny.openapi.retrofit.manager.RetrofitManagerTopApi;
 
 /**
@@ -11,7 +11,7 @@ import com.binny.openapi.retrofit.manager.RetrofitManagerTopApi;
  */
 public class RetrofitServiceUtil {
 
-    public static ILoginService getLoginService() {
-        return RetrofitManagerTopApi.getInstance().createRetrofitService(ILoginService.class);
+    public static IUserService getLoginService() {
+        return RetrofitManagerTopApi.getInstance().createRetrofitService(IUserService.class);
     }
 }

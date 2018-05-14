@@ -44,6 +44,21 @@ public class LoginBean implements Serializable {
     }
 
     public static class DataBean {
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "key='" + key + '\'' +
+                    ", phone='" + phone + '\'' +
+                    ", name='" + name + '\'' +
+                    ", passwd='" + passwd + '\'' +
+                    ", text='" + text + '\'' +
+                    ", img='" + img + '\'' +
+                    ", other='" + other + '\'' +
+                    ", other2='" + other2 + '\'' +
+                    ", createTime='" + createTime + '\'' +
+                    '}';
+        }
+
         /**
          * key : 00d91e8e0cca2b76f515926a36db68f5
          * phone : 13594347817
@@ -137,5 +152,14 @@ public class LoginBean implements Serializable {
         public void setCreateTime(String createTime) {
             this.createTime = createTime;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "LoginBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data.toString() +
+                '}';
     }
 }

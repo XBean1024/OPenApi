@@ -9,12 +9,15 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
+import static com.binny.openapi.constant.Constant.USER_LOGIN;
+import static com.binny.openapi.constant.Constant.USER_REGISTER;
+
 /**
  * author  binny
  * date 5/9
  */
-public interface ILoginService {
-    @GET("login")
+public interface IUserService {
+    @GET(USER_LOGIN)
     Observable<LoginBean> login(@Query("key")
                                         String key,
                                 @Query("phone")
@@ -23,7 +26,7 @@ public interface ILoginService {
                                         String passwd
 
     );
-    @GET("createUser")
+    @GET(USER_REGISTER)
     Observable<RegisterBean> register(@Query("key")
                                               String ksy,
                                       @Query("name")

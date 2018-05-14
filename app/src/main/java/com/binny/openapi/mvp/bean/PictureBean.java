@@ -7,7 +7,7 @@ import java.util.List;
  * author  binny
  * date 5/8
  */
-public class BeautyBean implements Serializable {
+public class PictureBean implements Serializable {
 
     /**
      * code : 200
