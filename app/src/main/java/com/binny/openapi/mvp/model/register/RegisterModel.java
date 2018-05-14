@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.model.register;
 
 import com.binny.openapi.mvp.bean.RegisterBean;
-import com.binny.openapi.mvp.callback.register.RegisterCallback;
+import com.binny.openapi.mvp.callback.RegisterCallback;
 import com.binny.openapi.retrofit.api.IUserService;
 import com.binny.openapi.retrofit.util.RetrofitServiceUtil;
 

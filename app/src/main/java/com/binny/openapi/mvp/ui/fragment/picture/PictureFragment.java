@@ -19,4 +19,9 @@ public class PictureFragment extends BaseFragment {
     protected void initView(View view) {
 
     }
+
+    @Override
+    protected void bindData() {
+        super.bindData();
+    }
 }

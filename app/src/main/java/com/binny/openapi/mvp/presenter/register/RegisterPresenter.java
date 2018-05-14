@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.presenter.register;
 
 import com.binny.openapi.mvp.bean.RegisterBean;
-import com.binny.openapi.mvp.callback.register.RegisterCallback;
+import com.binny.openapi.mvp.callback.RegisterCallback;
 import com.binny.openapi.mvp.model.register.IRegisterModel;
 import com.binny.openapi.mvp.model.register.RegisterModel;
 import com.binny.openapi.mvp.ui.activity.register.IRegisterView;

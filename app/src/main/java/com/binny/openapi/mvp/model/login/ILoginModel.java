@@ -1,6 +1,6 @@
 package com.binny.openapi.mvp.model.login;
 
-import com.binny.openapi.mvp.callback.login.LoginCallback;
+import com.binny.openapi.mvp.callback.LoginCallback;
 
 /**
  * author  binny

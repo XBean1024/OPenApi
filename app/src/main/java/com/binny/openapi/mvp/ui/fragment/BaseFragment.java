@@ -66,6 +66,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        JJLogger.logInfo("base_fragment", "onCreateView");
         View view = inflater.inflate(getFragmentLayout(), null, false);
         initView(view);
         return view;
@@ -80,6 +81,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        bindData();
     }
 
 
@@ -95,7 +97,10 @@ public abstract class BaseFragment extends Fragment {
      */
     protected abstract void initView(View view);
 
-    private boolean mIsAdded;
-
-
+    /**
+     * 当孩子需要初始化数据，或者联网请求绑定数据，展示数据的 等等可以重写该方法
+     */
+    protected void bindData() {
+        JJLogger.logInfo("base_fragment", "bindData");
+    }
 }

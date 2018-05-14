@@ -2,7 +2,7 @@ package com.binny.openapi.mvp.model.login;
 
 import com.binny.openapi.constant.Constant;
 import com.binny.openapi.mvp.bean.LoginBean;
-import com.binny.openapi.mvp.callback.login.LoginCallback;
+import com.binny.openapi.mvp.callback.LoginCallback;
 import com.binny.openapi.retrofit.api.IUserService;
 import com.binny.openapi.retrofit.util.RetrofitServiceUtil;
 

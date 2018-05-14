@@ -1,6 +1,6 @@
 package com.binny.openapi.mvp.model.register;
 
-import com.binny.openapi.mvp.callback.register.RegisterCallback;
+import com.binny.openapi.mvp.callback.RegisterCallback;
 
 import java.io.File;
 

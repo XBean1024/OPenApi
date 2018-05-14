@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.callback.login;
+package com.binny.openapi.mvp.callback;
 
 import com.binny.openapi.mvp.bean.LoginBean;
 import com.binny.openapi.mvp.callback.base.BaseCallback;
