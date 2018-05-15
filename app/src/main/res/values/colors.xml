@@ -154,4 +154,6 @@
     <color name="navy">#000080</color> <!-- 海军色 -->
     <color name="black">#000000</color>
     <color name="deep_blue">#0000FF</color> <!-- 深蓝色 -->
+
+    <color name="TransparentGrey">#7F000000</color>
 </resources>

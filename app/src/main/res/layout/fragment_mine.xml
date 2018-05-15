@@ -19,18 +19,21 @@
         android:src="@mipmap/header"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp" />
-
     <TextView
         android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@id/header"
         android:layout_marginTop="@dimen/value_10dp"
         android:gravity="center"
-        android:text="欧阳慕远"
-        android:textColor="@color/darkorange"
-        android:textSize="@dimen/value_16sp"
-        android:textStyle="bold" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/darkorange"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="25"
+        android:textColor="@color/white"
+        android:textSize="@dimen/value_20sp"
+        android:textStyle="italic"
+        android:text="欧阳慕远"/>
 
     <ImageView
         android:layout_width="wrap_content"

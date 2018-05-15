@@ -15,4 +15,5 @@
     <dimen name="value_40dp">40dp</dimen>
     <dimen name="value_2dp">2dp</dimen>
     <dimen name="value_5dp">5dp</dimen>
+    <dimen name="value_20sp">20sp</dimen>
 </resources>
