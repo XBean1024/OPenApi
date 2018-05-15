@@ -18,10 +18,11 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <!--半沉浸式,带状态栏-->
     <style name="TransparentTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--导航栏透明-->
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowNoTitle">true</item>
+        <!--状态栏透明-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
     </style>
 
     <style name="FullScreenTheme" parent="@style/TransparentTheme">
@@ -40,6 +41,42 @@
         <item name="android:paddingTop">5sp</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@drawable/bottom_text_color</item>
+    </style>
+
+    <!--设置  中的-->
+    <style name="app_setting_card_view">
+        <item name="android:background">@color/mediumturquoise</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/value_10dp</item>
+        <item name="android:layout_marginRight">@dimen/value_10dp</item>
+        <item name="android:layout_marginBottom">@dimen/value_10dp</item>
+    </style>
+    <style name="app_setting_container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/value_45dp</item>
+        <item name="android:layout_marginLeft">@dimen/value_10dp</item>
+        <item name="android:layout_marginRight">@dimen/value_10dp</item>
+        <item name="android:layout_marginBottom">@dimen/value_10dp</item>
+        <item name="android:background">@drawable/setting_shape</item>
+    </style>
+    <style name="app_setting_text_left">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/value_10dp</item>
+        <item name="android:textSize">@dimen/value_16sp</item>
+        <item name="android:textColor">@color/antiquewhite</item>
+    </style>
+    <style name="app_setting_text_right">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginEnd">@dimen/value_10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">10.25M</item>
+        <item name="android:textColor">@color/antiquewhite</item>
+
     </style>
 
 

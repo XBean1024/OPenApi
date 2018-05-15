@@ -218,4 +218,8 @@ public class JJLogger {
         }
         printer(type, tag, BOTTOM_BORDER);
     }
+
+    public static void logInfo(String msg) {
+        logInfo("tag", msg);
+    }
 }

@@ -98,6 +98,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
                 break;
             case R.id.rb_mine:
                 mPostion = 4;
+                mMineFragment.setCacheSize();
                 break;
 
 

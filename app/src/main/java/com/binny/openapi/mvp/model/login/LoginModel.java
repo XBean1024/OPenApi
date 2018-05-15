@@ -5,11 +5,14 @@ import com.binny.openapi.mvp.bean.LoginBean;
 import com.binny.openapi.mvp.callback.LoginCallback;
 import com.binny.openapi.retrofit.api.IUserService;
 import com.binny.openapi.retrofit.util.RetrofitServiceUtil;
+import com.binny.openapi.util.UtilSP;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.binny.openapi.APP.mApp;
 
 
 /**
@@ -31,6 +34,9 @@ public class LoginModel implements ILoginModel {
                     @Override
                     public void onNext(LoginBean loginBean) {
                         loginCallback.onSuccess(loginBean);
+                        UtilSP.getInstance(mApp).setFileName("login")
+                                .putObj("login", loginBean)
+                                .commit();
                     }
 
                     @Override

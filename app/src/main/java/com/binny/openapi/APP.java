@@ -17,10 +17,11 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * date 5/6
  */
 public class APP extends Application {
+    public static Context mApp;
     @Override
     public void onCreate() {
         super.onCreate();
-
+        mApp = this;
         JJLogger.debugWithStackTrace(true);
 
         initStetho(this);
