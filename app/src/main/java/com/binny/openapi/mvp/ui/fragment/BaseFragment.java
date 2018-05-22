@@ -27,6 +27,24 @@ public abstract class BaseFragment extends Fragment {
         Log.i("[]", "BaseFragment = " + TAG);
     }
 
+    /**   当调用 hide 方法时，回调该方法
+     * @param hidden
+     */
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        Log.i(this.getClass().getSimpleName(), "是否对用户隐藏" + hidden);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+    }
+    @Override
+    public boolean getUserVisibleHint() {
+        return super.getUserVisibleHint();
+    }
+
     /**
      * 执行该方法时，Fragment与Activity已经完成绑定
      * <p>
@@ -60,7 +78,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        JJLogger.logInfo(TAG, "onCreate");
+        JJLogger.logInfo(this.getClass().getSimpleName(), "onCreate");
     }
 
     @Nullable

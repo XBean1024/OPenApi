@@ -1,4 +1,4 @@
-package com.binny.openapi.retrofit.api;
+package com.binny.openapi.retrofit.api.topapi.user;
 
 import com.binny.openapi.mvp.bean.LoginBean;
 import com.binny.openapi.mvp.bean.RegisterBean;
@@ -9,15 +9,15 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-import static com.binny.openapi.constant.Constant.USER_LOGIN;
-import static com.binny.openapi.constant.Constant.USER_REGISTER;
+import static com.binny.openapi.constant.Constant.TOP_API_USER_LOGIN;
+import static com.binny.openapi.constant.Constant.TOP_API_USER_REGISTER;
 
 /**
  * author  binny
  * date 5/9
  */
-public interface IUserService {
-    @GET(USER_LOGIN)
+public interface ITopUserService {
+    @GET(TOP_API_USER_LOGIN)
     Observable<LoginBean> login(@Query("key")
                                         String key,
                                 @Query("phone")
@@ -26,7 +26,7 @@ public interface IUserService {
                                         String passwd
 
     );
-    @GET(USER_REGISTER)
+    @GET(TOP_API_USER_REGISTER)
     Observable<RegisterBean> register(@Query("key")
                                               String ksy,
                                       @Query("name")

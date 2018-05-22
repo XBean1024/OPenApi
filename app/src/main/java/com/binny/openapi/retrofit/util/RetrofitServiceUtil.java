@@ -1,8 +1,10 @@
 package com.binny.openapi.retrofit.util;
 
 
-import com.binny.openapi.retrofit.api.IUserService;
-import com.binny.openapi.retrofit.manager.RetrofitManagerTopApi;
+import com.binny.openapi.retrofit.api.IArticleService;
+import com.binny.openapi.retrofit.api.topapi.user.ITopUserService;
+import com.binny.openapi.retrofit.manager.RtftArticleManger;
+import com.binny.openapi.retrofit.manager.topapi.RtftManagerTopApi;
 
 /**
  * author  binny
@@ -11,7 +13,10 @@ import com.binny.openapi.retrofit.manager.RetrofitManagerTopApi;
  */
 public class RetrofitServiceUtil {
 
-    public static IUserService getLoginService() {
-        return RetrofitManagerTopApi.getInstance().createRetrofitService(IUserService.class);
+    public static ITopUserService getLoginService() {
+        return RtftManagerTopApi.getInstance().createTopApiService(ITopUserService.class);
+    }
+    public static IArticleService getArticleService() {
+        return RtftArticleManger.getInstance().createArticleRetrofitService();
     }
 }

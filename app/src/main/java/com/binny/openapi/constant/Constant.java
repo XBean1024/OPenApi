@@ -5,11 +5,19 @@ package com.binny.openapi.constant;
  * date 5/6
  */
 public class Constant {
-    public static final String APP_KEY_TOP_API = "80ef708fd638e244449199202779d6bf";
-    public static final String BASE_URL_TOP_API = "https://www.apiopen.top/";
-    public static final String USER_LOGIN = "login";
-    public static final String USER_REGISTER = "createUser";
 
-    public static final String URL_PICTURE = "meituApi";
-    public static final String URL_VIDEO = "satinGodApi?type=1&page=1";
+    /*
+    * top api
+    * */
+    public static final String TOP_API_APP_KEY = "80ef708fd638e244449199202779d6bf";
+    public static final String TOP_API_BASE_URL = "https://www.apiopen.top/";
+    public static final String TOP_API_USER_LOGIN = "login";
+    public static final String TOP_API_USER_REGISTER = "createUser";
+    public static final String TOP_API_URL_PICTURE = "meituApi";
+    public static final String TOP_API_URL_VIDEO = "satinGodApi";
+
+    /*
+    * 每日一文
+    * */
+    public static final String ARTICLE_BASE_URL = "https://interface.meiriyiwen.com/";
 }
