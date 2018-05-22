@@ -4,7 +4,7 @@ import com.binny.openapi.constant.Constant;
 import com.binny.openapi.mvp.bean.LoginBean;
 import com.binny.openapi.mvp.callback.LoginCallback;
 import com.binny.openapi.retrofit.api.topapi.user.ITopUserService;
-import com.binny.openapi.retrofit.util.RetrofitServiceUtil;
+import com.binny.openapi.util.RetrofitServiceUtil;
 import com.binny.openapi.util.UtilSP;
 
 import io.reactivex.Observer;

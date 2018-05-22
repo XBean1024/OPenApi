@@ -1,45 +1,43 @@
 package com.binny.openapi.mvp.ui.fragment.home;
 
-import android.view.KeyEvent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.ui.fragment.BaseFragment;
+import com.binny.openapi.mvp.ui.fragment.home.vpfragment.ArticleFragment;
 import com.binny.openapi.util.JJLogger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * author  binny
  * date 5/9
  */
 public class HomeFragment extends BaseFragment {
-    private WebView mWebView;
 
+    private ViewPager mViewPager;
+    private TabLayout mTab;
+    private final String[] mTitles = {"美文","每日一文","每日一文","每日一文","每日一文"};
     @Override
     protected void initView(View view) {
-        mWebView = view.findViewById(R.id.wb_home);
-        mWebView.loadUrl("https://guirenfu.m.hys06.club");
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.setWebViewClient(new WebViewClient());
-        mWebView.setWebChromeClient(new WebChromeClient());
-        mWebView.getSettings().setUserAgentString("Mozilla/5.0 (Windows; U; Windows NT 5.2) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.27 Safari/525.13 ");
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            mWebView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
-        }
-        mWebView.setOnKeyListener(new View.OnKeyListener() {
+        mTab = view.findViewById(R.id.home_tab_layout);
+        mViewPager = view.findViewById(R.id.home_view_pager);
+        mTab.setupWithViewPager(mViewPager);
+        mTab.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
-                    return true;
-                }
-                return false;
-            }
+        List<BaseFragment> fragmentList = new ArrayList<>();
+        fragmentList.add(new ArticleFragment());
+        fragmentList.add(new ArticleFragment());
+        fragmentList.add(new ArticleFragment());
+        fragmentList.add(new ArticleFragment());
+        fragmentList.add(new ArticleFragment());
 
-        });
-}
+        mViewPager.setAdapter(new HomeFragmentAdapter(getFragmentManager(), fragmentList,mTitles));
+        JJLogger.logInfo("init");
+    }
 
     @Override
     protected int getFragmentLayout() {

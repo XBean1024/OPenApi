@@ -19,7 +19,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.binny.openapi.retrofit.util.RetrofitServiceUtil.getArticleService;
+import static com.binny.openapi.util.RetrofitServiceUtil.getArticleService;
 
 /**
  * author  binny

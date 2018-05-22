@@ -3,7 +3,7 @@ package com.binny.openapi.mvp.model.register;
 import com.binny.openapi.mvp.bean.RegisterBean;
 import com.binny.openapi.mvp.callback.RegisterCallback;
 import com.binny.openapi.retrofit.api.topapi.user.ITopUserService;
-import com.binny.openapi.retrofit.util.RetrofitServiceUtil;
+import com.binny.openapi.util.RetrofitServiceUtil;
 
 import java.io.File;
 

@@ -1,4 +1,4 @@
-package com.binny.openapi.retrofit.util;
+package com.binny.openapi.util;
 
 
 import com.binny.openapi.retrofit.api.IArticleService;
