@@ -1,5 +1,6 @@
 package com.binny.openapi.mvp.ui.fragment.home.viewholder;
 
+import android.support.v7.widget.CardView;
 import android.widget.TextView;
 
 import com.smart.holder.iinterface.IViewHolder;
@@ -9,9 +10,10 @@ import com.smart.holder.iinterface.IViewHolder;
  * date 5/22
  */
 class ArticleViewHolder implements IViewHolder {
-    TextView articleTime;
-    TextView articleAuthor;
-    TextView articleDigest;
-    TextView articleTitle;
-    TextView articleCharacterCount;
+    TextView mArticleTime;
+    TextView mArticleAuthor;
+    TextView mArticleDigest;
+    TextView mArticleTitle;
+    TextView mArticleCharacterCount;
+    CardView mArticleCardView;
 }

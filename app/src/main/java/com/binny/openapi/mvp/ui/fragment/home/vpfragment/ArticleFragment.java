@@ -32,6 +32,7 @@ public class ArticleFragment extends BaseFragment implements IArticleView, OnRef
     private RefreshLayout mRefreshLayout;
 
     private boolean mIsRefresh;
+    private boolean mIsLoadMore;
 
     public ArticleFragment() {
         mArticlePresenter = new ArticlePresenter(this);
@@ -72,10 +73,12 @@ public class ArticleFragment extends BaseFragment implements IArticleView, OnRef
             mIsRefresh = false;
             mArticleBeans.add(1, articleBean);
             mRefreshLayout.finishRefresh();
-        } else {
+        } else if (mIsLoadMore) {
+            mIsLoadMore = false;
             mArticleBeans.add(articleBean);
             mRefreshLayout.finishLoadMore();
-
+        } else {
+            mArticleBeans.add(articleBean);
         }
         mCommonAdapter.notifyDataSetChanged();
 
@@ -100,12 +103,13 @@ public class ArticleFragment extends BaseFragment implements IArticleView, OnRef
 
     @Override
     public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+        mIsLoadMore = true;
         Utils.mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mArticlePresenter.getArticleRandom();
             }
-        }, 1000);
+        }, 500);
 
     }
 }

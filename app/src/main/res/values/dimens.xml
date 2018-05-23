@@ -19,4 +19,5 @@
     <dimen name="value_15dp">15dp</dimen>
     <dimen name="value_12sp">12sp</dimen>
     <dimen name="value_10sp">10sp</dimen>
+    <dimen name="value_8dp">8dp</dimen>
 </resources>

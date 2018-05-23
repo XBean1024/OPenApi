@@ -19,20 +19,24 @@ public class ArticleViewHolderHelper implements IViewHolderHelper<ArticleViewHol
     @Override
     public IViewHolder initItemViewHolder(ArticleViewHolder viewHolder, final View convertView) {
         viewHolder = new ArticleViewHolder();
-        viewHolder.articleTime = convertView.findViewById(R.id.article_time);
-        viewHolder.articleAuthor = convertView.findViewById(R.id.article_author);
-        viewHolder.articleDigest = convertView.findViewById(R.id.article_digest);
-        viewHolder.articleTitle = convertView.findViewById(R.id.article_title);
-        viewHolder.articleCharacterCount = convertView.findViewById(R.id.article_character_count);
+        viewHolder.mArticleTime = convertView.findViewById(R.id.article_time);
+        viewHolder.mArticleAuthor = convertView.findViewById(R.id.article_author);
+        viewHolder.mArticleDigest = convertView.findViewById(R.id.article_digest);
+        viewHolder.mArticleTitle = convertView.findViewById(R.id.article_title);
+        viewHolder.mArticleCharacterCount = convertView.findViewById(R.id.article_character_count);
+        viewHolder.mArticleCardView = convertView.findViewById(R.id.article_card_view);
         return viewHolder;
     }
 
     @Override
     public void bindListDataToView(final Context context, final List<ArticleBean> iBaseBeanList, final ArticleViewHolder viewHolder, final int position) {
-        viewHolder.articleTime.setText(iBaseBeanList.get(position).getData().getDate().getCurr());
-        viewHolder.articleAuthor.setText("---"+iBaseBeanList.get(position).getData().getAuthor()+"   ");
-        viewHolder.articleDigest.setText("        "+iBaseBeanList.get(position).getData().getDigest());
-        viewHolder.articleCharacterCount.setText("共"+iBaseBeanList.get(position).getData().getWc()+"字   ");
-        viewHolder.articleTitle.setText("《" + iBaseBeanList.get(position).getData().getTitle() + "》");
+        if (position == 0) {
+            viewHolder.mArticleCardView.setBackground(context.getResources().getDrawable(R.drawable.article_card_view_shape));
+        }
+        viewHolder.mArticleTime.setText(iBaseBeanList.get(position).getData().getDate().getCurr());
+        viewHolder.mArticleAuthor.setText("---"+iBaseBeanList.get(position).getData().getAuthor()+"   ");
+        viewHolder.mArticleDigest.setText("        "+iBaseBeanList.get(position).getData().getDigest());
+        viewHolder.mArticleCharacterCount.setText("共"+iBaseBeanList.get(position).getData().getWc()+"字   ");
+        viewHolder.mArticleTitle.setText("《" + iBaseBeanList.get(position).getData().getTitle() + "》");
     }
 }
