@@ -30,6 +30,9 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
+    /*
+    * 防止频繁请求网络
+    * */
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
