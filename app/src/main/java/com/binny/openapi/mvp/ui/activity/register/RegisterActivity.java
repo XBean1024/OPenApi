@@ -10,6 +10,7 @@ import com.binny.openapi.custom.KeyValueLayout;
 import com.binny.openapi.mvp.bean.RegisterBean;
 import com.binny.openapi.mvp.presenter.register.IRegisterPresenter;
 import com.binny.openapi.mvp.presenter.register.RegisterPresenter;
+import com.vise.log.ViseLog;
 
 public class RegisterActivity extends AppCompatActivity implements IRegisterView {
 
@@ -32,23 +33,23 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
 
     @Override
     public void onLoading() {
-        Log.i("[]", "onLoading = 正在加载。。。。。");
+        ViseLog.i("[]", "onLoading = 正在加载。。。。。");
     }
 
     @Override
     public void onLoadDone() {
-        Log.i("[]", "onLoadDone = 加载完成。。。。。");
+        ViseLog.i("[]", "onLoadDone = 加载完成。。。。。");
     }
 
     @Override
     public void onError(String result) {
-        Log.i("[result]", "onError = 加载失败。。。。。" + result);
+        ViseLog.i("[result]", "onError = 加载失败。。。。。" + result);
     }
 
 
 
     @Override
     public void onSuccess(RegisterBean registerBean) {
-        Log.i("[beautyBean]", "updateView = " + registerBean.getMsg());
+        ViseLog.i("[beautyBean]", "updateView = " + registerBean.getMsg());
     }
 }

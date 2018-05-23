@@ -4,10 +4,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.bean.logger.JJLogger;
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.ui.fragment.BaseFragment;
 import com.binny.openapi.mvp.ui.fragment.home.vpfragment.ArticleFragment;
-import com.binny.openapi.util.JJLogger;
+import com.vise.log.ViseLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,9 @@ public class HomeFragment extends BaseFragment {
 
     private ViewPager mViewPager;
     private TabLayout mTab;
-    private final String[] mTitles = {"美文","每日一文","每日一文","每日一文","每日一文"};
+    private final String[] mTitles = {"美文"
+            ,"每日一文","每日一文","每日一文","每日一文"
+    };
     @Override
     protected void initView(View view) {
         mTab = view.findViewById(R.id.home_tab_layout);
@@ -36,7 +39,6 @@ public class HomeFragment extends BaseFragment {
         fragmentList.add(new ArticleFragment());
 
         mViewPager.setAdapter(new HomeFragmentAdapter(getFragmentManager(), fragmentList,mTitles));
-        JJLogger.logInfo("init");
     }
 
     @Override

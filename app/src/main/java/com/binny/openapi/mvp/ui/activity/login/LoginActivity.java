@@ -11,7 +11,6 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -24,12 +23,12 @@ import com.binny.openapi.mvp.presenter.login.LoginPresenter;
 import com.binny.openapi.mvp.ui.activity.MainActivity;
 import com.binny.openapi.mvp.ui.activity.ProtocolItemActivity;
 import com.binny.openapi.mvp.ui.activity.register.RegisterActivity;
-import com.binny.openapi.util.JJLogger;
 import com.binny.openapi.widget.SplashVideoView;
+import com.vise.log.ViseLog;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
-    private com.binny.openapi.widget.SplashVideoView mSpalshVideo;
+    private com.binny.openapi.widget.SplashVideoView mSplashVideo;
     private com.binny.openapi.custom.KeyValueLayout mLoginPhone;
     private com.binny.openapi.custom.KeyValueLayout mLoginPassword;
     private android.widget.TextView mItemTv;
@@ -45,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView,Media
         this.mItemTv = (TextView) findViewById(R.id.item);
         this.mLoginPassword = (KeyValueLayout) findViewById(R.id.login_password);
         this.mLoginPhone = (KeyValueLayout) findViewById(R.id.login_phone);
-        this.mSpalshVideo = (SplashVideoView) findViewById(R.id.login_video);
+        this.mSplashVideo = (SplashVideoView) findViewById(R.id.login_video);
 
         initVideoView();
     }
@@ -53,22 +52,22 @@ public class LoginActivity extends AppCompatActivity implements ILoginView,Media
     @Override
     public void onCompletion(MediaPlayer mp) {
         //开始播放
-        mSpalshVideo.start();
+        mSplashVideo.start();
     }
 
     @Override
     public void onPrepared(MediaPlayer mp) {
         //开始播放
-        mSpalshVideo.start();
+        mSplashVideo.start();
     }
 
     private void initVideoView() {
         //设置屏幕常亮
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        mSpalshVideo.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.mqr);
+        mSplashVideo.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.mqr);
         //设置相关的监听
-        mSpalshVideo.setOnPreparedListener(this);
-        mSpalshVideo.setOnCompletionListener(this);
+        mSplashVideo.setOnPreparedListener(this);
+        mSplashVideo.setOnCompletionListener(this);
 
         String text = "登录即代表阅读并同意服务条款";
         int len = text.length();
@@ -99,19 +98,19 @@ public class LoginActivity extends AppCompatActivity implements ILoginView,Media
 
     @Override
     public void onLoading() {
-        Log.i("[]", "onLoading" );
+        ViseLog.i("[]", "onLoading" );
     }
 
     @Override
     public void onLoadDone() {
-        Log.i("[]", "onLoadDone" );
+        ViseLog.i("[]", "onLoadDone" );
     }
 
     @Override
     public void onSuccess(LoginBean loginBean) {
         int code = loginBean.getCode();
         if (code == 200) {
-            JJLogger.json("login",loginBean.getData().toString());
+            ViseLog.json(loginBean.getData().toString());
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }else {

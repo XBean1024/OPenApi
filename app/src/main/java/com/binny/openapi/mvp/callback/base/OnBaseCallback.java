@@ -7,5 +7,5 @@ import java.io.Serializable;
  * date 5/9
  * 请求成功和失败的接口
  */
-public interface BaseCallback<T extends Serializable> extends SuccessCallback<T>, ErrorCallcabk {
+public interface OnBaseCallback<T extends Serializable> extends OnSuccessCallback<T>, OnErrorCallback {
 }

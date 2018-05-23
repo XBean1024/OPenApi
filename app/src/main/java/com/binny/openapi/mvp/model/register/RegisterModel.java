@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.model.register;
 
 import com.binny.openapi.mvp.bean.RegisterBean;
-import com.binny.openapi.mvp.callback.RegisterCallback;
+import com.binny.openapi.mvp.callback.OnRegisterCallback;
 import com.binny.openapi.retrofit.api.topapi.user.ITopUserService;
 import com.binny.openapi.util.RetrofitServiceUtil;
 
@@ -21,7 +21,7 @@ import static com.binny.openapi.constant.Constant.TOP_API_APP_KEY;
 public class RegisterModel implements IRegisterModel {
 
     @Override
-    public void requestRegister(final RegisterCallback registerCallback, String phone, String password, String name, String text, String other, String other2, File imageFile) {
+    public void requestRegister(final OnRegisterCallback registerCallback, String phone, String password, String name, String text, String other, String other2, File imageFile) {
         ITopUserService service = RetrofitServiceUtil.getLoginService();
         service.register(TOP_API_APP_KEY, name, phone, password, text, other, other2, imageFile)
                 .subscribeOn(Schedulers.io())

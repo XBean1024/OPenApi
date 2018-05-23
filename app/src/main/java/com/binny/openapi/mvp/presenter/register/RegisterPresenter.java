@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.presenter.register;
 
 import com.binny.openapi.mvp.bean.RegisterBean;
-import com.binny.openapi.mvp.callback.RegisterCallback;
+import com.binny.openapi.mvp.callback.OnRegisterCallback;
 import com.binny.openapi.mvp.model.register.IRegisterModel;
 import com.binny.openapi.mvp.model.register.RegisterModel;
 import com.binny.openapi.mvp.ui.activity.register.IRegisterView;
@@ -22,7 +22,7 @@ public class RegisterPresenter implements IRegisterPresenter {
     }
     @Override
     public void getData(String phone, String passwd, String name, String text, String other, String other2, File imageFile) {
-        mRegisterModel.requestRegister(new RegisterCallback() {
+        mRegisterModel.requestRegister(new OnRegisterCallback() {
             @Override
             public void onSuccess(RegisterBean registerBean) {
                 mRegister.onSuccess(registerBean);

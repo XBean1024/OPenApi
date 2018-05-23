@@ -5,6 +5,6 @@ package com.binny.openapi.mvp.callback.base;
  * date 5/9
  * 请求 失败的接口
  */
-public interface ErrorCallcabk {
+public interface OnErrorCallback {
     void onError(String result);
 }

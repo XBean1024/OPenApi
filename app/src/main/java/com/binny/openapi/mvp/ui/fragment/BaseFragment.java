@@ -3,14 +3,15 @@ package com.binny.openapi.mvp.ui.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.binny.openapi.util.JJLogger;
+import com.vise.log.ViseLog;
 
 /**
  * author  binny
@@ -21,29 +22,22 @@ public abstract class BaseFragment extends Fragment {
     protected Activity mActivity;
     protected final String TAG;
 
+    private View mContainerView;
+    protected boolean mIsFirstBindData = true;
+
     public BaseFragment() {
-
         this.TAG = this.getClass().getSimpleName();
-        Log.i("[]", "BaseFragment = " + TAG);
     }
 
-    /**   当调用 hide 方法时，回调该方法
-     * @param hidden
-     */
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        Log.i(this.getClass().getSimpleName(), "是否对用户隐藏" + hidden);
-    }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        if (mIsFirstBindData && mContainerView != null && isVisibleToUser) {
+            bindData();
+        }
     }
-    @Override
-    public boolean getUserVisibleHint() {
-        return super.getUserVisibleHint();
-    }
+
 
     /**
      * 执行该方法时，Fragment与Activity已经完成绑定
@@ -72,34 +66,27 @@ public abstract class BaseFragment extends Fragment {
         mActivity = activity;
     }
 
-    /**
-     * @param savedInstanceState
-     */
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        JJLogger.logInfo(this.getClass().getSimpleName(), "onCreate");
-    }
-
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        JJLogger.logInfo("base_fragment", "onCreateView");
-        View view = inflater.inflate(getFragmentLayout(), null, false);
-        initView(view);
-        return view;
-    }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (mContainerView != null) {
+            //防止重复创建视图
+            return mContainerView;
+        }
+        /*
+         * 创建视图
+         * */
+        mContainerView = inflater.inflate(getFragmentLayout(), container, false);
+        initView(mContainerView);
 
+        /*
+         * 如果第一次创建时，可见，则加载数据，绑定数据
+         * */
 
-    /**
-     * 当 activity 创建完毕是调用
-     *
-     * @param savedInstanceState
-     */
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        bindData();
+        if (getUserVisibleHint()) {
+            bindData();
+        }
+        return mContainerView;
     }
 
 
@@ -119,6 +106,6 @@ public abstract class BaseFragment extends Fragment {
      * 当孩子需要初始化数据，或者联网请求绑定数据，展示数据的 等等可以重写该方法
      */
     protected void bindData() {
-        JJLogger.logInfo("base_fragment", "bindData");
+        mIsFirstBindData = false;
     }
 }

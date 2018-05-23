@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.presenter.login;
 
 import com.binny.openapi.mvp.bean.LoginBean;
-import com.binny.openapi.mvp.callback.LoginCallback;
+import com.binny.openapi.mvp.callback.OnLoginCallback;
 import com.binny.openapi.mvp.model.login.ILoginModel;
 import com.binny.openapi.mvp.model.login.LoginModel;
 import com.binny.openapi.mvp.ui.activity.login.ILoginView;
@@ -20,7 +20,7 @@ public class LoginPresenter implements IloginPresenter {
     @Override
     public void getData(String phone, String passwd) {
         ILoginModel  model = new LoginModel();
-        model.requestLogin(new LoginCallback() {
+        model.requestLogin(new OnLoginCallback() {
             @Override
             public void onError(String result) {
                 mLoginView.onError(result);

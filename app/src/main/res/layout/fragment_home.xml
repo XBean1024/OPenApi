@@ -10,9 +10,10 @@
         android:layout_width="match_parent"
         app:tabIndicatorColor="@color/crimson"
         app:tabGravity="center"
-        app:tabTextColor="@color/balck"
+        app:tabBackground="@color/crimson"
+        app:tabTextColor="@color/orangered"
         app:tabTextAppearance="@style/app_home_tab_text"
-        app:tabSelectedTextColor="@color/crimson"
+        app:tabSelectedTextColor="@color/white"
         android:layout_height="@dimen/value_40dp" />
 
     <android.support.v4.view.ViewPager

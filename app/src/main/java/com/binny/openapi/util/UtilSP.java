@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.vise.log.ViseLog;
+
 import org.apache.commons.codec.binary.Base64;
 
 import java.io.ByteArrayInputStream;
@@ -172,7 +174,7 @@ public final class UtilSP {
             e.printStackTrace();
          }
       }
-      JJLogger.logInfo("ok", "存储成功");
+      ViseLog.i("ok", "存储成功");
       return instance;
    }
 

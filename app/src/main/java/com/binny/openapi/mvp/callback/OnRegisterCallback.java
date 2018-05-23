@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.callback;
 
 import com.binny.openapi.mvp.bean.RegisterBean;
-import com.binny.openapi.mvp.callback.base.BaseCallback;
+import com.binny.openapi.mvp.callback.base.OnBaseCallback;
 
 /**
  * author  binny
@@ -9,6 +9,6 @@ import com.binny.openapi.mvp.callback.base.BaseCallback;
  * <p>
  * 注册结果的回调接口
  */
-public interface RegisterCallback extends BaseCallback<RegisterBean> {
+public interface OnRegisterCallback extends OnBaseCallback<RegisterBean> {
 
 }

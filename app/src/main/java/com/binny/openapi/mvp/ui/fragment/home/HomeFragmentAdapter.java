@@ -31,11 +31,6 @@ public class HomeFragmentAdapter extends FragmentStatePagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(final View view, final Object object) {
-        return view == object;
-    }
-
-    @Override
     public Fragment getItem(final int position) {
         return mFragmentList.get(position);
     }
@@ -45,11 +40,7 @@ public class HomeFragmentAdapter extends FragmentStatePagerAdapter {
         return mFragmentList.size();
     }
 
-    @NonNull
-    @Override
-    public Object instantiateItem(final ViewGroup container, final int position) {
-        return super.instantiateItem(container, position);
-    }
+
 
     @Nullable
     @Override

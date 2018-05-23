@@ -7,6 +7,6 @@ import java.io.Serializable;
  * date 5/9
  * 请求数据的回到接口
  */
-public interface SuccessCallback<T extends Serializable> {
+public interface OnSuccessCallback<T extends Serializable> {
     void onSuccess(T t);
 }
