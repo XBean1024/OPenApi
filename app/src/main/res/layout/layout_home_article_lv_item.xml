@@ -50,14 +50,18 @@
         <TextView
             android:id="@+id/article_digest"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/article_time"
             android:layout_marginLeft="@dimen/value_10dp"
             android:layout_marginRight="@dimen/value_20dp"
             android:layout_marginTop="@dimen/value_10dp"
             android:ellipsize="end"
-            android:maxLines="3"
-            android:text=" "
+            android:textStyle="bold"
+            android:textSize="@dimen/value_10sp"
+            android:maxLines="2"
+            android:gravity="center_vertical"
+            android:text=" 简介"
+            android:lineSpacingExtra="@dimen/value_10dp"
             android:textColor="@color/white" />
 
         <TextView
