@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/article_dialog_vp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="450dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/article_card_view_shape_title"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/article_detail_dialog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/value_10dp"
+                android:gravity="center"
+                android:text="标题"
+                android:textColor="@color/white"
+                android:textSize="@dimen/value_15sp" />
+
+            <TextView
+                android:id="@+id/article_detail_dialog_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="@dimen/value_60dp"
+                android:text="作者"
+                android:textStyle="italic"
+                android:textColor="@color/white"
+                android:layout_marginBottom="@dimen/value_5dp"
+                android:textSize="@dimen/value_15sp" />
+        </LinearLayout>
+
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none"
+            android:background="@color/skyblue"
+            android:paddingLeft="@dimen/value_30dp"
+            android:paddingRight="@dimen/value_30dp"
+            android:paddingTop="@dimen/value_20dp"
+            android:id="@+id/article_detail_dialog_web_view" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/value_40dp"
+            android:background="@drawable/article_card_view_shape_count">
+            <TextView
+                android:id="@+id/article_detail_dialog_character_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="字数"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

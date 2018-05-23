@@ -21,13 +21,16 @@
         <!--导航栏透明-->
         <item name="android:windowTranslucentNavigation">true</item>
         <!--状态栏透明-->
-        <!--<item name="android:windowTranslucentStatus">true</item>-->
-        <!--<item name="android:windowNoTitle">true</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="FullScreenTheme" parent="@style/TransparentTheme">
-        <item name="android:windowBackground">@color/transparent</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    <style name="FullScreenTheme" parent="@style/AppTheme.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+
+        <item name="android:windowFullscreen">true</item>
+
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <color name="transparent">#88242424</color>
@@ -84,4 +87,17 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <!--自定义dialog背景全透明无边框theme -->
+    <style name="app_article_deatil_dialog_style" parent="android:style/Theme.Dialog">
+        <!--背景颜色及和透明程度-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否去除边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否模糊-->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
 </resources>

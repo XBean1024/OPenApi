@@ -5,10 +5,12 @@ import android.view.View;
 
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.bean.ArticleBean;
+import com.binny.openapi.widget.dialog.ArticleDetailDialog;
 import com.smart.holder.iinterface.IViewHolder;
 import com.smart.holder.iinterface.IViewHolderHelper;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * author  binny
@@ -32,16 +34,33 @@ public class ArticleViewHolderHelper implements IViewHolderHelper<ArticleViewHol
     public void bindListDataToView(final Context context, final List<ArticleBean> iBaseBeanList, final ArticleViewHolder viewHolder, final int position) {
         if (position == 0) {
             viewHolder.mArticleCardView.setBackground(context.getResources().getDrawable(R.drawable.article_card_view_shape_current_day));
-        }else if (position==1){
+        } else if (position == 1) {
             viewHolder.mArticleCardView.setBackground(context.getResources().getDrawable(R.drawable.article_card_view_shape_blue));
-        }else {
+        } else {
             viewHolder.mArticleCardView.setBackground(context.getResources().getDrawable(R.drawable.article_card_view_shape_gray));
 
         }
-        viewHolder.mArticleTime.setText(iBaseBeanList.get(position).getData().getDate().getCurr());
-        viewHolder.mArticleAuthor.setText("---"+iBaseBeanList.get(position).getData().getAuthor()+"   ");
-        viewHolder.mArticleDigest.setText("        "+iBaseBeanList.get(position).getData().getDigest());
-        viewHolder.mArticleCharacterCount.setText("共"+iBaseBeanList.get(position).getData().getWc()+"字   ");
-        viewHolder.mArticleTitle.setText("《" + iBaseBeanList.get(position).getData().getTitle() + "》");
+        String time = iBaseBeanList.get(position).getData().getDate().getCurr();
+        viewHolder.mArticleTime.setText(time);
+        final String author = iBaseBeanList.get(position).getData().getAuthor();
+        viewHolder.mArticleAuthor.setText("---" + author + "   ");
+        String digest = iBaseBeanList.get(position).getData().getDigest();
+        viewHolder.mArticleDigest.setText("        " + digest);
+        final String count = "共" + iBaseBeanList.get(position).getData().getWc() + "字   ";
+        viewHolder.mArticleCharacterCount.setText(count);
+        final String title = "《" + iBaseBeanList.get(position).getData().getTitle() + "》";
+        viewHolder.mArticleTitle.setText(title);
+        final String content = iBaseBeanList.get(position).getData().getContent();
+        viewHolder.mArticleCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ArticleDetailDialog(context)
+                        .setAuthorName(author)
+                        .setCharacterCount(count)
+                        .setContent(content)
+                        .setTextTitle(title)
+                        .show();
+            }
+        });
     }
 }

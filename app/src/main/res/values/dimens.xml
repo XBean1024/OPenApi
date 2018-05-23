@@ -21,4 +21,7 @@
     <dimen name="value_10sp">10sp</dimen>
     <dimen name="value_8dp">8dp</dimen>
     <dimen name="value_15sp">15sp</dimen>
+    <dimen name="value_60dp">60dp</dimen>
+    <dimen name="value_600dp">600dp</dimen>
+    <dimen name="value_3dp">3dp</dimen>
 </resources>
