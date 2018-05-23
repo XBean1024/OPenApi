@@ -31,7 +31,12 @@ public class ArticleViewHolderHelper implements IViewHolderHelper<ArticleViewHol
     @Override
     public void bindListDataToView(final Context context, final List<ArticleBean> iBaseBeanList, final ArticleViewHolder viewHolder, final int position) {
         if (position == 0) {
-            viewHolder.mArticleCardView.setBackground(context.getResources().getDrawable(R.drawable.article_card_view_shape));
+            viewHolder.mArticleCardView.setBackground(context.getResources().getDrawable(R.drawable.article_card_view_shape_current_day));
+        }else if (position==1){
+            viewHolder.mArticleCardView.setBackground(context.getResources().getDrawable(R.drawable.article_card_view_shape_blue));
+        }else {
+            viewHolder.mArticleCardView.setBackground(context.getResources().getDrawable(R.drawable.article_card_view_shape_gray));
+
         }
         viewHolder.mArticleTime.setText(iBaseBeanList.get(position).getData().getDate().getCurr());
         viewHolder.mArticleAuthor.setText("---"+iBaseBeanList.get(position).getData().getAuthor()+"   ");

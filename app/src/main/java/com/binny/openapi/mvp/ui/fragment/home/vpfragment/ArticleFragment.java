@@ -49,6 +49,7 @@ public class ArticleFragment extends BaseFragment implements IArticleView, OnRef
         mRefreshLayout = view.findViewById(R.id.article_refreshLayout);
         mRefreshLayout.setOnRefreshListener(this);
         mRefreshLayout.setOnLoadMoreListener(this);
+        mRefreshLayout.setEnableLoadMore(false);
         mCommonAdapter = new CommonAdapter<>(getActivity(), mArticleBeans, R.layout.layout_home_article_lv_item, new ArticleViewHolderHelper());
         mListView.setAdapter(mCommonAdapter);
     }
