@@ -48,6 +48,7 @@
             android:textStyle="bold|italic" />
 
         <TextView
+            android:textIsSelectable="true"
             android:id="@+id/article_digest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
