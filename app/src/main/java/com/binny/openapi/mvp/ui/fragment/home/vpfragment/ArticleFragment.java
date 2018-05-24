@@ -10,11 +10,11 @@ import com.binny.openapi.mvp.presenter.mine.ArticlePresenter;
 import com.binny.openapi.mvp.ui.fragment.BaseFragment;
 import com.binny.openapi.mvp.ui.fragment.home.viewholder.ArticleViewHolderHelper;
 import com.binny.openapi.util.Utils;
+import com.binny.openapi.util.UtilsLog;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.smart.holder.CommonAdapter;
-import com.vise.log.ViseLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +56,6 @@ public class ArticleFragment extends BaseFragment implements IArticleView, OnRef
 
     @Override
     public void onError(final String result) {
-        ViseLog.e(result);
         mRefreshLayout.finishRefresh(false);
         mRefreshLayout.finishLoadMore(false);
     }
@@ -87,12 +86,12 @@ public class ArticleFragment extends BaseFragment implements IArticleView, OnRef
 
     @Override
     public void onLoading() {
-        ViseLog.i("ArticleFragment", "onLoading");
+        UtilsLog.i( "onLoading");
     }
 
     @Override
     public void onLoadDone() {
-        ViseLog.i("ArticleFragment", "onLoadDone");
+        UtilsLog.i( "onLoadDone");
     }
 
     @Override

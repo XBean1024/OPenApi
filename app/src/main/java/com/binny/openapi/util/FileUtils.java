@@ -5,12 +5,9 @@ import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.bean.logger.JJLogger;
-import com.vise.log.ViseLog;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 /**
@@ -44,7 +41,7 @@ public class FileUtils {
 
         } else {
             f.createNewFile();
-            ViseLog.e("文件不存在");
+            UtilsLog.e("文件不存在");
         }
         return s;
     }
@@ -141,7 +138,6 @@ public class FileUtils {
     private static File getDBFile(Context context) {
         String path = "/data/data/"
                 + context.getPackageName() + "/databases/flowup.db";
-        ViseLog.i("path",path);
         return new File(path);
     }
 

@@ -9,10 +9,11 @@ import com.bean.logger.JJLogger;
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.ui.fragment.BaseFragment;
 import com.binny.openapi.util.FileUtils;
+import com.orhanobut.logger.Logger;
 import com.scwang.wave.MultiWaveHeader;
-import com.vise.log.ViseLog;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
 
 /**
  * author  binny
@@ -68,7 +69,6 @@ public class MineFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        JJLogger.logInfo(this.getClass().getSimpleName(), "onresumen");
     }
 
     public void setCacheSize() {

@@ -1,14 +1,13 @@
 package com.binny.openapi.mvp.model.mine;
 
-import com.bean.logger.JJLogger;
 import com.bean.xhttp.XHttp;
 import com.bean.xhttp.callback.OnXHttpCallback;
 import com.bean.xhttp.response.Response;
 import com.binny.openapi.mvp.bean.ArticleBean;
 import com.binny.openapi.mvp.callback.OnArticleCallback;
 import com.binny.openapi.mvp.ui.fragment.home.vpfragment.IArticleView;
+import com.binny.openapi.util.UtilsLog;
 import com.google.gson.Gson;
-import com.vise.log.ViseLog;
 
 /**
  * author  binny
@@ -34,7 +33,7 @@ public class ArticleModel {
 //
 //                    @Override
 //                    public void onNext(final ArticleBean articleBean) {
-//                        articleCallback.onSuccess(articleBean);
+//                        articleCallback.onGranted(articleBean);
 //                    }
 //
 //                    @Override
@@ -59,7 +58,7 @@ public class ArticleModel {
 
                     @Override
                     public void onFailure(Exception ex, String errorCode) {
-                        ViseLog.i("ArticleModel","onFailure"+ex.getMessage());
+                        UtilsLog.i("ArticleModel","onDeny"+ex.getMessage());
                     }
                 });
     }
@@ -77,7 +76,7 @@ public class ArticleModel {
 
                     @Override
                     public void onFailure(Exception ex, String errorCode) {
-                        ViseLog.i("ArticleModel","onFailure"+ex.getMessage());
+                        UtilsLog.i("ArticleModel","onDeny"+ex.getMessage());
                     }
                 });
     }
@@ -95,7 +94,7 @@ public class ArticleModel {
 
                     @Override
                     public void onFailure(Exception ex, String errorCode) {
-                        ViseLog.i("ArticleModel","onFailure"+ex.getMessage());
+                        UtilsLog.e("ArticleModel","onDeny"+ex.getMessage());
                     }
                 });
     }

@@ -24,7 +24,6 @@ import com.binny.openapi.mvp.ui.activity.MainActivity;
 import com.binny.openapi.mvp.ui.activity.ProtocolItemActivity;
 import com.binny.openapi.mvp.ui.activity.register.RegisterActivity;
 import com.binny.openapi.widget.SplashVideoView;
-import com.vise.log.ViseLog;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
@@ -98,19 +97,16 @@ public class LoginActivity extends AppCompatActivity implements ILoginView,Media
 
     @Override
     public void onLoading() {
-        ViseLog.i("[]", "onLoading" );
     }
 
     @Override
     public void onLoadDone() {
-        ViseLog.i("[]", "onLoadDone" );
     }
 
     @Override
     public void onSuccess(LoginBean loginBean) {
         int code = loginBean.getCode();
         if (code == 200) {
-            ViseLog.json(loginBean.getData().toString());
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }else {

@@ -10,8 +10,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.binny.openapi.util.UtilsLog;
+import com.orhanobut.logger.Logger;
 
-import com.vise.log.ViseLog;
 
 /**
  * author  binny
@@ -31,11 +32,12 @@ public abstract class BaseFragment extends Fragment {
 
 
     /*
-    * 防止频繁请求网络
-    * */
+     * 防止频繁请求网络
+     * */
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        UtilsLog.i(TAG + "    setUserVisibleHint  = " + isVisibleToUser);
         if (mIsFirstBindData && mContainerView != null && isVisibleToUser) {
             bindData();
         }
