@@ -1,18 +1,28 @@
 package com.binny.openapi.mvp.ui.fragment.mine;
 
+import android.Manifest;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bean.logger.JJLogger;
 import com.binny.openapi.R;
+import com.binny.openapi.mvp.callback.OnPermissionCallback;
+import com.binny.openapi.mvp.ui.activity.BaseActivity;
 import com.binny.openapi.mvp.ui.fragment.BaseFragment;
 import com.binny.openapi.util.FileUtils;
+import com.binny.openapi.util.UtilsLog;
+import com.binny.openapi.util.UtilsPerMission;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.orhanobut.logger.Logger;
 import com.scwang.wave.MultiWaveHeader;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 
 
 /**
@@ -32,10 +42,41 @@ public class MineFragment extends BaseFragment {
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews(View view) {
-        waveHeader = (MultiWaveHeader) view.findViewById(R.id.waveHeader);
-        profileImage = (CircleImageView) view.findViewById(R.id.header);
-        rlClearCache = (RelativeLayout) view.findViewById(R.id.rl_clear_cache);
-        tvCacheSize = (TextView) view.findViewById(R.id.tv_cache_size);
+        profileImage = view.findViewById(R.id.header);
+        rlClearCache = view.findViewById(R.id.rl_clear_cache);
+        tvCacheSize = view.findViewById(R.id.tv_cache_size);
+        RelativeLayout textView = view.findViewById(R.id.test);
+        RxView.clicks(textView).subscribe(new Observer<Object>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(Object o) {
+                UtilsPerMission.getPermission(new OnPermissionCallback() {
+                    @Override
+                    public void onGranted() {
+                        UtilsLog.i("请求成功");
+                    }
+
+                    @Override
+                    public void onDeny() {
+                        UtilsLog.e("请求失败");
+                    }
+                },getActivity(),textView, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
     }
 
 

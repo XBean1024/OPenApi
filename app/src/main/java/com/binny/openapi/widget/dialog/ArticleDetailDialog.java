@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -22,7 +23,6 @@ import static com.binny.openapi.util.UtilString.getHtml;
  * 描述: 用于显示 每日一文 文章详细内容的对话框
  */
 public class ArticleDetailDialog extends Dialog {
-    private Context mContext;
     private TextView mArticleDetailDialogTitle;
     private TextView mArticleDetailDialogAuthor;
     private WebView mWebView;
@@ -88,7 +88,6 @@ public class ArticleDetailDialog extends Dialog {
 
     public ArticleDetailDialog(@NonNull Context context) {
         super(context);
-        mContext = context;
     }
 
     public ArticleDetailDialog(@NonNull Context context, int themeResId) {
@@ -101,7 +100,8 @@ public class ArticleDetailDialog extends Dialog {
         Objects.requireNonNull(getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setContentView(R.layout.layout_article_detail_dailog);
         setCanceledOnTouchOutside(true);
-
+        Window dialogWindow = getWindow();
+        dialogWindow.setWindowAnimations(R.style.push_up_in_out);//设置对话框的进出效果
         findViews();
         bindView();
     }

@@ -8,6 +8,41 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--上下交错效果-->
+    <style name="slide_up_down" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@anim/slide_up_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_down_out</item>
+    </style>
+    <!--淡入淡出效果-->
+    <style name="fade_in_out" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+    <!--放大淡出效果-->
+    <style name="scale_in_alpha_out" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@anim/scale_in</item>
+        <item name="android:windowExitAnimation">@anim/alpha_out</item>
+    </style>
+    <!--压缩变小淡出效果-->
+    <style name="hyperspace_in_out" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@anim/hyperspace_in</item>
+        <item name="android:windowExitAnimation">@anim/hyperspace_out</item>
+    </style>
+    <!--右往左推出效果-->
+    <style name="push_left_in_out" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@anim/push_left_in</item>
+        <item name="android:windowExitAnimation">@anim/push_left_out</item>
+    </style>
+    <!--下往上推出效果-->
+    <style name="push_up_in_out" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@anim/push_up_in</item>
+        <item name="android:windowExitAnimation">@anim/push_up_out</item>
+    </style>
+    <!--左右交错效果-->
+    <style name="slide_left_right" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@anim/slide_left</item>
+        <item name="android:windowExitAnimation">@anim/slide_right</item>
+    </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

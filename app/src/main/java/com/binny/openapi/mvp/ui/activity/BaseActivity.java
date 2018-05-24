@@ -2,6 +2,7 @@ package com.binny.openapi.mvp.ui.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -30,30 +31,5 @@ public abstract class BaseActivity extends FragmentActivity {
 
     abstract int getLayoutId();
 
-    @SuppressLint("CheckResult")
-    protected void getPermission(OnPermissionCallback permissionCallback, View view, String... permission) {
-        RxPermissions rxPermissions = new RxPermissions(this);
-        if (view == null) {
-            // Must be done during an initialization phase like onCreate
-            rxPermissions
-                    .request(permission)
-                    .subscribe(granted -> {
-                        if (granted) {
-                            permissionCallback.onGranted();
-                        } else {
-                            permissionCallback.onDeny();
-                        }
-                    });
-            return;
-        }
-        RxView.clicks(view)
-                .compose(rxPermissions.ensure(permission))
-                .subscribe(granted -> {
-                    if (granted) {
-                        permissionCallback.onGranted();
-                    } else {
-                        permissionCallback.onDeny();
-                    }
-                });
-    }
+
 }

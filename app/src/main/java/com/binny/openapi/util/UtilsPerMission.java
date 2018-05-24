@@ -1,5 +1,10 @@
 package com.binny.openapi.util;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.view.View;
+import com.binny.openapi.mvp.callback.OnPermissionCallback;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 /**
@@ -8,6 +13,30 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
  * 描述:
  */
 public class UtilsPerMission {
-    public static void rxpermissions(String[] args) {
+    @SuppressLint("CheckResult")
+    public static void getPermission(OnPermissionCallback permissionCallback, Activity activity, View view, String... permission) {
+        RxPermissions rxPermissions = new RxPermissions(activity);
+        if (view == null) {
+            // Must be done during an initialization phase like onCreate
+            rxPermissions
+                    .request(permission)
+                    .subscribe(granted -> {
+                        if (granted) {
+                            permissionCallback.onGranted();
+                        } else {
+                            permissionCallback.onDeny();
+                        }
+                    });
+            return;
+        }
+        RxView.clicks(view)
+                .compose(rxPermissions.ensure(permission))
+                .subscribe(granted -> {
+                    if (granted) {
+                        permissionCallback.onGranted();
+                    } else {
+                        permissionCallback.onDeny();
+                    }
+                });
     }
 }

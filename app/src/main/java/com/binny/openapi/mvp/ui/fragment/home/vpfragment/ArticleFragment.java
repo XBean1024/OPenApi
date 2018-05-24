@@ -71,7 +71,11 @@ public class ArticleFragment extends BaseFragment implements IArticleView, OnRef
     public void onSuccess(final ArticleBean articleBean) {
         if (mIsRefresh) {
             mIsRefresh = false;
-            mArticleBeans.add(1, articleBean);
+            if (mArticleBeans.size()>0) {
+                mArticleBeans.add(1, articleBean);
+            }else {
+                mArticleBeans.add(articleBean);
+            }
             mRefreshLayout.finishRefresh();
         } else if (mIsLoadMore) {
             mIsLoadMore = false;
