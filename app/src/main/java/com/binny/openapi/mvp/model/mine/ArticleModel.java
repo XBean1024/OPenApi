@@ -54,21 +54,6 @@ public class ArticleModel {
                         mCallback.onLoadDone();
                     }
                 });
-//        XHttp.getInstance()
-//                .get("https://interface.meiriyiwen.com/article/today?dev=1")
-//                .setOnXHttpCallback(new OnXHttpCallback() {
-//                    @Override
-//                    public void onSuccess(Response response) {
-//                        Gson gson = new Gson();
-//                        ArticleBean articleBean = gson.fromJson(response.toString(), ArticleBean.class);
-//                        mCallback.onSuccess(articleBean);
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Exception ex, String errorCode) {
-//                        UtilsLog.i("ArticleModel","onDeny"+ex.getMessage());
-//                    }
-//                });
     }
 
     public void getArticleRandom() {
