@@ -28,13 +28,6 @@ public class ArticleDetailDialog extends Dialog {
     private WebView mWebView;
     private TextView mArticleDetailDialogCharacterCount;
 
-    public ArticleDetailDialog setDrawableId(int drawableId) {
-        mDrawableId = drawableId;
-        return this;
-    }
-
-    private int mDrawableId;
-
     public ArticleDetailDialog setContent(String content) {
         mContent = content;
         return this;
