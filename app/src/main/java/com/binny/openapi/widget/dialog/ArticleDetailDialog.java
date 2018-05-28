@@ -110,7 +110,7 @@ public class ArticleDetailDialog extends Dialog {
         mArticleDetailDialogAuthor.setText(mAuthorName);
         mArticleDetailDialogCharacterCount.setText(mCharacterCount);
         mArticleDetailDialogTitle.setText(mTitle);
-        String html = getHtml(mContent, "#87ceeb");
+        String html = getHtml(mContent, "#ffffff");
         mWebView.loadDataWithBaseURL(null, html, "text/html", "utf-8", null);
         mWebView.setWebViewClient(new WebViewClient());
     }

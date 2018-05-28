@@ -19,13 +19,14 @@ import android.widget.Toast;
 import com.binny.openapi.R;
 import com.binny.openapi.custom.KeyValueLayout;
 import com.binny.openapi.mvp.bean.LoginBean;
+import com.binny.openapi.mvp.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.login.LoginPresenter;
 import com.binny.openapi.mvp.ui.activity.MainActivity;
 import com.binny.openapi.mvp.ui.activity.ProtocolItemActivity;
 import com.binny.openapi.mvp.ui.activity.register.RegisterActivity;
 import com.binny.openapi.widget.SplashVideoView;
 
-public class LoginActivity extends AppCompatActivity implements ILoginView,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
+public class LoginActivity extends AppCompatActivity implements DataCallback<LoginBean>,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private com.binny.openapi.widget.SplashVideoView mSplashVideo;
     private com.binny.openapi.custom.KeyValueLayout mLoginPhone;

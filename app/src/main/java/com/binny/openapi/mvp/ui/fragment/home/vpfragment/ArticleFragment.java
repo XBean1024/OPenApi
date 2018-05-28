@@ -6,6 +6,7 @@ import android.widget.ListView;
 
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.bean.ArticleBean;
+import com.binny.openapi.mvp.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.mine.ArticlePresenter;
 import com.binny.openapi.mvp.ui.fragment.BaseFragment;
 import com.binny.openapi.mvp.ui.fragment.home.viewholder.ArticleViewHolderHelper;
@@ -23,7 +24,7 @@ import java.util.List;
  * author  binny
  * date 5/22
  */
-public class ArticleFragment extends BaseFragment implements IArticleView, OnRefreshListener, OnLoadMoreListener {
+public class ArticleFragment extends BaseFragment implements DataCallback<ArticleBean>, OnRefreshListener, OnLoadMoreListener {
     private ArticlePresenter mArticlePresenter;
 
     private ListView mListView;

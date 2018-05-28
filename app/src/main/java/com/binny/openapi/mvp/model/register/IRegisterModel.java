@@ -1,6 +1,7 @@
 package com.binny.openapi.mvp.model.register;
 
-import com.binny.openapi.mvp.callback.OnRegisterCallback;
+import com.binny.openapi.mvp.bean.RegisterBean;
+import com.binny.openapi.mvp.callback.DataCallback;
 
 import java.io.File;
 
@@ -9,5 +10,5 @@ import java.io.File;
  * date 5/7
  */
 public interface IRegisterModel {
-    void requestRegister(OnRegisterCallback stringCallback, String phone, String passwd, String name, String text, String other, String other2, File imageFile);
+    void requestRegister(DataCallback<RegisterBean> stringCallback, String phone, String passwd, String name, String text, String other, String other2, File imageFile);
 }

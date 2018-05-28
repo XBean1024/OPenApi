@@ -7,7 +7,7 @@ package com.binny.openapi.util;
  */
 public class UtilString {
     public static String getHtml(String content, String color) {
-        String html = "<html xmlns=\"http://www.w3.org/1999/xhtml\">  \n" +
+        return "<html xmlns=\"http://www.w3.org/1999/xhtml\">  \n" +
                 "<head>  \n" +
                 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />  \n" +
                 "<title>缩进2字符</title>  \n" +
@@ -19,6 +19,5 @@ public class UtilString {
                 content +
                 "</body>  \n" +
                 "</html>  ";
-        return html;
     }
 }

@@ -4,8 +4,7 @@ import com.bean.xhttp.XHttp;
 import com.bean.xhttp.callback.OnXHttpCallback;
 import com.bean.xhttp.response.Response;
 import com.binny.openapi.mvp.bean.ArticleBean;
-import com.binny.openapi.mvp.callback.OnArticleCallback;
-import com.binny.openapi.mvp.ui.fragment.home.vpfragment.IArticleView;
+import com.binny.openapi.mvp.callback.DataCallback;
 import com.binny.openapi.retrofit.api.IArticleService;
 import com.binny.openapi.util.UtilsLog;
 import com.google.gson.Gson;
@@ -22,9 +21,9 @@ import static com.binny.openapi.util.RetrofitServiceUtil.getArticleService;
  * date 5/22
  */
 public class ArticleModel {
-    private OnArticleCallback mCallback;
+    private DataCallback<ArticleBean> mCallback;
 
-    public ArticleModel(OnArticleCallback callback) {
+    public ArticleModel(DataCallback<ArticleBean> callback) {
         mCallback = callback;
     }
 

@@ -1,7 +1,8 @@
 package com.binny.openapi.mvp.presenter.mine;
 
+import com.binny.openapi.mvp.bean.ArticleBean;
+import com.binny.openapi.mvp.callback.DataCallback;
 import com.binny.openapi.mvp.model.mine.ArticleModel;
-import com.binny.openapi.mvp.ui.fragment.home.vpfragment.IArticleView;
 
 /**
  * author  binny
@@ -10,7 +11,7 @@ import com.binny.openapi.mvp.ui.fragment.home.vpfragment.IArticleView;
 public class ArticlePresenter {
     private ArticleModel mArticleModel;
 
-    public ArticlePresenter(final IArticleView articleView) {
+    public ArticlePresenter(final DataCallback<ArticleBean> articleView) {
         mArticleModel = new ArticleModel(articleView);
     }
 

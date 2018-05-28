@@ -2,17 +2,17 @@ package com.binny.openapi.mvp.ui.activity.register;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import com.binny.openapi.R;
 import com.binny.openapi.custom.KeyValueLayout;
 import com.binny.openapi.mvp.bean.RegisterBean;
+import com.binny.openapi.mvp.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.register.IRegisterPresenter;
 import com.binny.openapi.mvp.presenter.register.RegisterPresenter;
 import com.binny.openapi.util.UtilsLog;
 
-public class RegisterActivity extends AppCompatActivity implements IRegisterView {
+public class RegisterActivity extends AppCompatActivity implements DataCallback<RegisterBean> {
 
 
     private IRegisterPresenter mRegisterPresenter;

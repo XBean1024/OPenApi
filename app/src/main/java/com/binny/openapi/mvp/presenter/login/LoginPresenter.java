@@ -1,26 +1,35 @@
 package com.binny.openapi.mvp.presenter.login;
 
 import com.binny.openapi.mvp.bean.LoginBean;
-import com.binny.openapi.mvp.callback.OnLoginCallback;
+import com.binny.openapi.mvp.callback.DataCallback;
 import com.binny.openapi.mvp.model.login.ILoginModel;
 import com.binny.openapi.mvp.model.login.LoginModel;
-import com.binny.openapi.mvp.ui.activity.login.ILoginView;
 
 /**
  * author  binny
  * date 5/9
  */
 public class LoginPresenter implements IloginPresenter {
-    private ILoginView mLoginView;
+    private DataCallback<LoginBean> mLoginView;
 
-    public LoginPresenter(ILoginView loginView) {
+    public LoginPresenter(DataCallback<LoginBean> loginView) {
         mLoginView = loginView;
     }
 
     @Override
     public void getData(String phone, String passwd) {
         ILoginModel  model = new LoginModel();
-        model.requestLogin(new OnLoginCallback() {
+        model.requestLogin(new DataCallback<LoginBean>() {
+            @Override
+            public void onLoading() {
+
+            }
+
+            @Override
+            public void onLoadDone() {
+
+            }
+
             @Override
             public void onError(String result) {
                 mLoginView.onError(result);
