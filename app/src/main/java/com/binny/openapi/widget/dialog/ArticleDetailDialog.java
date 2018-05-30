@@ -4,12 +4,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.Gravity;
 import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.binny.openapi.R;
+import com.binny.openapi.util.ResolutionUtil;
 
 import static com.binny.openapi.util.UtilString.getHtml;
 
@@ -23,6 +26,7 @@ public class ArticleDetailDialog extends Dialog {
     private TextView mArticleDetailDialogAuthor;
     private WebView mWebView;
     private TextView mArticleDetailDialogCharacterCount;
+    private Context mContext;
 
     public ArticleDetailDialog setContent(String content) {
         mContent = content;
@@ -77,6 +81,7 @@ public class ArticleDetailDialog extends Dialog {
 
     public ArticleDetailDialog(@NonNull Context context) {
         super(context, R.style.app_article_deatil_dialog_style);
+        mContext = context.getApplicationContext();
     }
 
     public ArticleDetailDialog(@NonNull Context context, int themeResId) {
@@ -91,6 +96,7 @@ public class ArticleDetailDialog extends Dialog {
         setCanceledOnTouchOutside(true);
         Window dialogWindow = getWindow();
         dialogWindow.setWindowAnimations(R.style.push_up_in_out);//设置对话框的进出效果
+        initDialog();
         findViews();
         bindView();
     }
@@ -103,5 +109,13 @@ public class ArticleDetailDialog extends Dialog {
         mWebView.loadDataWithBaseURL(null, html, "text/html", "utf-8", null);
         mWebView.setWebViewClient(new WebViewClient());
     }
-
+    private void initDialog() {
+        ResolutionUtil resolutionUtil = new ResolutionUtil(mContext);
+        Window window = this.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.width = resolutionUtil.getWidth()*4/7;
+        params.height = resolutionUtil.getHeight()*4/7;
+        window.setAttributes(params);
+    }
 }

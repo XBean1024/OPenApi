@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
+import android.widget.Toast;
 
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.bean.PictureBean;
@@ -45,6 +46,13 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
                         viewHolder.mImageView.setBackground(new BitmapDrawable(context.getResources(),resource));
                     }
                 });
+        viewHolder.mImageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(context, "保存成功！", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
         viewHolder.mTextView.setText("第 " + position + " 张" + iBaseBeanList.get(position).getPublishedAt());
     }
 }
