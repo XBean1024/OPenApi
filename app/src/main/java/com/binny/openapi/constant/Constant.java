@@ -20,4 +20,5 @@ public class Constant {
     * 每日一文
     * */
     public static final String ARTICLE_BASE_URL = "https://interface.meiriyiwen.com/";
+    public static final String JUHE_HISTORY_TODAY_BASE_URL = "http://api.juheapi.com/";
 }

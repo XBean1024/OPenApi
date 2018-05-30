@@ -2,8 +2,6 @@ package com.binny.openapi.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Window;
@@ -12,8 +10,6 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.binny.openapi.R;
-
-import java.util.Objects;
 
 import static com.binny.openapi.util.UtilString.getHtml;
 
@@ -91,7 +87,7 @@ public class ArticleDetailDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        Objects.requireNonNull(getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        setContentView(R.layout.layout_article_detail_dailog);
+        setContentView(R.layout.dialog_layout_article_detail);
         setCanceledOnTouchOutside(true);
         Window dialogWindow = getWindow();
         dialogWindow.setWindowAnimations(R.style.push_up_in_out);//设置对话框的进出效果

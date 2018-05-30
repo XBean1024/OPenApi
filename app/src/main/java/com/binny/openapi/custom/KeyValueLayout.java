@@ -49,7 +49,7 @@ public class KeyValueLayout extends RelativeLayout {
         int value_length = array.getInteger(R.styleable.KeyValueLayout_value_length,16);
         array.recycle();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.key_value_layout, this);
+        View view = inflater.inflate(R.layout.custom_layout_key_value, this);
         mKeyTv = view.findViewById(R.id.key);
         mValueEt = view.findViewById(R.id.value);
         mKeyTv.setText(key);

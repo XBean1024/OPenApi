@@ -1,6 +1,5 @@
 package com.binny.openapi.mvp.ui.fghome.vpfragment;
 
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ListView;
 
@@ -12,9 +11,6 @@ import com.binny.openapi.mvp.ui.base.BaseFragment;
 import com.binny.openapi.mvp.ui.fghome.viewholder.ArticleViewHolderHelper;
 import com.binny.openapi.util.Utils;
 import com.binny.openapi.util.UtilsLog;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.smart.holder.CommonAdapter;
 
 import java.util.ArrayList;
@@ -38,13 +34,13 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.layout_home_article_fragment;
+        return R.layout.fragment_layout_home_article;
     }
 
     @Override
     protected void initView(final View view) {
         mListView = view.findViewById(R.id.article_list_view);
-        mCommonAdapter = new CommonAdapter<>(getActivity(), mArticleBeans, R.layout.layout_home_article_lv_item, new ArticleViewHolderHelper());
+        mCommonAdapter = new CommonAdapter<>(getActivity(), mArticleBeans, R.layout.item_layout_home_article_lv, new ArticleViewHolderHelper());
         mListView.setAdapter(mCommonAdapter);
     }
 

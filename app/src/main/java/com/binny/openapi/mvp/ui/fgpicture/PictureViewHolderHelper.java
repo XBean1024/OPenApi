@@ -2,6 +2,7 @@ package com.binny.openapi.mvp.ui.fgpicture;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 
 import com.binny.openapi.R;
@@ -41,7 +42,7 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
 
-                        viewHolder.mImageView.setImageBitmap(resource);
+                        viewHolder.mImageView.setBackground(new BitmapDrawable(context.getResources(),resource));
                     }
                 });
         viewHolder.mTextView.setText("第 " + position + " 张" + iBaseBeanList.get(position).getPublishedAt());

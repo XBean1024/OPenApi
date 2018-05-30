@@ -51,7 +51,7 @@ public class PictureFragment extends BaseFragment implements DataCallback<Pictur
     @Override
     protected void initView(View view) {
         mListView = view.findViewById(R.id.picture_lv);
-        mAdapter = new CommonAdapter(getActivity(), mPictureBeans, R.layout.layout_picture_lv_item, new PictureViewHolderHelper());
+        mAdapter = new CommonAdapter(getActivity(), mPictureBeans, R.layout.item_layout_picture_lv, new PictureViewHolderHelper());
         mPresenterPicture = new PresenterPicture(this);
         mListView.setAdapter(mAdapter);
     }
