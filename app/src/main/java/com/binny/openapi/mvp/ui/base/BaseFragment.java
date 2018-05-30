@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.binny.openapi.util.Utils;
 import com.binny.openapi.util.UtilsLog;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -87,6 +89,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
         initRefreshView(mContainerView);
         initView(mContainerView);
         if (mRefreshLayout != null) {
+            UtilsLog.i("设置下刷新。。。。。");
             mRefreshLayout.setOnRefreshListener(this);
             mRefreshLayout.setOnLoadMoreListener(this);
             mRefreshLayout.setEnableLoadMore(false);
@@ -130,6 +133,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
     @Override
     public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
         mIsRefresh = true;
+        UtilsLog.i("下啦刷新。。。。");
         onRefresh();
     }
 
@@ -138,6 +142,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
     @Override
     public void onLoadMore(@NonNull final RefreshLayout refreshLayout) {
         mIsLoadMore = true;
+        UtilsLog.i("上啦刷新。。。。");
         onLoadMore();
     }
 

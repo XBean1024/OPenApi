@@ -80,7 +80,7 @@ public class ArticleDetailDialog extends Dialog {
     }
 
     public ArticleDetailDialog(@NonNull Context context) {
-        super(context);
+        super(context, R.style.app_article_deatil_dialog_style);
     }
 
     public ArticleDetailDialog(@NonNull Context context, int themeResId) {
@@ -90,7 +90,7 @@ public class ArticleDetailDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        Objects.requireNonNull(getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setContentView(R.layout.layout_article_detail_dailog);
         setCanceledOnTouchOutside(true);
         Window dialogWindow = getWindow();

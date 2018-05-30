@@ -13,6 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/FullScreenTheme">
+        <meta-data android:name="com.binny.openapi.mvp.bean.CustomCachingGlideModule"
+            android:value="GlideModule"/>
         <activity
             android:name=".mvp.ui.activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

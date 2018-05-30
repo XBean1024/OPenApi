@@ -34,9 +34,9 @@ public class UtilsLog {
     }
 
     public static void onLoadDone() {
-        UtilsLog.d("数据完成加载......");
+        UtilsLog.i("数据完成加载......");
     }
     public static void onLoading() {
-        UtilsLog.d("数据正在加载......");
+        UtilsLog.i("数据正在加载......");
     }
 }

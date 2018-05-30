@@ -36,12 +36,14 @@ public class PictureFragment extends BaseFragment implements DataCallback<Pictur
 
     @Override
     protected void onRefresh() {
+        UtilsLog.i("下啦刷新。。。。");
         mPage++;
         mPresenterPicture.getDate(mPage);
     }
 
     @Override
     protected void onLoadMore() {
+        UtilsLog.i("上啦刷新。。。。");
         mPage++;
         mPresenterPicture.getDate(mPage);
     }
@@ -56,7 +58,7 @@ public class PictureFragment extends BaseFragment implements DataCallback<Pictur
 
     @Override
     protected void initRefreshView(final View containerView) {
-        mRefreshLayout = containerView.findViewById(R.id.article_refreshLayout);
+        mRefreshLayout = containerView.findViewById(R.id.picture_refreshLayout);
     }
 
     @Override
@@ -84,7 +86,7 @@ public class PictureFragment extends BaseFragment implements DataCallback<Pictur
     public void onSuccess(final PictureBean pictureBean) {
         int size = pictureBean.getData().size();
         PictureBean.DataBean dataBean;
-        UtilsLog.d(" 拉取几张图片 = "+size);
+        UtilsLog.i(" 拉取几张图片 = "+size);
         for (int i = 0; i < size; i++) {
             dataBean = pictureBean.getData().get(i);
             if (mIsRefresh) {
@@ -96,5 +98,6 @@ public class PictureFragment extends BaseFragment implements DataCallback<Pictur
         mIsRefresh = false;
         mIsLoadMore = false;
         mAdapter.notifyDataSetChanged();
+        mRefreshLayout.finishRefresh();
     }
 }
