@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.ui.activity;
+package com.binny.openapi.mvp.ui.base;
 
 import android.Manifest;
 import android.annotation.SuppressLint;

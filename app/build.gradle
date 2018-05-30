@@ -20,15 +20,33 @@ android {
         }
     }
     lintOptions {
-        abortOnError true
-        disable 'InvalidPackage'
+        abortOnError false
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
 
+    flavorDimensions "default"
+    productFlavors{
+        tencent{
+            dimension "default"
+            applicationId "com.domin.armn"
+            manifestPlaceholders = [appName: "tencent"]
+        }
+
+        baidu{
+            dimension "default"
+            applicationId "com.domin.armn"
+            manifestPlaceholders = [appName: "baidu"]
+        }
+    }
+
+}
+//获取当前时间
+static def getCurrentTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation libs.appcompat_v7
@@ -51,4 +69,5 @@ dependencies {
     implementation libs.android_lottie
     implementation libs.permissions
     implementation libs.rxbinding2
+    implementation libs.image_loader
 }

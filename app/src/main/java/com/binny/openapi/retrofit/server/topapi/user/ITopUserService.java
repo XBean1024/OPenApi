@@ -1,4 +1,4 @@
-package com.binny.openapi.retrofit.api.topapi.user;
+package com.binny.openapi.retrofit.server.topapi.user;
 
 import com.binny.openapi.mvp.bean.LoginBean;
 import com.binny.openapi.mvp.bean.RegisterBean;

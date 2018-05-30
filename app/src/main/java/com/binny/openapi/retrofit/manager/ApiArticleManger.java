@@ -1,6 +1,6 @@
 package com.binny.openapi.retrofit.manager;
 
-import com.binny.openapi.retrofit.api.IArticleService;
+import com.binny.openapi.retrofit.server.IArticleService;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -12,15 +12,15 @@ import static com.binny.openapi.constant.Constant.ARTICLE_BASE_URL;
  * author  binny
  * date 5/22
  */
-public class RtftArticleManger {
-    private static final RtftArticleManger ourInstance = new RtftArticleManger();
+public class ApiArticleManger {
+    private static final ApiArticleManger ourInstance = new ApiArticleManger();
     private Retrofit mRetrofitArticleApi;
 
-    public static RtftArticleManger getInstance() {
+    public static ApiArticleManger getInstance() {
         return ourInstance;
     }
 
-    private RtftArticleManger() {
+    private ApiArticleManger() {
         if (mRetrofitArticleApi == null) {
             mRetrofitArticleApi = new Retrofit.Builder()
                     .baseUrl(ARTICLE_BASE_URL)

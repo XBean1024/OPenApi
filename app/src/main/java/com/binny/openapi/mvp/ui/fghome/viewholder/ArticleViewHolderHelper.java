@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.ui.fragment.home.viewholder;
+package com.binny.openapi.mvp.ui.fghome.viewholder;
 
 import android.content.Context;
 import android.view.View;
@@ -10,7 +10,6 @@ import com.smart.holder.iinterface.IViewHolder;
 import com.smart.holder.iinterface.IViewHolderHelper;
 
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * author  binny

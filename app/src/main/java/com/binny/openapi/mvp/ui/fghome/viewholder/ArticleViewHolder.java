@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.ui.fragment.home.viewholder;
+package com.binny.openapi.mvp.ui.fghome.viewholder;
 
 import android.support.v7.widget.CardView;
 import android.widget.TextView;

@@ -5,7 +5,7 @@ import com.bean.xhttp.callback.OnXHttpCallback;
 import com.bean.xhttp.response.Response;
 import com.binny.openapi.mvp.bean.ArticleBean;
 import com.binny.openapi.mvp.callback.DataCallback;
-import com.binny.openapi.retrofit.api.IArticleService;
+import com.binny.openapi.retrofit.server.IArticleService;
 import com.binny.openapi.util.UtilsLog;
 import com.google.gson.Gson;
 

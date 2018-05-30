@@ -9,11 +9,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.binny.openapi.R;
-import com.binny.openapi.mvp.ui.fragment.home.HomeFragment;
-import com.binny.openapi.mvp.ui.fragment.mine.MineFragment;
-import com.binny.openapi.mvp.ui.fragment.music.MusicFragment;
-import com.binny.openapi.mvp.ui.fragment.picture.PictureFragment;
-import com.binny.openapi.mvp.ui.fragment.video.VideoFragment;
+import com.binny.openapi.mvp.ui.fghome.HomeFragment;
+import com.binny.openapi.mvp.ui.fgmine.MineFragment;
+import com.binny.openapi.mvp.ui.fgmusic.MusicFragment;
+import com.binny.openapi.mvp.ui.fgpicture.PictureFragment;
+import com.binny.openapi.mvp.ui.fgvideo.VideoFragment;
 
 import java.util.ArrayList;
 import java.util.List;

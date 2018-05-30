@@ -32,4 +32,11 @@ public class UtilsLog {
     public static void i(String tag, String s) {
         Logger.i(s);
     }
+
+    public static void onLoadDone() {
+        UtilsLog.d("数据完成加载......");
+    }
+    public static void onLoading() {
+        UtilsLog.d("数据正在加载......");
+    }
 }

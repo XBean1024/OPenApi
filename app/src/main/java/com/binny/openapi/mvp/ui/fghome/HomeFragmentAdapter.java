@@ -1,14 +1,12 @@
-package com.binny.openapi.mvp.ui.fragment.home;
+package com.binny.openapi.mvp.ui.fghome;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.view.View;
 import android.view.ViewGroup;
 
-import com.binny.openapi.mvp.ui.fragment.BaseFragment;
+import com.binny.openapi.mvp.ui.base.BaseFragment;
 
 import java.util.List;
 

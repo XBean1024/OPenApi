@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.ui.fragment.home.vpfragment;
+package com.binny.openapi.mvp.ui.fghome.vpfragment;
 
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -8,8 +8,8 @@ import com.binny.openapi.R;
 import com.binny.openapi.mvp.bean.ArticleBean;
 import com.binny.openapi.mvp.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.mine.ArticlePresenter;
-import com.binny.openapi.mvp.ui.fragment.BaseFragment;
-import com.binny.openapi.mvp.ui.fragment.home.viewholder.ArticleViewHolderHelper;
+import com.binny.openapi.mvp.ui.base.BaseFragment;
+import com.binny.openapi.mvp.ui.fghome.viewholder.ArticleViewHolderHelper;
 import com.binny.openapi.util.Utils;
 import com.binny.openapi.util.UtilsLog;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -24,16 +24,13 @@ import java.util.List;
  * author  binny
  * date 5/22
  */
-public class ArticleFragment extends BaseFragment implements DataCallback<ArticleBean>, OnRefreshListener, OnLoadMoreListener {
+public class ArticleFragment extends BaseFragment implements DataCallback<ArticleBean> {
     private ArticlePresenter mArticlePresenter;
 
     private ListView mListView;
     private List<ArticleBean> mArticleBeans = new ArrayList<>();
     private CommonAdapter mCommonAdapter;
-    private RefreshLayout mRefreshLayout;
 
-    private boolean mIsRefresh;
-    private boolean mIsLoadMore;
 
     public ArticleFragment() {
         mArticlePresenter = new ArticlePresenter(this);
@@ -47,12 +44,13 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
     @Override
     protected void initView(final View view) {
         mListView = view.findViewById(R.id.article_list_view);
-        mRefreshLayout = view.findViewById(R.id.article_refreshLayout);
-        mRefreshLayout.setOnRefreshListener(this);
-        mRefreshLayout.setOnLoadMoreListener(this);
-        mRefreshLayout.setEnableLoadMore(false);
         mCommonAdapter = new CommonAdapter<>(getActivity(), mArticleBeans, R.layout.layout_home_article_lv_item, new ArticleViewHolderHelper());
         mListView.setAdapter(mCommonAdapter);
+    }
+
+    @Override
+    protected void initRefreshView(final View containerView) {
+        mRefreshLayout = containerView.findViewById(R.id.article_refreshLayout);
     }
 
     @Override
@@ -62,8 +60,8 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
     }
 
     @Override
-    protected void bindData() {
-        super.bindData();
+    protected void getData() {
+        super.getData();
         mArticlePresenter.getArticle();
     }
 
@@ -100,15 +98,13 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
     }
 
     @Override
-    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-        mIsRefresh = true;
+    protected void onRefresh() {
         mArticlePresenter.getArticleRandom();
-
     }
 
+
     @Override
-    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-        mIsLoadMore = true;
+    protected void onLoadMore() {
         Utils.mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {

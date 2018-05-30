@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/OPenApi.iml" filepath="$PROJECT_DIR$/.idea/OPenApi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OPenApi.iml" filepath="$PROJECT_DIR$/OPenApi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

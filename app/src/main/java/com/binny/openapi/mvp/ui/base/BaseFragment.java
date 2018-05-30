@@ -1,9 +1,8 @@
-package com.binny.openapi.mvp.ui.fragment;
+package com.binny.openapi.mvp.ui.base;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,21 +10,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.binny.openapi.util.UtilsLog;
-import com.orhanobut.logger.Logger;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 
 /**
  * author  binny
  * date 5/9
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements OnRefreshListener, OnLoadMoreListener {
 
     protected Activity mActivity;
     protected final String TAG;
-
+    protected RefreshLayout mRefreshLayout;
     private View mContainerView;
     protected boolean mIsFirstBindData = true;
-
+    protected boolean mIsRefresh;
+    protected boolean mIsLoadMore;
     public BaseFragment() {
         this.TAG = this.getClass().getSimpleName();
     }
@@ -39,7 +41,7 @@ public abstract class BaseFragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         UtilsLog.i(TAG + "    setUserVisibleHint  = " + isVisibleToUser);
         if (mIsFirstBindData && mContainerView != null && isVisibleToUser) {
-            bindData();
+            getData();
         }
     }
 
@@ -82,17 +84,23 @@ public abstract class BaseFragment extends Fragment {
          * 创建视图
          * */
         mContainerView = inflater.inflate(getFragmentLayout(), container, false);
+        initRefreshView(mContainerView);
         initView(mContainerView);
-
+        if (mRefreshLayout != null) {
+            mRefreshLayout.setOnRefreshListener(this);
+            mRefreshLayout.setOnLoadMoreListener(this);
+            mRefreshLayout.setEnableLoadMore(false);
+        }
         /*
          * 如果第一次创建时，可见，则加载数据，绑定数据
          * */
 
         if (getUserVisibleHint()) {
-            bindData();
+            getData();
         }
         return mContainerView;
     }
+
 
 
     /**
@@ -107,10 +115,31 @@ public abstract class BaseFragment extends Fragment {
      */
     protected abstract void initView(View view);
 
+    /** 实例化下来刷新的框架
+     * @param containerView
+     */
+    protected abstract void initRefreshView(final View containerView);
+
     /**
      * 当孩子需要初始化数据，或者联网请求绑定数据，展示数据的 等等可以重写该方法
      */
-    protected void bindData() {
+    protected void getData() {
         mIsFirstBindData = false;
     }
+
+    @Override
+    public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
+        mIsRefresh = true;
+        onRefresh();
+    }
+
+    protected abstract void onRefresh();
+
+    @Override
+    public void onLoadMore(@NonNull final RefreshLayout refreshLayout) {
+        mIsLoadMore = true;
+        onLoadMore();
+    }
+
+    protected abstract void onLoadMore();
 }

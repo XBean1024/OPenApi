@@ -1,4 +1,4 @@
-package com.binny.openapi.retrofit.api.topapi;
+package com.binny.openapi.retrofit.server.topapi;
 
 import com.binny.openapi.mvp.bean.PictureBean;
 import com.binny.openapi.mvp.bean.VideoBean;
@@ -21,7 +21,7 @@ public interface IDataService {
     * 获取图片的接口
     * */
     @GET(TOP_API_URL_PICTURE)
-    Observable<PictureBean> getPictures(@Query("page") String page);
+    Observable<PictureBean> getPictures(@Query("page") int page);
 
     /*
     * 获取视频的接口

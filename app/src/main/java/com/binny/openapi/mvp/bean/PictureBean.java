@@ -43,7 +43,7 @@ public class PictureBean implements Serializable {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
         /**
          * createdAt : 2016-02-24T00:22:24.855Z
          * publishedAt : 2016-02-24T04:42:32.66Z
@@ -87,5 +87,24 @@ public class PictureBean implements Serializable {
         public void setUrl(String url) {
             this.url = url;
         }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "createdAt='" + createdAt + '\'' +
+                    ", publishedAt='" + publishedAt + '\'' +
+                    ", type='" + type + '\'' +
+                    ", url='" + url + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "PictureBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data==null?" null ":data.toString() +
+                '}';
     }
 }

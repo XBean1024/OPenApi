@@ -1,22 +1,18 @@
-package com.binny.openapi.mvp.ui.fragment.mine;
+package com.binny.openapi.mvp.ui.fgmine;
 
 import android.Manifest;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bean.logger.JJLogger;
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.callback.OnPermissionCallback;
-import com.binny.openapi.mvp.ui.activity.BaseActivity;
-import com.binny.openapi.mvp.ui.fragment.BaseFragment;
+import com.binny.openapi.mvp.ui.base.BaseFragment;
 import com.binny.openapi.util.FileUtils;
 import com.binny.openapi.util.UtilsLog;
 import com.binny.openapi.util.UtilsPerMission;
 import com.jakewharton.rxbinding2.view.RxView;
-import com.orhanobut.logger.Logger;
 import com.scwang.wave.MultiWaveHeader;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -100,11 +96,26 @@ public class MineFragment extends BaseFragment {
     }
 
     @Override
-    protected void bindData() {
-        super.bindData();
+    protected void initRefreshView(final View containerView) {
+
+    }
+
+    @Override
+    protected void getData() {
+        super.getData();
         String size = FileUtils.getTotalCacheSize(getActivity(), Environment.getExternalStorageDirectory()
                 .getAbsoluteFile() + "");
         tvCacheSize.setText(size);
+    }
+
+    @Override
+    protected void onRefresh() {
+
+    }
+
+    @Override
+    protected void onLoadMore() {
+
     }
 
     @Override

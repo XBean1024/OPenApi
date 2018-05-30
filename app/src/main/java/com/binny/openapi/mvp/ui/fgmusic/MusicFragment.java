@@ -1,9 +1,9 @@
-package com.binny.openapi.mvp.ui.fragment.music;
+package com.binny.openapi.mvp.ui.fgmusic;
 
 import android.view.View;
 
 import com.binny.openapi.R;
-import com.binny.openapi.mvp.ui.fragment.BaseFragment;
+import com.binny.openapi.mvp.ui.base.BaseFragment;
 
 /**
  * author  binny
@@ -17,6 +17,21 @@ public class MusicFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
+
+    }
+
+    @Override
+    protected void initRefreshView(final View containerView) {
+
+    }
+
+    @Override
+    protected void onRefresh() {
+
+    }
+
+    @Override
+    protected void onLoadMore() {
 
     }
 }

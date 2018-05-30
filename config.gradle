@@ -25,6 +25,7 @@ ext {
 
             //水波纹图片  https://github.com/scwang90/MultiWaveHeader
             multi_wave_header        : 'com.scwang.wave:MultiWaveHeader:1.0.0-alpha-1',
+            image_loader             : 'com.github.bumptech.glide:glide:3.5.2',
             // Android 'com.airbnb.android:lottie:2.5.4'
             android_lottie           : 'com.airbnb.android:lottie:2.5.4',
 

@@ -1,12 +1,12 @@
-package com.binny.openapi.mvp.ui.fragment.home;
+package com.binny.openapi.mvp.ui.fghome;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.binny.openapi.R;
-import com.binny.openapi.mvp.ui.fragment.BaseFragment;
-import com.binny.openapi.mvp.ui.fragment.home.vpfragment.ArticleFragment;
+import com.binny.openapi.mvp.ui.base.BaseFragment;
+import com.binny.openapi.mvp.ui.fghome.vpfragment.ArticleFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +37,21 @@ public class HomeFragment extends BaseFragment {
         fragmentList.add(new ArticleFragment());
 
         mViewPager.setAdapter(new HomeFragmentAdapter(getFragmentManager(), fragmentList,mTitles));
+    }
+
+    @Override
+    protected void initRefreshView(final View containerView) {
+
+    }
+
+    @Override
+    protected void onRefresh() {
+
+    }
+
+    @Override
+    protected void onLoadMore() {
+
     }
 
     @Override
