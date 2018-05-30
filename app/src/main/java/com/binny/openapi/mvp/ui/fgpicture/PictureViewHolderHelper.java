@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHolder, PictureBean.DataBean> {
 
+
     @Override
     public IViewHolder initItemViewHolder(PictureViewHolder viewHolder, final View convertView) {
         viewHolder = new PictureViewHolder();
