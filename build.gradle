@@ -23,6 +23,5 @@ allprojects {
 }
 
 task clean(type: Delete) {
-    println  " 根目录的构建目录 ："+rootProject.buildDir
     delete rootProject.buildDir
 }

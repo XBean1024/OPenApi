@@ -112,10 +112,10 @@ public class ArticleDetailDialog extends Dialog {
     private void initDialog() {
         ResolutionUtil resolutionUtil = new ResolutionUtil(mContext);
         Window window = this.getWindow();
-        window.setGravity(Gravity.BOTTOM);
+        window.setGravity(Gravity.CENTER);
         WindowManager.LayoutParams params = window.getAttributes();
-        params.width = resolutionUtil.getWidth()*4/7;
-        params.height = resolutionUtil.getHeight()*4/7;
+        params.width = resolutionUtil.getWidth()*6/7;
+        params.height = resolutionUtil.getHeight()*5/7;
         window.setAttributes(params);
     }
 }

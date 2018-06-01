@@ -2,6 +2,7 @@ package com.binny.openapi;
 
 import android.app.Application;
 import com.binny.openapi.util.UtilsLog;
+import com.binny.openapi.util.UtilsPerMission;
 
 
 /**
@@ -16,7 +17,6 @@ public class APP extends Application {
 
         mApp = this;
         UtilsLog.init();
-
 
     }
 

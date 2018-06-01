@@ -3,6 +3,7 @@ def configInfo = rootProject.ext.android
 def libs = rootProject.ext.dependencies
 android {
     compileSdkVersion configInfo.compileSdkVersion
+    buildToolsVersion configInfo.buildToolsVersion
     defaultConfig {
         applicationId "com.binny.openapi"
         minSdkVersion configInfo.minSdkVersion
@@ -16,8 +17,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        xiaomi {
-        }
+
     }
     lintOptions {
         abortOnError false
@@ -27,31 +27,18 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    flavorDimensions "default"
-    productFlavors{
-        tencent{
-            dimension "default"
-            applicationId "com.domin.armn"
-            manifestPlaceholders = [appName: "tencent"]
-        }
-
-        baidu{
-            dimension "default"
-            applicationId "com.domin.armn"
-            manifestPlaceholders = [appName: "baidu"]
-        }
-    }
 
 }
 //获取当前时间
-static def getCurrentTime() {
-    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
-}
+//static def getCurrentTime() {
+//    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+//}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation libs.appcompat_v7
     implementation libs.design
-    implementation libs.constraint
+//    implementation libs.constraint
     implementation libs.circleImageview
     implementation libs.gson
     implementation libs.rxjava
@@ -70,4 +57,6 @@ dependencies {
     implementation libs.permissions
     implementation libs.rxbinding2
     implementation libs.image_loader
+    implementation project(':pinlockview')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 }

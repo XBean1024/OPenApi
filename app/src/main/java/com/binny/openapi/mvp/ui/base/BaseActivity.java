@@ -1,15 +1,11 @@
 package com.binny.openapi.mvp.ui.base;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.binny.openapi.mvp.callback.OnPermissionCallback;
-import com.jakewharton.rxbinding2.view.RxView;
-import com.tbruyelle.rxpermissions2.RxPermissions;
+
+import com.binny.openapi.R;
 
 /**
  * 作者: binny
@@ -29,7 +25,17 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected abstract void initView();
 
-    abstract int getLayoutId();
+    protected abstract int getLayoutId();
+
+    protected void intoActivity(Class<?> c){
+        startActivity(new Intent(this,c));
+        finish();
+    }
+    protected void intoActivityWithAnimotion(Class<?> c){
+        startActivity(new Intent(this,c));
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+        finish();
+    }
 
 
 }

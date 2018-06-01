@@ -118,7 +118,7 @@
     </style>
 
     <style name="app_home_tab_text">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
@@ -134,5 +134,9 @@
         <item name="android:windowIsFloating">true</item>
         <!--是否模糊-->
         <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="app_splash_activity">
+        <item name="android:background">@mipmap/fore_head</item>
     </style>
 </resources>
