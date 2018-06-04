@@ -3,8 +3,8 @@ package com.binny.openapi.mvp.model.login;
 import com.binny.openapi.constant.Constant;
 import com.binny.openapi.mvp.bean.LoginBean;
 import com.binny.openapi.mvp.callback.DataCallback;
-import com.binny.openapi.retrofit.server.topapi.user.ITopUserService;
-import com.binny.openapi.util.RetrofitServiceUtil;
+import com.binny.openapi.retrofit.server.ITopApiService;
+import com.binny.openapi.retrofit.manager.RetrofitManager;
 import com.binny.openapi.util.UtilSP;
 
 import io.reactivex.Observer;
@@ -22,7 +22,7 @@ import static com.binny.openapi.APP.mApp;
 public class LoginModel implements ILoginModel {
     @Override
     public void requestLogin(final DataCallback<LoginBean> loginCallback, String phone, String passwd) {
-        ITopUserService service = RetrofitServiceUtil.getLoginService();
+        ITopApiService service = RetrofitManager.getTopApiService();
         service.login(Constant.TOP_API_APP_KEY,phone,passwd)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

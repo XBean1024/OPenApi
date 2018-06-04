@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.ui;
+package com.binny.openapi.mvp.callback;
 
 /**
  * author  binny

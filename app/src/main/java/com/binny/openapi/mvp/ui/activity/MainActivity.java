@@ -1,14 +1,13 @@
 package com.binny.openapi.mvp.ui.activity;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.binny.openapi.R;
+import com.binny.openapi.mvp.ui.base.BaseActivity;
 import com.binny.openapi.mvp.ui.fghome.HomeFragment;
 import com.binny.openapi.mvp.ui.fgmine.MineFragment;
 import com.binny.openapi.mvp.ui.fgmusic.MusicFragment;
@@ -23,7 +22,7 @@ import java.util.List;
 * 切换fragment
 *  */
 
-public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup mRadioGroup;
     private RadioButton mButtonHome;
@@ -44,11 +43,15 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     private List<Fragment> mFragmentList = new ArrayList<>();
     private int mPostion;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+
+    @Override
+    protected void handleIntent() {
+
+    }
+
+    @Override
+    protected void initView() {
         mRadioGroup = findViewById(R.id.rg_main);
         mButtonMine = findViewById(R.id.rb_mine);
         mButtonVideo = findViewById(R.id.rb_video);
@@ -57,6 +60,11 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
         mRadioGroup.setOnCheckedChangeListener(this);
         initFragment();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
 
     private void initFragment() {

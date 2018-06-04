@@ -13,10 +13,13 @@ import com.binny.openapi.R;
  * 描述:
  */
 public abstract class BaseActivity extends FragmentActivity {
+    private BaseActivity mActivity;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+
+        mActivity = this;
         handleIntent();
         initView();
     }
@@ -31,10 +34,14 @@ public abstract class BaseActivity extends FragmentActivity {
         startActivity(new Intent(this,c));
         finish();
     }
-    protected void intoActivityWithAnimotion(Class<?> c){
+    public void intoActivityWithAnimotion(Class<?> c){
         startActivity(new Intent(this,c));
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
         finish();
+    }
+  public void intoActivityWithAnimotion(Intent intent){
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
     }
 
 

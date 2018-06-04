@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.binny.openapi.R;
-import com.binny.openapi.custom.KeyValueLayout;
+import com.binny.openapi.widget.KeyValueLayout;
 import com.binny.openapi.mvp.bean.LoginBean;
 import com.binny.openapi.mvp.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.login.LoginPresenter;
@@ -29,8 +29,8 @@ import com.binny.openapi.widget.SplashVideoView;
 public class LoginActivity extends AppCompatActivity implements DataCallback<LoginBean>,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private com.binny.openapi.widget.SplashVideoView mSplashVideo;
-    private com.binny.openapi.custom.KeyValueLayout mLoginPhone;
-    private com.binny.openapi.custom.KeyValueLayout mLoginPassword;
+    private KeyValueLayout mLoginPhone;
+    private KeyValueLayout mLoginPassword;
     private android.widget.TextView mItemTv;
     private Activity mActivity = this;
 

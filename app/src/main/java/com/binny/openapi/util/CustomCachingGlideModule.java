@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.bean;
+package com.binny.openapi.util;
 
 import android.content.Context;
 

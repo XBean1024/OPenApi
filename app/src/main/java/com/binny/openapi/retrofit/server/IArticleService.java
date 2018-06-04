@@ -11,7 +11,7 @@ import retrofit2.http.Query;
  * author  binny
  * date 5/14
  * <p>
- * 数据类
+ * 数据类: 每日一文的接口
  */
 public interface IArticleService {
 

@@ -6,7 +6,8 @@ import android.view.View;
 
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.ui.base.BaseFragment;
-import com.binny.openapi.mvp.ui.fghome.vpfragment.ArticleFragment;
+import com.binny.openapi.mvp.ui.fghome.article.ArticleFragment;
+import com.binny.openapi.mvp.ui.fghome.history.HistoryDayFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,8 @@ public class HomeFragment extends BaseFragment {
 
     private ViewPager mViewPager;
     private TabLayout mTab;
-    private final String[] mTitles = {"美文"
-            ,"ONE","每日一文","每日一文","每日一文"
+    private final String[] mTitles = {"每日一文"
+            ,"历史上的今天","每日一文","每日一文","每日一文"
     };
     @Override
     protected void initView(View view) {
@@ -31,7 +32,7 @@ public class HomeFragment extends BaseFragment {
 
         List<BaseFragment> fragmentList = new ArrayList<>();
         fragmentList.add(new ArticleFragment());
-        fragmentList.add(new ArticleFragment());
+        fragmentList.add(new HistoryDayFragment());
         fragmentList.add(new ArticleFragment());
         fragmentList.add(new ArticleFragment());
         fragmentList.add(new ArticleFragment());
@@ -41,6 +42,11 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initRefreshView(final View containerView) {
+
+    }
+
+    @Override
+    protected void getData() {
 
     }
 

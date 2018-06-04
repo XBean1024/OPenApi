@@ -2,11 +2,10 @@ package com.binny.openapi.mvp.model.picture;
 
 import com.binny.openapi.mvp.bean.PictureBean;
 import com.binny.openapi.mvp.callback.DataCallback;
-import com.binny.openapi.retrofit.manager.topapi.ApiTopManager;
-import com.binny.openapi.retrofit.server.topapi.IDataService;
+import com.binny.openapi.retrofit.manager.RetrofitManager;
+import com.binny.openapi.retrofit.server.ITopApiService;
 
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -18,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 public class PictureModel {
 
     public void getData(int page, DataCallback<PictureBean> callback) {
-        IDataService service = ApiTopManager.getInstance().createTopApiService(IDataService.class);
+        ITopApiService service = RetrofitManager.getTopApiService();
         service.getPictures(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

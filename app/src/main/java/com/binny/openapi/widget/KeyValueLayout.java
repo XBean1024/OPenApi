@@ -1,4 +1,4 @@
-package com.binny.openapi.custom;
+package com.binny.openapi.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

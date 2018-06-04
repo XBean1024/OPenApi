@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/FullScreenTheme">
         <meta-data
-            android:name="com.binny.openapi.mvp.bean.CustomCachingGlideModule"
+            android:name="com.binny.openapi.util.CustomCachingGlideModule"
             android:value="GlideModule" />
 
         <activity
@@ -42,11 +42,13 @@
         </activity>
         <activity android:name=".mvp.ui.activity.ProtocolItemActivity" />
         <activity android:name=".mvp.ui.activity.LockScreenActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".mvp.ui.activity.SplashActivity">
             <intent-filter>
@@ -55,6 +57,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".mvp.ui.activity.HistoryDetailActivity"
+            android:label="@string/title_activity_history"></activity>
     </application>
 
 </manifest>

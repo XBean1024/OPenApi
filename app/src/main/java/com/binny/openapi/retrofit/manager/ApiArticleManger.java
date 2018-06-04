@@ -20,6 +20,7 @@ public class ApiArticleManger {
         return ourInstance;
     }
 
+    private IArticleService mIArticleService;
     private ApiArticleManger() {
         if (mRetrofitArticleApi == null) {
             mRetrofitArticleApi = new Retrofit.Builder()
@@ -32,6 +33,9 @@ public class ApiArticleManger {
 
     public IArticleService createArticleRetrofitService() {
 
+        if (mIArticleService != null) {
+            return mIArticleService;
+        }
         return mRetrofitArticleApi.create(IArticleService.class);
     }
 }

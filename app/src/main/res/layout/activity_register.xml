@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="220dp"/>
 
-    <com.binny.openapi.custom.KeyValueLayout
+    <com.binny.openapi.widget.KeyValueLayout
         android:layout_marginTop="250dp"
         android:id="@+id/register_phone"
         android:layout_gravity="center"
@@ -25,7 +25,7 @@
         app:value_length="11"
         app:key_name="电话：" />
 
-    <com.binny.openapi.custom.KeyValueLayout
+    <com.binny.openapi.widget.KeyValueLayout
         android:layout_below="@id/register_phone"
         android:id="@+id/register_password"
         android:layout_width="wrap_content"

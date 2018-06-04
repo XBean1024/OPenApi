@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.model.mine;
+package com.binny.openapi.mvp.model.home;
 
 import com.bean.xhttp.XHttp;
 import com.bean.xhttp.callback.OnXHttpCallback;
@@ -14,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.binny.openapi.util.RetrofitServiceUtil.getArticleService;
+import static com.binny.openapi.retrofit.manager.RetrofitManager.getArticleService;
 
 /**
  * author  binny

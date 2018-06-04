@@ -26,6 +26,11 @@ public class MusicFragment extends BaseFragment {
     }
 
     @Override
+    protected void getData() {
+
+    }
+
+    @Override
     protected void onRefresh() {
 
     }

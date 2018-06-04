@@ -20,5 +20,13 @@ public class Constant {
     * 每日一文
     * */
     public static final String ARTICLE_BASE_URL = "https://interface.meiriyiwen.com/";
-    public static final String JUHE_HISTORY_TODAY_BASE_URL = "http://api.juheapi.com/";
+
+    /*
+    * 聚合数据
+    * 历史上的今天
+    * */
+
+    public static final String JUHE_HOSITORY_BASE_URL = "http://v.juhe.cn/";
+    public static final String JUHE_HOSITORY_BASE_KEY = "bcd994e2d95af256b9b8c959eda44e0a";
+
 }

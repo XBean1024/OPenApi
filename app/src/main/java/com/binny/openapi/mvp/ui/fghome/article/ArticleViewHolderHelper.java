@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.ui.fghome.viewholder;
+package com.binny.openapi.mvp.ui.fghome.article;
 
 import android.content.Context;
 import android.view.View;
@@ -14,6 +14,8 @@ import java.util.List;
 /**
  * author  binny
  * date 5/22
+ *
+ *
  */
 public class ArticleViewHolderHelper implements IViewHolderHelper<ArticleViewHolder, ArticleBean> {
 
@@ -41,15 +43,21 @@ public class ArticleViewHolderHelper implements IViewHolderHelper<ArticleViewHol
         }
         String time = iBaseBeanList.get(position).getData().getDate().getCurr();
         viewHolder.mArticleTime.setText(time);
+
         final String author = iBaseBeanList.get(position).getData().getAuthor();
         viewHolder.mArticleAuthor.setText("---" + author + "   ");
+
         String digest = iBaseBeanList.get(position).getData().getDigest();
         viewHolder.mArticleDigest.setText("        " + digest);
+
         final String count = "共" + iBaseBeanList.get(position).getData().getWc() + "字   ";
         viewHolder.mArticleCharacterCount.setText(count);
+
         final String title = "《" + iBaseBeanList.get(position).getData().getTitle() + "》";
         viewHolder.mArticleTitle.setText(title);
+
         final String content = iBaseBeanList.get(position).getData().getContent();
+
         viewHolder.mArticleCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

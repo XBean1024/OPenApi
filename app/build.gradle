@@ -57,6 +57,17 @@ dependencies {
     implementation libs.permissions
     implementation libs.rxbinding2
     implementation libs.image_loader
+    implementation libs.recyclerview_adapter
     implementation project(':pinlockview')
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+}
+
+task binny {
+
+    println '11111'
+}
+task binnyTest(dependsOn:binny){
+    doFirst{
+        println '22222'
+    }
 }

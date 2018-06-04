@@ -36,6 +36,7 @@ ext {
             logger                   : 'com.orhanobut:logger:1.15',
             list_grid_view           : 'com.bean.list_grid_view:adapter:1.0.0',
             permissions              : 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar',
-            rxbinding2               : 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+            rxbinding2               : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
+            recyclerview_adapter      : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     ]
 }

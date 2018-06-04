@@ -26,6 +26,11 @@ public class VideoFragment extends BaseFragment {
     }
 
     @Override
+    protected void getData() {
+
+    }
+
+    @Override
     protected void onRefresh() {
 
     }

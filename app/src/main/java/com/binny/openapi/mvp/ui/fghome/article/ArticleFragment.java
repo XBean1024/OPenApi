@@ -1,16 +1,17 @@
-package com.binny.openapi.mvp.ui.fghome.vpfragment;
+package com.binny.openapi.mvp.ui.fghome.article;
 
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ListView;
 
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.bean.ArticleBean;
 import com.binny.openapi.mvp.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.mine.ArticlePresenter;
 import com.binny.openapi.mvp.ui.base.BaseFragment;
-import com.binny.openapi.mvp.ui.fghome.viewholder.ArticleViewHolderHelper;
 import com.binny.openapi.util.Utils;
 import com.binny.openapi.util.UtilsLog;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.smart.holder.CommonAdapter;
 
 import java.util.ArrayList;
@@ -23,10 +24,10 @@ import java.util.List;
 public class ArticleFragment extends BaseFragment implements DataCallback<ArticleBean> {
     private ArticlePresenter mArticlePresenter;
 
-    private ListView mListView;
     private List<ArticleBean> mArticleBeans = new ArrayList<>();
     private CommonAdapter mCommonAdapter;
 
+    private ArticleAdapter mArticleAdapter;
 
     public ArticleFragment() {
         mArticlePresenter = new ArticlePresenter(this);
@@ -39,9 +40,15 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
 
     @Override
     protected void initView(final View view) {
-        mListView = view.findViewById(R.id.article_list_view);
-        mCommonAdapter = new CommonAdapter<>(getActivity(), mArticleBeans, R.layout.item_layout_home_article_lv, new ArticleViewHolderHelper());
-        mListView.setAdapter(mCommonAdapter);
+//        ListView listView = view.findViewById(R.id.article_list_view);
+        RecyclerView listView = view.findViewById(R.id.article_list_view);
+        listView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        mArticleAdapter = new ArticleAdapter(R.layout.item_layout_home_article_lv, mArticleBeans);
+        mArticleAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        listView.setAdapter(mArticleAdapter);
+
+//        mCommonAdapter = new CommonAdapter<>(getActivity(), mArticleBeans, R.layout.item_layout_home_article_lv, new ArticleViewHolderHelper());
+//        listView.setAdapter(mCommonAdapter);
     }
 
     @Override
@@ -57,7 +64,6 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
 
     @Override
     protected void getData() {
-        super.getData();
         mArticlePresenter.getArticle();
     }
 
@@ -66,9 +72,9 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
     public void onSuccess(final ArticleBean articleBean) {
         if (mIsRefresh) {
             mIsRefresh = false;
-            if (mArticleBeans.size()>0) {
+            if (mArticleBeans.size() > 0) {
                 mArticleBeans.add(1, articleBean);
-            }else {
+            } else {
                 mArticleBeans.add(articleBean);
             }
             mRefreshLayout.finishRefresh();
@@ -77,20 +83,23 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
             mArticleBeans.add(articleBean);
             mRefreshLayout.finishLoadMore();
         } else {
+
+            UtilsLog.i(articleBean.toString());
             mArticleBeans.add(articleBean);
         }
-        mCommonAdapter.notifyDataSetChanged();
+//        mCommonAdapter.notifyDataSetChanged();
+        mArticleAdapter.notifyDataSetChanged();
 
     }
 
     @Override
     public void onLoading() {
-        UtilsLog.i( "onLoading");
+        UtilsLog.i("onLoading");
     }
 
     @Override
     public void onLoadDone() {
-        UtilsLog.i( "onLoadDone");
+        UtilsLog.i("onLoadDone");
     }
 
     @Override

@@ -12,7 +12,7 @@ public class UtilString {
                 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />  \n" +
                 "<title>缩进2字符</title>  \n" +
                 "<style type=\"text/css\">  \n" +
-                "p{text-indent:2em;font-size:5px}  \n" +
+                "p{text-indent:2em;font-size:8px}  \n" +
                 "</style>  \n" +
                 "</head>  \n" +
                 "<body  bgcolor=\""+color+"\">  \n" +

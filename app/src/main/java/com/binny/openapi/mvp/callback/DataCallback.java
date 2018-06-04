@@ -2,7 +2,6 @@ package com.binny.openapi.mvp.callback;
 
 import com.binny.openapi.mvp.callback.base.OnErrorCallback;
 import com.binny.openapi.mvp.callback.base.OnSuccessCallback;
-import com.binny.openapi.mvp.ui.ILoadingView;
 
 import java.io.Serializable;
 

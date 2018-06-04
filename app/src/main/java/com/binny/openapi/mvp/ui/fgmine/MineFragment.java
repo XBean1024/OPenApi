@@ -58,7 +58,7 @@ public class MineFragment extends BaseFragment {
 
                     @Override
                     public void onDeny() {
-                        UtilsLog.e("请求失败");
+                        UtilsLog.e("请求权限失败");
                     }
                 },getActivity(),textView, Manifest.permission.WRITE_EXTERNAL_STORAGE);
             }
@@ -102,7 +102,6 @@ public class MineFragment extends BaseFragment {
 
     @Override
     protected void getData() {
-        super.getData();
         String size = FileUtils.getTotalCacheSize(getActivity(), Environment.getExternalStorageDirectory()
                 .getAbsoluteFile() + "");
         tvCacheSize.setText(size);

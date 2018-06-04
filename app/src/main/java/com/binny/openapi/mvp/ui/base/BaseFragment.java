@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.binny.openapi.util.Utils;
 import com.binny.openapi.util.UtilsLog;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -30,6 +29,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
     protected boolean mIsFirstBindData = true;
     protected boolean mIsRefresh;
     protected boolean mIsLoadMore;
+
     public BaseFragment() {
         this.TAG = this.getClass().getSimpleName();
     }
@@ -43,6 +43,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
         super.setUserVisibleHint(isVisibleToUser);
         UtilsLog.i(TAG + "    setUserVisibleHint  = " + isVisibleToUser);
         if (mIsFirstBindData && mContainerView != null && isVisibleToUser) {
+            mIsFirstBindData = false;
             getData();
         }
     }
@@ -99,11 +100,11 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
          * */
 
         if (getUserVisibleHint()) {
+            mIsFirstBindData = false;
             getData();
         }
         return mContainerView;
     }
-
 
 
     /**
@@ -118,7 +119,9 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
      */
     protected abstract void initView(View view);
 
-    /** 实例化下来刷新的框架
+    /**
+     * 实例化下来刷新的框架
+     *
      * @param containerView
      */
     protected abstract void initRefreshView(final View containerView);
@@ -126,9 +129,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
     /**
      * 当孩子需要初始化数据，或者联网请求绑定数据，展示数据的 等等可以重写该方法
      */
-    protected void getData() {
-        mIsFirstBindData = false;
-    }
+    protected abstract void getData();
 
     @Override
     public void onRefresh(@NonNull final RefreshLayout refreshLayout) {

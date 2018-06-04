@@ -1,4 +1,4 @@
-package com.binny.openapi.retrofit.manager.topapi;
+package com.binny.openapi.retrofit.manager;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
