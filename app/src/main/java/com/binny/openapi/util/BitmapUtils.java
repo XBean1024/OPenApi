@@ -47,6 +47,7 @@ public class BitmapUtils {
             out.flush();
             out.close();
 
+
         } catch (FileNotFoundException e)
         {
             e.printStackTrace();

@@ -88,8 +88,7 @@ public class MineFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 FileUtils.cleanApplicationData(getActivity(), "");
-                String size = FileUtils.getTotalCacheSize(getActivity(), Environment.getExternalStorageDirectory()
-                        .getAbsoluteFile() + "");
+                String size = getSize();
                 tvCacheSize.setText(size);
             }
         });
@@ -102,9 +101,14 @@ public class MineFragment extends BaseFragment {
 
     @Override
     protected void getData() {
-        String size = FileUtils.getTotalCacheSize(getActivity(), Environment.getExternalStorageDirectory()
-                .getAbsoluteFile() + "");
+        String size = getSize();
         tvCacheSize.setText(size);
+    }
+
+    private String getSize() {
+        String size = FileUtils.getTotalCacheSize(getActivity(), Environment.getExternalStorageDirectory()
+                .getAbsoluteFile() + "/美女/");
+        return size;
     }
 
     @Override
@@ -123,8 +127,7 @@ public class MineFragment extends BaseFragment {
     }
 
     public void setCacheSize() {
-        String size = FileUtils.getTotalCacheSize(getActivity(), Environment.getExternalStorageDirectory()
-                .getAbsoluteFile() + "");
+        String size = getSize();
         if (tvCacheSize != null) {
             tvCacheSize.setText(size);
         }

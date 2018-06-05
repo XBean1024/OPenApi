@@ -263,6 +263,7 @@ public class FileUtils {
             FileInputStream fis = null;
             fis = new FileInputStream(file);
             size = fis.available();
+            fis.close();
         } else {
             file.createNewFile();
             Log.e("获取文件大小", "文件不存在!");
@@ -272,7 +273,7 @@ public class FileUtils {
     public static String getTotalCacheSize(Context context, String path) {
         try {
             long sp_size = getFolderSizes(getSPFile(context));
-            Log.i("[context, path]", "sp_size = " + sp_size);
+            Log.i("[context, path]", "path = " + path);
             long out_size = 0;
             if (!TextUtils.isEmpty(path)) {
                 out_size = getFolderSizes(new File(path));
