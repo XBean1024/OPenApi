@@ -1,5 +1,6 @@
 package com.binny.openapi.mvp.ui.activity;
 
+import android.Manifest;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -7,12 +8,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.binny.openapi.R;
+import com.binny.openapi.mvp.callback.OnPermissionCallback;
 import com.binny.openapi.mvp.ui.base.BaseActivity;
 import com.binny.openapi.mvp.ui.fghome.HomeFragment;
 import com.binny.openapi.mvp.ui.fgmine.MineFragment;
 import com.binny.openapi.mvp.ui.fgmusic.MusicFragment;
 import com.binny.openapi.mvp.ui.fgpicture.PictureFragment;
 import com.binny.openapi.mvp.ui.fgvideo.VideoFragment;
+import com.binny.openapi.util.UtilsLog;
+import com.binny.openapi.util.UtilsPerMission;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +47,21 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private List<Fragment> mFragmentList = new ArrayList<>();
     private int mPostion;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        UtilsPerMission.getPermission(new OnPermissionCallback() {
+            @Override
+            public void onGranted() {
+                UtilsLog.i("请求成功");
+            }
 
+            @Override
+            public void onDeny() {
+                UtilsLog.e("请求权限失败");
+            }
+        },this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    }
 
     @Override
     protected void handleIntent() {

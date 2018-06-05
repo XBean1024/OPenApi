@@ -5,14 +5,15 @@
     android:background="@color/crimson"
     android:orientation="vertical">
     <TextView
+        android:layout_margin="@dimen/dp_10"
         android:id="@+id/picture_item_title_tv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/value_20dp"
         android:text="标题"
         android:textColor="@color/white" />
     <ImageView
-        android:layout_margin="@dimen/value_8dp"
         android:id="@+id/picture_item_img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"/>
 </LinearLayout>

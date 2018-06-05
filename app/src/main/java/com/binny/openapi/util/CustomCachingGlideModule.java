@@ -19,8 +19,7 @@ public class CustomCachingGlideModule implements GlideModule {
             new InternalCacheDiskCacheFactory(context, cacheSize100MegaBytes)
         );
         //builder.setDiskCache(
-        //new ExternalCacheDiskCacheFactory(context, cacheSize100MegaBytes));
-
+        //new ExternalCacheDiskCacheFactory(context, cacheSize100Mega
         // 20%大的内存缓存作为 Glide 的默认值
         MemorySizeCalculator calculator = new MemorySizeCalculator(context);
         int defaultMemoryCacheSize = calculator.getMemoryCacheSize();

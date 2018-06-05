@@ -6,8 +6,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bean.xhttp.XHttp;
+import com.bean.xhttp.callback.OnXHttpCallback;
+import com.bean.xhttp.response.Response;
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.bean.PictureBean;
+import com.binny.openapi.util.BitmapUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -35,6 +39,7 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
 
     @Override
     public void bindListDataToView(final Context context, final List<PictureBean.DataBean> iBaseBeanList, final PictureViewHolder viewHolder, final int position) {
+        String url = iBaseBeanList.get(position).getUrl();
         Glide.with(context).load(iBaseBeanList.get(position).getUrl())
                 .asBitmap()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
@@ -47,9 +52,25 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
                     }
                 });
         viewHolder.mImageView.setOnLongClickListener(new View.OnLongClickListener() {
+
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(context, "保存成功！", Toast.LENGTH_SHORT).show();
+                XHttp.getInstance()
+                        .get(url)
+                        .setTag("bbb")
+                        .setTimeout(5000)
+                        .setOnXHttpCallback(new OnXHttpCallback() {
+                            @Override
+                            public void onSuccess(final Response response) {
+                                BitmapUtils.savePicture(response.toBitmap(), "美女", System.currentTimeMillis() +url.substring(url.lastIndexOf("."),url.length()));
+                                Toast.makeText(context, "保存成功！", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(Exception ex, String errorCode) {
+                            }
+                        });
+
                 return true;
             }
         });

@@ -16,21 +16,22 @@ public class UtilsPerMission {
     @SuppressLint("CheckResult")
     public static void getPermission(OnPermissionCallback permissionCallback, Activity activity, View view, String... permission) {
         RxPermissions rxPermissions = new RxPermissions(activity);
-        if (view == null) {
-            // Must be done during an initialization phase like onCreate
-            rxPermissions
-                    .request(permission)
-                    .subscribe(granted -> {
-                        if (granted) {
-                            permissionCallback.onGranted();
-                        } else {
-                            permissionCallback.onDeny();
-                        }
-                    });
-            return;
-        }
+
         RxView.clicks(view)
                 .compose(rxPermissions.ensure(permission))
+                .subscribe(granted -> {
+                    if (granted) {
+                        permissionCallback.onGranted();
+                    } else {
+                        permissionCallback.onDeny();
+                    }
+                });
+    }@SuppressLint("CheckResult")
+    public static void getPermission(OnPermissionCallback permissionCallback, Activity activity, String... permission) {
+        RxPermissions rxPermissions = new RxPermissions(activity);
+        // Must be done during an initialization phase like onCreate
+        rxPermissions
+                .request(permission)
                 .subscribe(granted -> {
                     if (granted) {
                         permissionCallback.onGranted();
