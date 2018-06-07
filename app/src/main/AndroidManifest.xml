@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/FullScreenTheme">
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.binny.openapi.util.CustomCachingGlideModule"
             android:value="GlideModule" />
@@ -59,7 +59,7 @@
         </activity>
         <activity
             android:name=".mvp.ui.activity.HistoryDetailActivity"
-            android:label="@string/title_activity_history"></activity>
+            android:label="@string/title_activity_history" />
     </application>
 
 </manifest>
