@@ -7,7 +7,8 @@ import android.view.View;
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.ui.base.BaseFragment;
 import com.binny.openapi.mvp.ui.fghome.article.ArticleFragment;
-import com.binny.openapi.mvp.ui.fghome.history.HistoryDayFragment;
+import com.binny.openapi.mvp.ui.fghome.juhe.history.JuheHistoryFragment;
+import com.binny.openapi.mvp.ui.fghome.juhe.news.JuheTouTiaoFrgment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +21,15 @@ public class HomeFragment extends BaseFragment {
 
     private ViewPager mViewPager;
     private TabLayout mTab;
-    private final String[] mTitles = {"每日一文"
-            ,"历史上的今天","每日一文","每日一文","每日一文"
+    private final String[] mTitles = {
+            "头条",
+            "每日一文",
+            "历史上的今天",
+            "每日一文",
+            "每日一文",
+            "每日一文"
     };
+
     @Override
     protected void initView(View view) {
         mTab = view.findViewById(R.id.home_tab_layout);
@@ -31,13 +38,14 @@ public class HomeFragment extends BaseFragment {
         mTab.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         List<BaseFragment> fragmentList = new ArrayList<>();
+        fragmentList.add(new JuheTouTiaoFrgment());
         fragmentList.add(new ArticleFragment());
-        fragmentList.add(new HistoryDayFragment());
+        fragmentList.add(new JuheHistoryFragment());
         fragmentList.add(new ArticleFragment());
         fragmentList.add(new ArticleFragment());
         fragmentList.add(new ArticleFragment());
 
-        mViewPager.setAdapter(new HomeFragmentAdapter(getFragmentManager(), fragmentList,mTitles));
+        mViewPager.setAdapter(new HomeFragmentAdapter(getFragmentManager(), fragmentList, mTitles));
     }
 
     @Override

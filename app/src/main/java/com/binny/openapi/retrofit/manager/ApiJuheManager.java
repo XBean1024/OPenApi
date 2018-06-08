@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.binny.openapi.constant.Constant.JUHE_HOSITORY_BASE_URL;
+import static com.binny.openapi.constant.UrlConstant.JUHE_BASE_URL;
 
 /**
  * Created by binny on 2018/5/30.
@@ -24,7 +24,7 @@ public class ApiJuheManager {
     private ApiJuheManager() {
         if (mRetrofitArticleApi == null) {
             mRetrofitArticleApi = new Retrofit.Builder()
-                    .baseUrl(JUHE_HOSITORY_BASE_URL)
+                    .baseUrl(JUHE_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();

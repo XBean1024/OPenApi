@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.ui.fghome.history;
+package com.binny.openapi.mvp.ui.fghome.juhe.history;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;

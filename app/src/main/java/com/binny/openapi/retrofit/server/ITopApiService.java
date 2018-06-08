@@ -11,10 +11,10 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-import static com.binny.openapi.constant.Constant.TOP_API_URL_PICTURE;
-import static com.binny.openapi.constant.Constant.TOP_API_URL_VIDEO;
-import static com.binny.openapi.constant.Constant.TOP_API_USER_LOGIN;
-import static com.binny.openapi.constant.Constant.TOP_API_USER_REGISTER;
+import static com.binny.openapi.constant.UrlConstant.TOP_API_URL_PICTURE;
+import static com.binny.openapi.constant.UrlConstant.TOP_API_URL_VIDEO;
+import static com.binny.openapi.constant.UrlConstant.TOP_API_USER_LOGIN;
+import static com.binny.openapi.constant.UrlConstant.TOP_API_USER_REGISTER;
 
 /**
  * author  binny

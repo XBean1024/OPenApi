@@ -13,7 +13,7 @@ import java.util.Calendar;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.binny.openapi.constant.Constant.JUHE_HOSITORY_BASE_KEY;
+import static com.binny.openapi.constant.UrlConstant.JUHE_HOSITORY_BASE_KEY;
 
 /**
  * author  binny

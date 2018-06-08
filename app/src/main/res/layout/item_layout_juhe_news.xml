@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/juhe_news_title_tv"
+        android:layout_width="match_parent"
+        android:text=" 标题"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/juhe_news_img_iv"
+        android:layout_below="@id/juhe_news_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:layout_below="@id/juhe_news_img_iv"
+        android:id="@+id/juhe_news_author_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_below="@id/juhe_news_img_iv"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/juhe_news_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

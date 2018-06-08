@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.binny.openapi.constant.Constant.ARTICLE_BASE_URL;
+import static com.binny.openapi.constant.UrlConstant.ARTICLE_BASE_URL;
 
 /**
  * author  binny

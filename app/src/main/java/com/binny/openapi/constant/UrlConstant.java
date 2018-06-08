@@ -4,7 +4,7 @@ package com.binny.openapi.constant;
  * author  binny
  * date 5/6
  */
-public class Constant {
+public class UrlConstant {
 
     /*
     * top api
@@ -26,10 +26,10 @@ public class Constant {
     * 历史上的今天
     * */
 
-    public static final String JUHE_HOSITORY_BASE_URL = "http://v.juhe.cn/";
+    public static final String JUHE_BASE_URL = "http://v.juhe.cn/";
+    public static final String JUHE_HISTORY_URL = "todayOnhistory/queryEvent.php";
+    public static final String JUHE_HISTORY_DETAIL_URL = "todayOnhistory/queryDetail.php";
+
     public static final String JUHE_HOSITORY_BASE_KEY = "bcd994e2d95af256b9b8c959eda44e0a";
-
-
-    public static final String SP_FILE_SETTING = "app_settings";
 
 }

@@ -12,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.binny.openapi.constant.Constant.TOP_API_APP_KEY;
+import static com.binny.openapi.constant.UrlConstant.TOP_API_APP_KEY;
 
 /**
  * author  binny
