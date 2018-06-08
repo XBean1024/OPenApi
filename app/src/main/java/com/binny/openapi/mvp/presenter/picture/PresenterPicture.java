@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.presenter.picture;
 
-import com.binny.openapi.mvp.bean.PictureBean;
-import com.binny.openapi.mvp.callback.DataCallback;
+import com.binny.openapi.bean.PictureBean;
+import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.model.picture.PictureModel;
 
 /**

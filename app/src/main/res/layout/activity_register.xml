@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/register_bg"
-    tools:context=".mvp.ui.activity.register.RegisterActivity">
+    tools:context=".mvp.view.activity.register.RegisterActivity">
     <com.scwang.wave.MultiWaveHeader
         android:id="@+id/waveHeader"
         android:layout_width="match_parent"

@@ -1,14 +1,17 @@
 package com.binny.openapi.retrofit.server;
 
-import com.binny.openapi.mvp.bean.HistoryDayBean;
-import com.binny.openapi.mvp.bean.HistoryDetailBean;
+import com.binny.openapi.bean.HistoryDayBean;
+import com.binny.openapi.bean.HistoryDetailBean;
+import com.binny.openapi.bean.JuheNewsBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
 import static com.binny.openapi.constant.UrlConstant.JUHE_HISTORY_DETAIL_URL;
 import static com.binny.openapi.constant.UrlConstant.JUHE_HISTORY_URL;
+import static com.binny.openapi.constant.UrlConstant.JUHE_NEWS_URL;
 
 /**
  * Created by binny on 2018/5/30.
@@ -26,5 +29,10 @@ public interface IJuheService {
 
     @GET(JUHE_HISTORY_DETAIL_URL)
     Observable<HistoryDetailBean> getDetailDate(@Query("key") String key, @Query("e_id") String id);
+
+    @GET(JUHE_NEWS_URL)
+    @Headers("User-Agent: Retrofit-App")
+    Observable<JuheNewsBean> getNewsDate(@Query("key") String key, @Query("type") String type);
+
 
 }

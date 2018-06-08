@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/background"
     android:scrollbars="none"
-    tools:context="com.binny.openapi.mvp.ui.activity.HistoryDetailActivity">
+    tools:context="com.binny.openapi.mvp.view.activity.HistoryDetailActivity">
 
    <RelativeLayout
        android:layout_width="match_parent"

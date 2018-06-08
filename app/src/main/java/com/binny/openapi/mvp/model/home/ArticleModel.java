@@ -3,8 +3,8 @@ package com.binny.openapi.mvp.model.home;
 import com.bean.xhttp.XHttp;
 import com.bean.xhttp.callback.OnXHttpCallback;
 import com.bean.xhttp.response.Response;
-import com.binny.openapi.mvp.bean.ArticleBean;
-import com.binny.openapi.mvp.callback.DataCallback;
+import com.binny.openapi.bean.ArticleBean;
+import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.retrofit.server.IArticleService;
 import com.binny.openapi.util.UtilsLog;
 import com.google.gson.Gson;
@@ -14,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.binny.openapi.retrofit.manager.RetrofitManager.getArticleService;
+import static com.binny.openapi.util.UtilsRetrofit.getArticleService;
 
 /**
  * author  binny

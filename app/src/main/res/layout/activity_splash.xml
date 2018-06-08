@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/app_splash_activity"
-    tools:context="com.binny.openapi.mvp.ui.activity.SplashActivity">
+    tools:context="com.binny.openapi.mvp.view.activity.SplashActivity">
 
 </RelativeLayout>

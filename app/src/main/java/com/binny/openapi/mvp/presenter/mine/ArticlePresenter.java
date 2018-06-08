@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.presenter.mine;
 
-import com.binny.openapi.mvp.bean.ArticleBean;
-import com.binny.openapi.mvp.callback.DataCallback;
+import com.binny.openapi.bean.ArticleBean;
+import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.model.home.ArticleModel;
 
 /**

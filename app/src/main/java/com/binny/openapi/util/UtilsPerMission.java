@@ -3,7 +3,7 @@ package com.binny.openapi.util;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.View;
-import com.binny.openapi.mvp.callback.OnPermissionCallback;
+import com.binny.openapi.callback.OnPermissionCallback;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 

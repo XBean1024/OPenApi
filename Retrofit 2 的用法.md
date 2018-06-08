@@ -2,7 +2,7 @@
 
     package com.binny.openapi.retrofit.rapi;
 
-    import com.binny.openapi.mvp.bean.RegisterBean;
+    import com.binny.openapi.bean.RegisterBean;
 
     import java.io.File;
 

@@ -1,9 +1,9 @@
 package com.binny.openapi.retrofit.server;
 
-import com.binny.openapi.mvp.bean.LoginBean;
-import com.binny.openapi.mvp.bean.PictureBean;
-import com.binny.openapi.mvp.bean.RegisterBean;
-import com.binny.openapi.mvp.bean.VideoBean;
+import com.binny.openapi.bean.LoginBean;
+import com.binny.openapi.bean.PictureBean;
+import com.binny.openapi.bean.RegisterBean;
+import com.binny.openapi.bean.VideoBean;
 
 import java.io.File;
 

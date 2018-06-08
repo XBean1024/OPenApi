@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/crimson"
-    tools:context="com.binny.openapi.mvp.ui.activity.LockScreenActivity">
+    tools:context="com.binny.openapi.mvp.view.activity.LockScreenActivity">
 
     <com.andrognito.pinlockview.IndicatorDots
         android:id="@+id/indicator_dots"

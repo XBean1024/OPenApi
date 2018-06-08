@@ -1,6 +1,6 @@
 package com.binny.openapi.retrofit.server;
 
-import com.binny.openapi.mvp.bean.ArticleBean;
+import com.binny.openapi.bean.ArticleBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

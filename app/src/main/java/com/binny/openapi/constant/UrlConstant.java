@@ -23,13 +23,16 @@ public class UrlConstant {
 
     /*
     * 聚合数据
-    * 历史上的今天
     * */
 
     public static final String JUHE_BASE_URL = "http://v.juhe.cn/";
+    // 历史上的今天
+    public static final String JUHE_HOSITORY_KEY = "bcd994e2d95af256b9b8c959eda44e0a";
     public static final String JUHE_HISTORY_URL = "todayOnhistory/queryEvent.php";
     public static final String JUHE_HISTORY_DETAIL_URL = "todayOnhistory/queryDetail.php";
+    //新闻
+    public static final String JUHE_NEWS_URL = "todayOnhistory/queryDetail.php";
 
-    public static final String JUHE_HOSITORY_BASE_KEY = "bcd994e2d95af256b9b8c959eda44e0a";
+    public static final String JUHE_NEWS_KEY = "b36b0671233f5c3b16cb037674652720";
 
 }

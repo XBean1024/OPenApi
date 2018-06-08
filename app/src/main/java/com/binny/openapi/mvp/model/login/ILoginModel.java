@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.model.login;
 
-import com.binny.openapi.mvp.bean.LoginBean;
-import com.binny.openapi.mvp.callback.DataCallback;
+import com.binny.openapi.bean.LoginBean;
+import com.binny.openapi.callback.DataCallback;
 
 /**
  * author  binny
