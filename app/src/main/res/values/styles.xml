@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,40 +9,41 @@
     </style>
 
     <!--上下交错效果-->
-    <style name="slide_up_down" parent="android:Animation" mce_bogus="1">
+    <style name="slide_up_down" mce_bogus="1" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/slide_up_in</item>
         <item name="android:windowExitAnimation">@anim/slide_down_out</item>
     </style>
     <!--淡入淡出效果-->
-    <style name="fade_in_out" parent="android:Animation" mce_bogus="1">
+    <style name="fade_in_out" mce_bogus="1" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
     <!--放大淡出效果-->
-    <style name="scale_in_alpha_out" parent="android:Animation" mce_bogus="1">
+    <style name="scale_in_alpha_out" mce_bogus="1" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/scale_in</item>
         <item name="android:windowExitAnimation">@anim/alpha_out</item>
     </style>
     <!--压缩变小淡出效果-->
-    <style name="hyperspace_in_out" parent="android:Animation" mce_bogus="1">
+    <style name="hyperspace_in_out" mce_bogus="1" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/hyperspace_in</item>
         <item name="android:windowExitAnimation">@anim/hyperspace_out</item>
     </style>
     <!--右往左推出效果-->
-    <style name="push_left_in_out" parent="android:Animation" mce_bogus="1">
+    <style name="push_left_in_out" mce_bogus="1" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/push_left_in</item>
         <item name="android:windowExitAnimation">@anim/push_left_out</item>
     </style>
     <!--下往上推出效果-->
-    <style name="push_up_in_out" parent="android:Animation" mce_bogus="1">
+    <style name="push_up_in_out" mce_bogus="1" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/push_up_in</item>
         <item name="android:windowExitAnimation">@anim/push_up_out</item>
     </style>
     <!--左右交错效果-->
-    <style name="slide_left_right" parent="android:Animation" mce_bogus="1">
+    <style name="slide_left_right" mce_bogus="1" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/slide_left</item>
         <item name="android:windowExitAnimation">@anim/slide_right</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -61,7 +62,6 @@
     </style>
 
     <style name="FullScreenTheme" parent="@style/AppTheme.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
 
         <item name="android:windowFullscreen">true</item>
 
@@ -69,6 +69,7 @@
     </style>
 
     <color name="transparent">#88242424</color>
+
     <style name="bottom_btn_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -90,6 +91,7 @@
         <item name="android:layout_marginRight">@dimen/value_10dp</item>
         <item name="android:layout_marginBottom">@dimen/value_10dp</item>
     </style>
+
     <style name="app_setting_container">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/value_45dp</item>
@@ -98,6 +100,7 @@
         <item name="android:layout_marginBottom">@dimen/value_10dp</item>
         <item name="android:background">@drawable/setting_shape</item>
     </style>
+
     <style name="app_setting_text_left">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
@@ -106,6 +109,7 @@
         <item name="android:textSize">@dimen/value_16sp</item>
         <item name="android:textColor">@color/antiquewhite</item>
     </style>
+
     <style name="app_setting_text_right">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>

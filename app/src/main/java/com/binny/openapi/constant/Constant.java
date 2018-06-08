@@ -29,4 +29,7 @@ public class Constant {
     public static final String JUHE_HOSITORY_BASE_URL = "http://v.juhe.cn/";
     public static final String JUHE_HOSITORY_BASE_KEY = "bcd994e2d95af256b9b8c959eda44e0a";
 
+
+    public static final String SP_FILE_SETTING = "app_settings";
+
 }

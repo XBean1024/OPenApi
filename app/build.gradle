@@ -38,7 +38,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation libs.appcompat_v7
     implementation libs.design
-//    implementation libs.constraint
+    //    implementation libs.constraint
     implementation libs.circleImageview
     implementation libs.gson
     implementation libs.rxjava
@@ -60,6 +60,7 @@ dependencies {
     implementation libs.recyclerview_adapter
     implementation project(':pinlockview')
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation project(':library')
 }
 
 task binny {

@@ -1,8 +1,8 @@
 package com.binny.openapi;
 
 import android.app.Application;
+
 import com.binny.openapi.util.UtilsLog;
-import com.binny.openapi.util.UtilsPerMission;
 
 
 /**
@@ -11,13 +11,15 @@ import com.binny.openapi.util.UtilsPerMission;
  */
 public class APP extends Application {
     public static APP mApp;
+    public static final String SETTING_SHOW_LOCK_VIEW = "app_settings";
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         mApp = this;
         UtilsLog.init();
-
     }
+
 
 }

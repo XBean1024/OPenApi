@@ -41,6 +41,12 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
+    protected void initImmersionBar() {
+        super.initImmersionBar();
+        mImmersionBar.titleBar(mTab).init();
+    }
+
+    @Override
     protected void initRefreshView(final View containerView) {
 
     }

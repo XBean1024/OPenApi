@@ -1,6 +1,7 @@
 package com.binny.openapi.mvp.ui.fgmusic;
 
 import android.view.View;
+import android.widget.ImageView;
 
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.ui.base.BaseFragment;
@@ -10,6 +11,8 @@ import com.binny.openapi.mvp.ui.base.BaseFragment;
  * date 5/9
  */
 public class MusicFragment extends BaseFragment {
+    private ImageView imageView;
+
     @Override
     protected int getFragmentLayout() {
         return R.layout.fragment_music;
@@ -17,6 +20,13 @@ public class MusicFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
+        imageView = view.findViewById(R.id.top_img);
+    }
+
+    @Override
+    protected void initImmersionBar() {
+        super.initImmersionBar();
+        mImmersionBar.titleBar(imageView).init();
 
     }
 

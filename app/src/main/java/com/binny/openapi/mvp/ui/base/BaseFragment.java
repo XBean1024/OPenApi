@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.binny.openapi.immersionbar.ImmersionBar;
 import com.binny.openapi.util.UtilsLog;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -30,6 +31,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
     protected boolean mIsRefresh;
     protected boolean mIsLoadMore;
 
+    protected ImmersionBar mImmersionBar;
     public BaseFragment() {
         this.TAG = this.getClass().getSimpleName();
     }
@@ -83,6 +85,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
             //防止重复创建视图
             return mContainerView;
         }
+
         /*
          * 创建视图
          * */
@@ -103,6 +106,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
             mIsFirstBindData = false;
             getData();
         }
+        initImmersionBar();
         return mContainerView;
     }
 
@@ -148,4 +152,26 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
     }
 
     protected abstract void onLoadMore();
+
+    /**
+     * 初始化沉浸式
+     */
+    protected void initImmersionBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.keyboardEnable(true).navigationBarWithKitkatEnable(false).fitsSystemWindows(false).init();
+
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mImmersionBar != null)
+            mImmersionBar.destroy();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden && mImmersionBar != null)
+            mImmersionBar.init();
+    }
 }

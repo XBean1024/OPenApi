@@ -40,6 +40,11 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
     @Override
     public void bindListDataToView(final Context context, final List<PictureBean.DataBean> iBaseBeanList, final PictureViewHolder viewHolder, final int position) {
         String url = iBaseBeanList.get(position).getUrl();
+        String urlTemp = (String) viewHolder.mImageView.getTag();
+        if (url.equals(urlTemp)) {
+            return;
+        }
+        viewHolder.mImageView.setTag(url);
         Glide.with(context).load(iBaseBeanList.get(position).getUrl())
                 .asBitmap()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
@@ -48,31 +53,29 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
 
-                        viewHolder.mImageView.setBackground(new BitmapDrawable(context.getResources(),resource));
+                        viewHolder.mImageView.setBackground(new BitmapDrawable(context.getResources(), resource));
                     }
                 });
-        viewHolder.mImageView.setOnLongClickListener(new View.OnLongClickListener() {
 
-            @Override
-            public boolean onLongClick(View v) {
-                XHttp.getInstance()
-                        .get(url)
-                        .setTag("bbb")
-                        .setTimeout(5000)
-                        .setOnXHttpCallback(new OnXHttpCallback() {
-                            @Override
-                            public void onSuccess(final Response response) {
-                                BitmapUtils.savePicture(response.toBitmap(), "美女", System.currentTimeMillis() +url.substring(url.lastIndexOf("."),url.length()));
-                                Toast.makeText(context, "保存成功！", Toast.LENGTH_SHORT).show();
-                            }
 
-                            @Override
-                            public void onFailure(Exception ex, String errorCode) {
-                            }
-                        });
+        viewHolder.mImageView.setOnLongClickListener(v -> {
+            XHttp.getInstance()
+                    .get(url)
+                    .setTag("bbb")
+                    .setTimeout(5000)
+                    .setOnXHttpCallback(new OnXHttpCallback() {
+                        @Override
+                        public void onSuccess(final Response response) {
+                            BitmapUtils.savePicture(response.toBitmap(), "美女", System.currentTimeMillis() + url.substring(url.lastIndexOf("."), url.length()));
+                            Toast.makeText(context, "保存成功！", Toast.LENGTH_SHORT).show();
+                        }
 
-                return true;
-            }
+                        @Override
+                        public void onFailure(Exception ex, String errorCode) {
+                        }
+                    });
+
+            return true;
         });
         viewHolder.mTextView.setText("第 " + position + " 张" + iBaseBeanList.get(position).getPublishedAt());
     }
