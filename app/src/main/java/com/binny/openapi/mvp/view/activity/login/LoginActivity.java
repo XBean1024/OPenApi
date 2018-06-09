@@ -18,7 +18,7 @@ import com.binny.openapi.bean.LoginBean;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.login.LoginPresenter;
 import com.binny.openapi.mvp.view.activity.MainActivity;
-import com.binny.openapi.mvp.view.activity.ProtocolItemActivity;
+import com.binny.openapi.mvp.view.activity.WebActivity;
 import com.binny.openapi.mvp.view.activity.register.RegisterActivity;
 import com.binny.openapi.mvp.view.base.BaseActivity;
 import com.binny.openapi.widget.KeyValueLayout;
@@ -81,7 +81,7 @@ public class LoginActivity extends BaseActivity implements DataCallback<LoginBea
         spannableString.setSpan(new ClickableSpan() {
             @Override
             public void onClick(final View widget) {
-                Intent intent = new Intent(mActivity, ProtocolItemActivity.class);
+                Intent intent = new Intent(mActivity, WebActivity.class);
                 String loadUrl = "http://www.hbpu.edu.cn/";
                 intent.putExtra("url",loadUrl);
                 intoActivityWithAnimotion(intent);

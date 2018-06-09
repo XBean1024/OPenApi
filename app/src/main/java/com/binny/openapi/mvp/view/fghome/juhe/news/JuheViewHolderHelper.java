@@ -9,7 +9,8 @@ import android.view.View;
 import com.binny.openapi.R;
 import com.binny.openapi.bean.JuheNewsBean;
 import com.binny.openapi.mvp.view.activity.MainActivity;
-import com.binny.openapi.mvp.view.activity.ProtocolItemActivity;
+import com.binny.openapi.mvp.view.activity.WebActivity;
+import com.binny.openapi.util.UtilsLog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -60,13 +61,14 @@ public class JuheViewHolderHelper implements IViewHolderHelper <JuheViewHolder,J
         viewHolder.mDate.setText(iBaseBeanList.get(position).getDate());
         viewHolder.mTitle.setText(iBaseBeanList.get(position).getTitle());
         String loadUrl = iBaseBeanList.get(position).getUrl();
-
         MainActivity activity = (MainActivity) context;
         viewHolder.mRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity, ProtocolItemActivity.class);
+                Intent intent = new Intent(activity, WebActivity.class);
+                UtilsLog.i(loadUrl);
                 intent.putExtra("url",loadUrl);
+                intent.putExtra("adblock",true);
                 activity.intoActivityWithAnimotion(intent);
             }
         });

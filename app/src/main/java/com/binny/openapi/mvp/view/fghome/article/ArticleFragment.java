@@ -4,6 +4,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import com.binny.openapi.R;
 import com.binny.openapi.bean.ArticleBean;
@@ -12,6 +13,7 @@ import com.binny.openapi.mvp.presenter.mine.ArticlePresenter;
 import com.binny.openapi.mvp.view.base.BaseFragment;
 import com.binny.openapi.util.Utils;
 import com.binny.openapi.util.UtilsLog;
+import com.binny.openapi.widget.dialog.ArticleDetailDialog;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.scwang.smartrefresh.layout.impl.RefreshHeaderWrapper;
 import com.smart.holder.CommonAdapter;
@@ -47,6 +49,31 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
         listView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         mArticleAdapter = new ArticleAdapter(R.layout.item_layout_home_article_lv, mArticleBeans);
         mArticleAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        mArticleAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                List<ArticleBean> dataBean = adapter.getData();
+                Toast.makeText(mActivity, ""+dataBean.get(0).getData().getAuthor(), Toast.LENGTH_SHORT).show();
+
+//                String time = dataBean.get(0).getData().getDate().getCurr();
+
+                final String author = dataBean.get(0).getData().getAuthor();
+
+//                String digest = dataBean.get(0).getData().getDigest();
+
+                final String count = "共" + dataBean.get(0).getData().getWc() + "字   ";
+
+                final String title = "《" + dataBean.get(0).getData().getTitle() + "》";
+
+                final String content = dataBean.get(0).getData().getContent();
+                new ArticleDetailDialog(mActivity)
+                        .setAuthorName(author)
+                        .setCharacterCount(count)
+                        .setContent(content)
+                        .setTextTitle(title)
+                        .show();
+            }
+        });
         listView.setAdapter(mArticleAdapter);
 
 //        mCommonAdapter = new CommonAdapter<>(getActivity(), mArticleBeans, R.layout.item_layout_home_article_lv, new ArticleViewHolderHelper());

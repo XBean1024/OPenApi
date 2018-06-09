@@ -45,5 +45,6 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleBean,BaseViewHolder>
         helper.setText(R.id.article_digest,digest);
         helper.setText(R.id.article_title,time);
         helper.setText(R.id.article_character_count,count);
+        helper.addOnClickListener(R.id.item_atricle);
     }
 }
