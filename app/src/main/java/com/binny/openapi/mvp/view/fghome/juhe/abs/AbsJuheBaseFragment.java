@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.view.fghome.juhe;
+package com.binny.openapi.mvp.view.fghome.juhe.abs;
 
 import android.view.View;
 import android.widget.GridView;

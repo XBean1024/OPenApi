@@ -30,6 +30,7 @@ public class PictureFragment extends BaseFragment implements DataCallback<Pictur
 
     @Override
     protected void getData() {
+        mPresenterPicture = new PresenterPicture(this);
         mPresenterPicture.getDate(mPage);
     }
 

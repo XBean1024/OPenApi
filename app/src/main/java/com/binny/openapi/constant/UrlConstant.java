@@ -31,7 +31,7 @@ public class UrlConstant {
     public static final String JUHE_HISTORY_URL = "todayOnhistory/queryEvent.php";
     public static final String JUHE_HISTORY_DETAIL_URL = "todayOnhistory/queryDetail.php";
     //新闻
-    public static final String JUHE_NEWS_URL = "todayOnhistory/queryDetail.php";
+    public static final String JUHE_NEWS_URL = "toutiao/index";
 
     public static final String JUHE_NEWS_KEY = "b36b0671233f5c3b16cb037674652720";
 

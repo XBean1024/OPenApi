@@ -4,7 +4,7 @@ import com.binny.openapi.R;
 import com.binny.openapi.bean.HistoryDayBean;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.juhe.HistoryTodayPresenter;
-import com.binny.openapi.mvp.view.fghome.juhe.AbsJuheBaseFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.abs.AbsJuheBaseFragment;
 import com.binny.openapi.util.UtilsLog;
 import com.smart.holder.CommonAdapter;
 

@@ -2,7 +2,7 @@ package com.binny.openapi.mvp.view.fghome.juhe.news;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.binny.openapi.R;
@@ -35,7 +35,13 @@ public class JuheViewHolderHelper implements IViewHolderHelper <JuheViewHolder,J
 
     @Override
     public void bindListDataToView(Context context, List<JuheNewsBean.ResultBean.DataBean> iBaseBeanList, JuheViewHolder viewHolder, int position) {
-        Glide.with(context).load(iBaseBeanList.get(position).getUrl())
+        String url = iBaseBeanList.get(position).getThumbnail_pic_s();
+        if (TextUtils.isEmpty(url)) {
+            url= iBaseBeanList.get(position).getThumbnail_pic_s02();
+        }if (TextUtils.isEmpty(url)) {
+            url= iBaseBeanList.get(position).getThumbnail_pic_s03();
+        }
+        Glide.with(context).load(url)
                 .asBitmap()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
                 .thumbnail(0.1f)//先加载原图大小的十分之一
@@ -43,7 +49,7 @@ public class JuheViewHolderHelper implements IViewHolderHelper <JuheViewHolder,J
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
 
-                        viewHolder.mImageView.setBackground(new BitmapDrawable(context.getResources(), resource));
+                        viewHolder.mImageView.setImageBitmap(resource);
                     }
                 });
         viewHolder.mAuthor.setText(iBaseBeanList.get(position).getAuthor_name());

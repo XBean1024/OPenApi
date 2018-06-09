@@ -6,7 +6,7 @@ import com.binny.openapi.R;
 import com.binny.openapi.bean.JuheNewsBean;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.juhe.JuheNewsPresenter;
-import com.binny.openapi.mvp.view.fghome.juhe.AbsJuheBaseFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.abs.AbsJuheBaseFragment;
 import com.binny.openapi.util.UtilsLog;
 import com.smart.holder.CommonAdapter;
 
@@ -60,16 +60,19 @@ public class JuheNewsBaseFragment extends AbsJuheBaseFragment implements DataCal
 
     @Override
     public void onSuccess(JuheNewsBean juheNewsBean) {
-//        int size = juheNewsBean.getResult().getData().size();
-//        JuheNewsBean.ResultBean.DataBean dataBean;
-//        for (int i = 0; i < size; i++) {
-//            dataBean = new JuheNewsBean.ResultBean.DataBean();
-//            dataBean.setAuthor_name(juheNewsBean.getResult().getData().get(i).getAuthor_name());
-//            dataBean.setDate(juheNewsBean.getResult().getData().get(i).getDate());
-//            dataBean.setUrl(juheNewsBean.getResult().getData().get(i).getUrl());
-//            dataBean.setTitle(juheNewsBean.getResult().getData().get(i).getTitle());
-//            mDataBeanList.add(dataBean);
-//        }
-//        mCommonAdapter.notifyDataSetChanged();
+        int size = juheNewsBean.getResult().getData().size();
+        JuheNewsBean.ResultBean.DataBean dataBean;
+        for (int i = 0; i < size; i++) {
+            dataBean = new JuheNewsBean.ResultBean.DataBean();
+            dataBean.setAuthor_name(juheNewsBean.getResult().getData().get(i).getAuthor_name());
+            dataBean.setDate(juheNewsBean.getResult().getData().get(i).getDate());
+            dataBean.setUrl(juheNewsBean.getResult().getData().get(i).getUrl());
+            dataBean.setThumbnail_pic_s(juheNewsBean.getResult().getData().get(i).getThumbnail_pic_s());
+            dataBean.setThumbnail_pic_s02(juheNewsBean.getResult().getData().get(i).getThumbnail_pic_s02());
+            dataBean.setThumbnail_pic_s03(juheNewsBean.getResult().getData().get(i).getThumbnail_pic_s03());
+            dataBean.setTitle(juheNewsBean.getResult().getData().get(i).getTitle());
+            mDataBeanList.add(dataBean);
+        }
+        mCommonAdapter.notifyDataSetChanged();
     }
 }

@@ -31,7 +31,7 @@ public interface IJuheService {
     Observable<HistoryDetailBean> getDetailDate(@Query("key") String key, @Query("e_id") String id);
 
     @GET(JUHE_NEWS_URL)
-    @Headers("User-Agent: Retrofit-App")
+    @Headers({"User-Agent: PostmanRuntime/7.1.5","cookie:aliyungf_tc=AQAAAIg3bUkOQAMA3DuptI6obRw19B7W","Postman-Token:f96acf6a-437e-4f6d-b680-f4ba83619a72"})
     Observable<JuheNewsBean> getNewsDate(@Query("key") String key, @Query("type") String type);
 
 
