@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.binny.openapi.widget.titlebar.SimpleTitleBar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/simple_title_bar"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:background="@color/crimson">
+
+    <TextView
+        android:id="@+id/simple_left_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:drawableLeft="@mipmap/back"
+        android:gravity="center|left"
+        android:text="返回"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/simple_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:gravity="center|left"
+        android:text="标题"
+        android:textColor="@color/white" />
+    <TextView
+        android:id="@+id/simple_right_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:drawableRight="@mipmap/share"
+        android:gravity="center"/>
+</com.binny.openapi.widget.titlebar.SimpleTitleBar>

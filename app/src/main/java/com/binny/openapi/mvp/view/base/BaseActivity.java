@@ -15,7 +15,7 @@ import com.binny.openapi.immersionbar.ImmersionBar;
  */
 public abstract class BaseActivity extends FragmentActivity {
     protected BaseActivity mActivity;
-    private ImmersionBar mImmersionBar;
+    protected ImmersionBar mImmersionBar;
     protected Intent mIntent;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,6 +26,11 @@ public abstract class BaseActivity extends FragmentActivity {
         mActivity = this;
         handleIntent();
         initView();
+        setListener();
+    }
+
+    protected void setListener() {
+
     }
 
     protected abstract void handleIntent();

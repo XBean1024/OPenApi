@@ -60,6 +60,9 @@ public class JuheNewsBaseFragment extends AbsJuheBaseFragment implements DataCal
 
     @Override
     public void onSuccess(JuheNewsBean juheNewsBean) {
+        if (juheNewsBean.getResult() == null) {
+            return;
+        }
         int size = juheNewsBean.getResult().getData().size();
         JuheNewsBean.ResultBean.DataBean dataBean;
         for (int i = 0; i < size; i++) {

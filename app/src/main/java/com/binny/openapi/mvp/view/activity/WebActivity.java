@@ -1,11 +1,14 @@
 package com.binny.openapi.mvp.view.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.bean.xhttp.XHttp;
 import com.bean.xhttp.callback.OnXHttpCallback;
@@ -13,6 +16,7 @@ import com.bean.xhttp.response.Response;
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.view.base.BaseActivity;
 import com.binny.openapi.util.UtilsLog;
+import com.binny.openapi.widget.titlebar.SimpleTitleBar;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,6 +30,8 @@ public class WebActivity extends BaseActivity {
 
     private boolean bNeedAdBlock;//是否去出第三方广告链接
 
+    private SimpleTitleBar mSimpleTitleBar;
+
     @Override
     protected void handleIntent() {
         loadUrl = getIntent().getStringExtra("url");
@@ -35,6 +41,8 @@ public class WebActivity extends BaseActivity {
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void initView() {
+        mSimpleTitleBar = findViewById(R.id.simple_title_bar);
+        mImmersionBar.titleBar(mSimpleTitleBar).init();
         this.mWebView = findViewById(R.id.web_view_protocol);
         WebSettings webSettings = mWebView.getSettings();
         //支持javascript
@@ -60,7 +68,7 @@ public class WebActivity extends BaseActivity {
         });
         if (bNeedAdBlock) {
             adBlock();
-        }else {
+        } else {
             mWebView.loadUrl(loadUrl);
         }
 
@@ -68,7 +76,24 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_protocol;
+        return R.layout.activity_web;
+    }
+
+    @Override
+    protected void setListener() {
+        super.setListener();
+        mSimpleTitleBar.setOnClickedListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        }, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mActivity, "分享", Toast.LENGTH_SHORT).show();
+                shareText("1111","33333","ssssss");
+            }
+        });
     }
 
     @Override
@@ -96,7 +121,7 @@ public class WebActivity extends BaseActivity {
                         String host = "";
                         try {
                             URL url = new URL(strUrl);
-                            host =url.getHost();
+                            host = url.getHost();
                             strUrl = String.format("%s://%s", url.getProtocol(), url.getHost());
 
                             Matcher m = p.matcher(html);
@@ -120,4 +145,30 @@ public class WebActivity extends BaseActivity {
                 });
     }
 
+    /**
+     * 分享文字内容
+     *
+     * @param title 分享对话框标题
+     * @param subject  主题
+     * @param content  分享内容（文字）
+     */
+    private void shareText(String title, String subject, String content) {
+        if (content == null || "".equals(content)) {
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        if (subject != null && !"".equals(subject)) {
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        }
+
+        intent.putExtra(Intent.EXTRA_TEXT, content);
+
+        // 设置弹出框标题
+        if (title != null && !"".equals(title)) { // 自定义标题
+            startActivity(Intent.createChooser(intent, title));
+        } else { // 系统默认标题
+            startActivity(intent);
+        }
+    }
 }
