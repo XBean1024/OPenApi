@@ -56,7 +56,7 @@ public class JuheViewHolderHelper implements IViewHolderHelper <JuheViewHolder,J
                         viewHolder.mImageView.setImageBitmap(resource);
                     }
                 });
-        viewHolder.mAuthor.setText(iBaseBeanList.get(position).getAuthor_name());
+        viewHolder.mAuthor.setText("来源："+iBaseBeanList.get(position).getAuthor_name());
         viewHolder.mDate.setText(iBaseBeanList.get(position).getDate());
         viewHolder.mTitle.setText(iBaseBeanList.get(position).getTitle());
         String loadUrl = iBaseBeanList.get(position).getUrl();
