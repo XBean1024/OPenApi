@@ -1,12 +1,15 @@
 package com.binny.openapi.mvp.view.fghome.juhe.news;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.view.View;
 
 import com.binny.openapi.R;
 import com.binny.openapi.bean.JuheNewsBean;
+import com.binny.openapi.mvp.view.activity.MainActivity;
+import com.binny.openapi.mvp.view.activity.ProtocolItemActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -30,6 +33,7 @@ public class JuheViewHolderHelper implements IViewHolderHelper <JuheViewHolder,J
         viewHolder.mAuthor = convertView.findViewById(R.id.juhe_news_author_tv);
         viewHolder.mDate = convertView.findViewById(R.id.juhe_news_date_tv);
         viewHolder.mImageView = convertView.findViewById(R.id.juhe_news_img_iv);
+        viewHolder.mRelativeLayout = convertView.findViewById(R.id.item_rl);
         return viewHolder;
     }
 
@@ -55,6 +59,17 @@ public class JuheViewHolderHelper implements IViewHolderHelper <JuheViewHolder,J
         viewHolder.mAuthor.setText(iBaseBeanList.get(position).getAuthor_name());
         viewHolder.mDate.setText(iBaseBeanList.get(position).getDate());
         viewHolder.mTitle.setText(iBaseBeanList.get(position).getTitle());
+        String loadUrl = iBaseBeanList.get(position).getUrl();
+
+        MainActivity activity = (MainActivity) context;
+        viewHolder.mRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, ProtocolItemActivity.class);
+                intent.putExtra("url",loadUrl);
+                activity.intoActivityWithAnimotion(intent);
+            }
+        });
     }
 
 

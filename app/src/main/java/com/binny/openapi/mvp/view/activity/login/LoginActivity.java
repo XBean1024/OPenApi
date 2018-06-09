@@ -1,11 +1,8 @@
 package com.binny.openapi.mvp.view.activity.login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -17,29 +14,32 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.binny.openapi.R;
-import com.binny.openapi.widget.KeyValueLayout;
 import com.binny.openapi.bean.LoginBean;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.login.LoginPresenter;
 import com.binny.openapi.mvp.view.activity.MainActivity;
 import com.binny.openapi.mvp.view.activity.ProtocolItemActivity;
 import com.binny.openapi.mvp.view.activity.register.RegisterActivity;
+import com.binny.openapi.mvp.view.base.BaseActivity;
+import com.binny.openapi.widget.KeyValueLayout;
 import com.binny.openapi.widget.SplashVideoView;
 
-public class LoginActivity extends AppCompatActivity implements DataCallback<LoginBean>,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
+public class LoginActivity extends BaseActivity implements DataCallback<LoginBean>,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private com.binny.openapi.widget.SplashVideoView mSplashVideo;
     private KeyValueLayout mLoginPhone;
     private KeyValueLayout mLoginPassword;
     private android.widget.TextView mItemTv;
-    private Activity mActivity = this;
 
     private LoginPresenter mLoginPresenter;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
+    @Override
+    protected void handleIntent() {
+
+    }
+
+    @Override
+    protected void initView() {
         mLoginPresenter = new LoginPresenter(this);
         this.mItemTv = (TextView) findViewById(R.id.item);
         this.mLoginPassword = (KeyValueLayout) findViewById(R.id.login_password);
@@ -47,6 +47,11 @@ public class LoginActivity extends AppCompatActivity implements DataCallback<Log
         this.mSplashVideo = (SplashVideoView) findViewById(R.id.login_video);
 
         initVideoView();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_login;
     }
 
     @Override
@@ -76,7 +81,10 @@ public class LoginActivity extends AppCompatActivity implements DataCallback<Log
         spannableString.setSpan(new ClickableSpan() {
             @Override
             public void onClick(final View widget) {
-                startActivity(new Intent(mActivity, ProtocolItemActivity.class));
+                Intent intent = new Intent(mActivity, ProtocolItemActivity.class);
+                String loadUrl = "http://www.hbpu.edu.cn/";
+                intent.putExtra("url",loadUrl);
+                intoActivityWithAnimotion(intent);
             }
 
             @Override

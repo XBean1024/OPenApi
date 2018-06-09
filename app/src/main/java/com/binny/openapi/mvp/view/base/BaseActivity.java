@@ -14,8 +14,9 @@ import com.binny.openapi.immersionbar.ImmersionBar;
  * 描述:
  */
 public abstract class BaseActivity extends FragmentActivity {
-    private BaseActivity mActivity;
+    protected BaseActivity mActivity;
     private ImmersionBar mImmersionBar;
+    protected Intent mIntent;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

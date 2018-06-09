@@ -1,7 +1,5 @@
 package com.binny.openapi.mvp.view.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -9,18 +7,23 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.binny.openapi.R;
+import com.binny.openapi.mvp.view.base.BaseActivity;
 
-public class ProtocolItemActivity extends AppCompatActivity {
+public class ProtocolItemActivity extends BaseActivity {
 
     private WebView mWebView;
+    private java.lang.String loadUrl;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_protocol);
+    protected void handleIntent() {
+        loadUrl = getIntent().getStringExtra("url");
+    }
+
+    @Override
+    protected void initView() {
         this.mWebView = (WebView) findViewById(R.id.web_view_protocol);
 
-        final String loadUrl = "http://www.hbpu.edu.cn/";
 //        final String loadUrl = "file:///android_asset/RegisterProtocol.html";
         try {
 
@@ -50,6 +53,11 @@ public class ProtocolItemActivity extends AppCompatActivity {
         }catch(Exception ex){
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_protocol;
     }
 
     @Override

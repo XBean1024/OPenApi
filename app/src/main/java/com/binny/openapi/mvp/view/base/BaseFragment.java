@@ -93,10 +93,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
          * 如果第一次创建时，可见，则加载数据，绑定数据
          * */
 
-        if (getUserVisibleHint()) {
-            mIsFirstBindData = false;
-            getData();
-        }
+
         mContainerView = inflater.inflate(getFragmentLayout(), container, false);
         initRefreshView(mContainerView);
         initView(mContainerView);
@@ -106,7 +103,10 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
             mRefreshLayout.setOnLoadMoreListener(this);
             mRefreshLayout.setEnableLoadMore(false);
         }
-
+        if (getUserVisibleHint()) {
+            mIsFirstBindData = false;
+            getData();
+        }
         initImmersionBar();
         return mContainerView;
     }

@@ -1,6 +1,7 @@
 package com.binny.openapi.mvp.view.fghome.juhe.news;
 
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.smart.holder.iinterface.IViewHolder;
@@ -15,4 +16,5 @@ public class JuheViewHolder implements IViewHolder {
     TextView mAuthor;
     TextView mDate;
     ImageView mImageView;
+    RelativeLayout mRelativeLayout;
 }
