@@ -5,6 +5,7 @@ import android.widget.GridView;
 
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.view.base.BaseFragment;
+import com.binny.openapi.util.UtilsLog;
 import com.smart.holder.CommonAdapter;
 
 /**
@@ -32,6 +33,10 @@ public abstract class AbsJuheBaseFragment extends BaseFragment {
 
     protected abstract void initAdapter();
 
+    @Override
+    protected void getData() {
+
+    }
 
     @Override
     protected void initRefreshView(View containerView) {
@@ -41,13 +46,15 @@ public abstract class AbsJuheBaseFragment extends BaseFragment {
 
     @Override
     protected void onRefresh() {
-
+        UtilsLog.i("加载网络数据");
+        loadNet();
     }
+
+    protected abstract void loadNet();
 
     @Override
     protected void onLoadMore() {
 
     }
-
 
 }

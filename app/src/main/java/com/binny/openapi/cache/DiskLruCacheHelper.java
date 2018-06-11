@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 
 import com.bean.logger.JJLogger;
+import com.binny.openapi.util.UtilsLog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -237,7 +238,7 @@ public class DiskLruCacheHelper {
             oos.writeObject(value);
             oos.flush();
             editor.commit();
-            JJLogger.logInfo("save", "Bean 数据保存完成！");
+            UtilsLog.i("save", "Bean 数据保存完成！");
         } catch (IOException e) {
             e.printStackTrace();
             try {

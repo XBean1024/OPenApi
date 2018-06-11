@@ -4,7 +4,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
 
 import com.binny.openapi.R;
 import com.binny.openapi.bean.ArticleBean;
@@ -53,19 +52,19 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 List<ArticleBean> dataBean = adapter.getData();
-                Toast.makeText(mActivity, ""+dataBean.get(0).getData().getAuthor(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mActivity, ""+dataBean.get(position).getData().getAuthor(), Toast.LENGTH_SHORT).show();
 
 //                String time = dataBean.get(0).getData().getDate().getCurr();
 
-                final String author = dataBean.get(0).getData().getAuthor();
+                final String author = dataBean.get(position).getData().getAuthor();
 
 //                String digest = dataBean.get(0).getData().getDigest();
 
-                final String count = "共" + dataBean.get(0).getData().getWc() + "字   ";
+                final String count = "共" + dataBean.get(position).getData().getWc() + "字   ";
 
-                final String title = "《" + dataBean.get(0).getData().getTitle() + "》";
+                final String title = "《" + dataBean.get(position).getData().getTitle() + "》";
 
-                final String content = dataBean.get(0).getData().getContent();
+                final String content = dataBean.get(position).getData().getContent();
                 new ArticleDetailDialog(mActivity)
                         .setAuthorName(author)
                         .setCharacterCount(count)

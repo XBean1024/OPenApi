@@ -83,7 +83,7 @@ public class LoginActivity extends BaseActivity implements DataCallback<LoginBea
             public void onClick(final View widget) {
                 Intent intent = new Intent(mActivity, WebActivity.class);
                 String loadUrl = "http://www.hbpu.edu.cn/";
-                intent.putExtra("url",loadUrl);
+                intent.putExtra("loadUrl",loadUrl);
                 intoActivityWithAnimotion(intent);
             }
 

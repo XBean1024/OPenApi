@@ -39,4 +39,8 @@ public class UtilsLog {
     public static void onLoading() {
         UtilsLog.i("数据正在加载......");
     }
+
+    public static void json(String s) {
+        Logger.json(s);
+    }
 }

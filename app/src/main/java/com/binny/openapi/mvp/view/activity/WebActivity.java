@@ -2,6 +2,7 @@ package com.binny.openapi.mvp.view.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -26,7 +27,10 @@ import java.util.regex.Pattern;
 public class WebActivity extends BaseActivity {
 
     private WebView mWebView;
-    private java.lang.String loadUrl;
+    private java.lang.String mLoadUrl;
+    private String mTitle;
+    private String mImgUrl;
+    private String mContent;
 
     private boolean bNeedAdBlock;//是否去出第三方广告链接
 
@@ -34,7 +38,10 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected void handleIntent() {
-        loadUrl = getIntent().getStringExtra("url");
+        mLoadUrl = getIntent().getStringExtra("loadUrl");
+        mTitle= getIntent().getStringExtra("title");
+        mContent= getIntent().getStringExtra("content");
+        mImgUrl= getIntent().getStringExtra("imgUrl");
         bNeedAdBlock = getIntent().getBooleanExtra("adblock", false);
     }
 
@@ -69,7 +76,7 @@ public class WebActivity extends BaseActivity {
         if (bNeedAdBlock) {
             adBlock();
         } else {
-            mWebView.loadUrl(loadUrl);
+            mWebView.loadUrl(mLoadUrl);
         }
 
     }
@@ -91,9 +98,18 @@ public class WebActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mActivity, "分享", Toast.LENGTH_SHORT).show();
-                shareText("1111","33333","ssssss");
+//                shareText("1111","33333", mLoadUrl);
+
+                shareImg(mLoadUrl,mTitle,mContent,Uri.parse(mImgUrl));
             }
+
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        XHttp.getInstance().cancel("adblock");
     }
 
     @Override
@@ -107,7 +123,7 @@ public class WebActivity extends BaseActivity {
 
     private void adBlock() {
         XHttp.getInstance()
-                .get(loadUrl)
+                .get(mLoadUrl)
                 .setTag("adblock")
                 .setOnXHttpCallback(new OnXHttpCallback() {
                     @Override
@@ -117,7 +133,7 @@ public class WebActivity extends BaseActivity {
 //                        ReadStreamOfJson(html);
                         final String regexStr = "<script\\b[^>]*?src=\"([^\"]*?)\"[^>]*></script>";
                         Pattern p = Pattern.compile(regexStr);
-                        String strUrl = loadUrl;
+                        String strUrl = mLoadUrl;
                         String host = "";
                         try {
                             URL url = new URL(strUrl);
@@ -167,6 +183,40 @@ public class WebActivity extends BaseActivity {
         // 设置弹出框标题
         if (title != null && !"".equals(title)) { // 自定义标题
             startActivity(Intent.createChooser(intent, title));
+        } else { // 系统默认标题
+            startActivity(intent);
+        }
+    }
+    /**
+     * 分享图片和文字内容
+     *
+     * @param dlgTitle
+     *            分享对话框标题
+     * @param subject
+     *            主题
+     * @param content
+     *            分享内容（文字）
+     * @param uri
+     *            图片资源URI
+     */
+    private void shareImg(String dlgTitle, String subject, String content,
+                          Uri uri) {
+        if (uri == null) {
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        if (subject != null && !"".equals(subject)) {
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        }
+        if (content != null && !"".equals(content)) {
+            intent.putExtra(Intent.EXTRA_TEXT, content);
+        }
+
+        // 设置弹出框标题
+        if (dlgTitle != null && !"".equals(dlgTitle)) { // 自定义标题
+            startActivity(Intent.createChooser(intent, dlgTitle));
         } else { // 系统默认标题
             startActivity(intent);
         }

@@ -41,7 +41,7 @@ public class JuheHistoryFragment extends AbsJuheBaseFragment implements DataCall
 
     @Override
     public void onSuccess(HistoryDayBean historyDayBean) {
-        UtilsLog.i(historyDayBean.toString());
+        UtilsLog.json(historyDayBean.toString());
         int size = historyDayBean.getResult().size();
         for (int i = 0; i < size; i++) {
             mHistoryDayBeanList.add(historyDayBean.getResult().get(i));
@@ -52,5 +52,10 @@ public class JuheHistoryFragment extends AbsJuheBaseFragment implements DataCall
     @Override
     protected void getData() {
         new HistoryTodayPresenter().getDate(this);
+    }
+
+    @Override
+    protected void loadNet() {
+
     }
 }

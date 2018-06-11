@@ -40,13 +40,13 @@ public class JuheViewHolderHelper implements IViewHolderHelper <JuheViewHolder,J
 
     @Override
     public void bindListDataToView(Context context, List<JuheNewsBean.ResultBean.DataBean> iBaseBeanList, JuheViewHolder viewHolder, int position) {
-        String url = iBaseBeanList.get(position).getThumbnail_pic_s();
-        if (TextUtils.isEmpty(url)) {
-            url= iBaseBeanList.get(position).getThumbnail_pic_s02();
-        }if (TextUtils.isEmpty(url)) {
-            url= iBaseBeanList.get(position).getThumbnail_pic_s03();
+        String imgUrl = iBaseBeanList.get(position).getThumbnail_pic_s();
+        if (TextUtils.isEmpty(imgUrl)) {
+            imgUrl= iBaseBeanList.get(position).getThumbnail_pic_s02();
+        }if (TextUtils.isEmpty(imgUrl)) {
+            imgUrl= iBaseBeanList.get(position).getThumbnail_pic_s03();
         }
-        Glide.with(context).load(url)
+        Glide.with(context).load(imgUrl)
                 .asBitmap()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
                 .thumbnail(0.1f)//先加载原图大小的十分之一
@@ -57,17 +57,24 @@ public class JuheViewHolderHelper implements IViewHolderHelper <JuheViewHolder,J
                         viewHolder.mImageView.setImageBitmap(resource);
                     }
                 });
-        viewHolder.mAuthor.setText("来源："+iBaseBeanList.get(position).getAuthor_name());
+        String content = iBaseBeanList.get(position).getAuthor_name();
+
+        viewHolder.mAuthor.setText("来源："+content);
         viewHolder.mDate.setText(iBaseBeanList.get(position).getDate());
-        viewHolder.mTitle.setText(iBaseBeanList.get(position).getTitle());
+        String title = iBaseBeanList.get(position).getTitle();
+        viewHolder.mTitle.setText(title);
         String loadUrl = iBaseBeanList.get(position).getUrl();
         MainActivity activity = (MainActivity) context;
+        String finalImgUrl = imgUrl;
         viewHolder.mRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, WebActivity.class);
                 UtilsLog.i(loadUrl);
-                intent.putExtra("url",loadUrl);
+                intent.putExtra("loadUrl",loadUrl);
+                intent.putExtra("imgUrl", finalImgUrl);
+                intent.putExtra("title", finalImgUrl);
+                intent.putExtra("content", content);
                 intent.putExtra("adblock",true);
                 activity.intoActivityWithAnimotion(intent);
             }

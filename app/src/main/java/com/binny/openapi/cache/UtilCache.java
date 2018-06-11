@@ -28,6 +28,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Environment;
 
+import com.bean.logger.JJLogger;
+
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
@@ -111,7 +113,7 @@ public final class UtilCache {
         } else {
             cachePath = context.getCacheDir().getPath();
         }
-//        JJLogger.logError("getDiskCacheDirPath",cachePath + File.separator + uniqueName);
+        JJLogger.logError("getDiskCacheDirPath",cachePath + File.separator + uniqueName);
 
         return new File(cachePath + File.separator + uniqueName);
     }
