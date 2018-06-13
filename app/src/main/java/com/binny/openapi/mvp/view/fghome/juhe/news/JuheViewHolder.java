@@ -4,6 +4,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.binny.openapi.widget.MyTextView;
 import com.smart.holder.iinterface.IViewHolder;
 
 /**
@@ -12,7 +13,7 @@ import com.smart.holder.iinterface.IViewHolder;
  */
 
 public class JuheViewHolder implements IViewHolder {
-    TextView mTitle;
+    MyTextView mTitle;
     TextView mAuthor;
     TextView mDate;
     ImageView mImageView;

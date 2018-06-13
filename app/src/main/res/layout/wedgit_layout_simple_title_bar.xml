@@ -2,7 +2,7 @@
 <com.binny.openapi.widget.titlebar.SimpleTitleBar xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/simple_title_bar"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
+    android:layout_height="?attr/actionBarSize"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:background="@color/crimson">

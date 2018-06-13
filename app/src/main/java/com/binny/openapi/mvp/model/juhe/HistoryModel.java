@@ -24,7 +24,7 @@ public class HistoryModel {
 
     public void getArticle(DataCallback<HistoryDayBean> mCallback) {
         IJuheService service = UtilsRetrofit.getJuheService();
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("d/M");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("M/d");
         String date = format.format(Calendar.getInstance().getTime());
         service.getHistoryDayDate(JUHE_HOSITORY_KEY, date)
                 .subscribeOn(Schedulers.io())

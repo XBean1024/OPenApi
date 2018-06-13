@@ -12,7 +12,7 @@ ext {
             appcompat_v7             : 'com.android.support:appcompat-v7:27.1.1',
 //            constraint               : 'com.android.support.constraint:constraint-layout:1.1.0',
             design                   : 'com.android.support:design:27.1.1',
-            circleImageview          : 'de.hdodenhof:circleimageview:2.2.0',
+            circleImageview          : 'com.makeramen:roundedimageview:2.3.0',
             recyclerview             : 'com.android.support:recyclerview-v7:27.1.1',
 
             gson                     : 'com.google.code.gson:gson:2.8.4',

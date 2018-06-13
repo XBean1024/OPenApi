@@ -2,7 +2,6 @@ package com.binny.openapi.mvp.view.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -29,7 +28,6 @@ public class WebActivity extends BaseActivity {
     private WebView mWebView;
     private java.lang.String mLoadUrl;
     private String mTitle;
-    private String mImgUrl;
     private String mContent;
 
     private boolean bNeedAdBlock;//是否去出第三方广告链接
@@ -41,7 +39,6 @@ public class WebActivity extends BaseActivity {
         mLoadUrl = getIntent().getStringExtra("loadUrl");
         mTitle= getIntent().getStringExtra("title");
         mContent= getIntent().getStringExtra("content");
-        mImgUrl= getIntent().getStringExtra("imgUrl");
         bNeedAdBlock = getIntent().getBooleanExtra("adblock", false);
     }
 
@@ -98,9 +95,7 @@ public class WebActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mActivity, "分享", Toast.LENGTH_SHORT).show();
-//                shareText("1111","33333", mLoadUrl);
-
-                shareImg(mLoadUrl,mTitle,mContent,Uri.parse(mImgUrl));
+                shareText("1111","33333", mLoadUrl);
             }
 
         });
@@ -187,38 +182,5 @@ public class WebActivity extends BaseActivity {
             startActivity(intent);
         }
     }
-    /**
-     * 分享图片和文字内容
-     *
-     * @param dlgTitle
-     *            分享对话框标题
-     * @param subject
-     *            主题
-     * @param content
-     *            分享内容（文字）
-     * @param uri
-     *            图片资源URI
-     */
-    private void shareImg(String dlgTitle, String subject, String content,
-                          Uri uri) {
-        if (uri == null) {
-            return;
-        }
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_STREAM, uri);
-        if (subject != null && !"".equals(subject)) {
-            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        }
-        if (content != null && !"".equals(content)) {
-            intent.putExtra(Intent.EXTRA_TEXT, content);
-        }
 
-        // 设置弹出框标题
-        if (dlgTitle != null && !"".equals(dlgTitle)) { // 自定义标题
-            startActivity(Intent.createChooser(intent, dlgTitle));
-        } else { // 系统默认标题
-            startActivity(intent);
-        }
-    }
 }

@@ -3,6 +3,7 @@ package com.binny.openapi.mvp.view.fgmine;
 import android.Manifest;
 import android.os.Environment;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,7 +16,6 @@ import com.binny.openapi.util.UtilsPerMission;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.scwang.wave.MultiWaveHeader;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -27,7 +27,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class MineFragment extends BaseFragment {
     private MultiWaveHeader waveHeader;
-    private CircleImageView profileImage;
+    private ImageView profileImage;
     private RelativeLayout rlClearCache;
     private TextView tvCacheSize;
 

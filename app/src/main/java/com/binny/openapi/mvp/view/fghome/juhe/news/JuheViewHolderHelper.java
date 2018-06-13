@@ -23,10 +23,9 @@ import java.util.List;
 
 /**
  * Created by binny on 2018/6/8.
- *
  */
 
-public class JuheViewHolderHelper implements IViewHolderHelper <JuheViewHolder,JuheNewsBean.ResultBean.DataBean>{
+public class JuheViewHolderHelper implements IViewHolderHelper<JuheViewHolder, JuheNewsBean.ResultBean.DataBean> {
     @Override
     public IViewHolder initItemViewHolder(JuheViewHolder viewHolder, View convertView) {
         viewHolder = new JuheViewHolder();
@@ -59,27 +58,26 @@ public class JuheViewHolderHelper implements IViewHolderHelper <JuheViewHolder,J
                 });
         String content = iBaseBeanList.get(position).getAuthor_name();
 
-        viewHolder.mAuthor.setText("来源："+content);
+        viewHolder.mAuthor.setText("来源：" + content);
         viewHolder.mDate.setText(iBaseBeanList.get(position).getDate());
         String title = iBaseBeanList.get(position).getTitle();
         viewHolder.mTitle.setText(title);
         String loadUrl = iBaseBeanList.get(position).getUrl();
         MainActivity activity = (MainActivity) context;
-        String finalImgUrl = imgUrl;
         viewHolder.mRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, WebActivity.class);
                 UtilsLog.i(loadUrl);
-                intent.putExtra("loadUrl",loadUrl);
-                intent.putExtra("imgUrl", finalImgUrl);
-                intent.putExtra("title", finalImgUrl);
+                intent.putExtra("loadUrl", loadUrl);
+                intent.putExtra("title", title);
                 intent.putExtra("content", content);
-                intent.putExtra("adblock",true);
+                intent.putExtra("adblock", true);
                 activity.intoActivityWithAnimotion(intent);
             }
         });
     }
+
 
 
 }

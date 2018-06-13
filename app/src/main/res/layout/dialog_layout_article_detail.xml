@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/article_dialog_vp"
     android:layout_width="wrap_content"
-    android:gravity="center"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/dialog_bg">
 
     <LinearLayout
@@ -13,6 +12,7 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
         <LinearLayout
+            android:gravity="center"
             android:layout_gravity="center"
             android:paddingTop="@dimen/dp_10"
             android:paddingBottom="@dimen/dp_10"

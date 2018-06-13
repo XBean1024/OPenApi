@@ -1,133 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:background="@color/crimson"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/crimson"
+    android:orientation="vertical">
 
     <android.support.design.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <android.support.design.widget.AppBarLayout
-                android:id="@+id/header_vg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:id="@+id/header_vg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <android.support.design.widget.CollapsingToolbarLayout
-                    app:layout_scrollFlags="scroll"
-                    android:background="@color/crimson"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/crimson"
+                app:layout_scrollFlags="scroll">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/header"
-                            android:layout_width="wrap_content"
-                            android:layout_height="96dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/value_30dp"
-                            android:src="@mipmap/header"
-                            app:civ_border_color="#FF000000"
-                            app:civ_border_width="2dp"/>
+                    <ImageView
+                        android:id="@+id/header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="96dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/value_30dp"
+                        android:src="@mipmap/header" />
 
                     <TextView
-                            android:id="@+id/name"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/header"
-                            android:layout_marginTop="@dimen/value_10dp"
-                            android:gravity="center"
-                            android:shadowColor="@color/darkorange"
-                            android:shadowDx="0"
-                            android:shadowDy="0"
-                            android:shadowRadius="25"
-                            android:text="欧阳慕远"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/value_20sp"
-                            android:textStyle="italic"/>
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/header"
+                        android:layout_marginTop="@dimen/value_10dp"
+                        android:gravity="center"
+                        android:shadowColor="@color/darkorange"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="25"
+                        android:text="欧阳慕远"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/value_20sp"
+                        android:textStyle="italic" />
                 </RelativeLayout>
             </android.support.design.widget.CollapsingToolbarLayout>
 
             <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/value_40dp"
-                    android:background="@color/orange"
-                    android:gravity="center"
-                    android:text="悬浮的部分"/>
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/value_40dp"
+                android:background="@color/orange"
+                android:gravity="center"
+                android:text="悬浮的部分" />
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.widget.NestedScrollView
-                android:layout_width="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <RelativeLayout
-                        style="@style/app_setting_container">
+                <RelativeLayout style="@style/app_setting_container">
 
                     <TextView
-                            style="@style/app_setting_text_left"
-                            android:drawableLeft="@mipmap/star"
-                            android:text="   我的收藏"/>
+                        style="@style/app_setting_text_left"
+                        android:drawableLeft="@mipmap/star"
+                        android:text="我&#8194;收&#8194;藏" />
 
-                    <TextView style="@style/app_setting_text_right"/>
+                    <TextView style="@style/app_setting_text_right" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                        android:id="@+id/test"
-                        style="@style/app_setting_container">
+                    android:id="@+id/test"
+                    style="@style/app_setting_container">
 
                     <TextView
 
-                            style="@style/app_setting_text_left"
-                            android:drawableLeft="@mipmap/clear"
-                            android:text="   测试"/>
+                        style="@style/app_setting_text_left"
+                        android:drawableLeft="@mipmap/clear"
+                        android:text="测&#8194;&#8194;&#8194;&#8194;试" />
 
-                    <TextView style="@style/app_setting_text_right"/>
+                    <TextView style="@style/app_setting_text_right" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                        android:id="@+id/rl_clear_cache"
-                        style="@style/app_setting_container">
+                    android:id="@+id/rl_clear_cache"
+                    style="@style/app_setting_container">
 
                     <TextView
-                            style="@style/app_setting_text_left"
-                            android:drawableLeft="@mipmap/clear"
-                            android:text="   清除缓存"/>
+                        style="@style/app_setting_text_left"
+                        android:drawableLeft="@mipmap/clear"
+                        android:text="清除缓存" />
 
                     <TextView
-                            android:id="@+id/tv_cache_size"
-                            style="@style/app_setting_text_right"/>
+                        android:id="@+id/tv_cache_size"
+                        style="@style/app_setting_text_right" />
                 </RelativeLayout>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>
+
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/value_100dp">
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/value_100dp">
+
         <ImageView
-                android:layout_centerInParent="true"
-                android:layout_alignParentLeft="true"
-                android:layout_width="wrap_content"
-                android:layout_marginLeft="@dimen/value_10dp"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/message"
-                android:contentDescription="setting"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/value_10dp"
+            android:background="@mipmap/message"
+            android:contentDescription="setting" />
+
         <ImageView
-                android:layout_centerInParent="true"
-                android:layout_alignParentEnd="true"
-                android:layout_width="wrap_content"
-                android:layout_marginRight="@dimen/value_10dp"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/setting"
-                android:contentDescription="setting"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/value_10dp"
+            android:background="@mipmap/setting"
+            android:contentDescription="setting" />
     </RelativeLayout>
 </RelativeLayout>

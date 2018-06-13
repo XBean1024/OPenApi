@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.view.fghome.juhe.abs;
 
 import android.view.View;
-import android.widget.GridView;
+import android.widget.ListView;
 
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.view.base.BaseFragment;
@@ -25,7 +25,7 @@ public abstract class AbsJuheBaseFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-        GridView gridView = view.findViewById(R.id.home_common_gv);
+        ListView gridView = view.findViewById(R.id.home_common_gv);
         initAdapter();
         gridView.setAdapter(mCommonAdapter);
 

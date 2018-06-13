@@ -5,19 +5,14 @@
     android:paddingLeft="@dimen/dp_10"
     android:paddingRight="@dimen/dp_10"
     android:id="@+id/item_rl"
-    android:background="@color/white">
+    android:background="@drawable/article_card_view_shape_blue">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/home_orange"
-        />
-    <TextView
+    <com.binny.openapi.widget.MyTextView
+        android:layout_margin="@dimen/dp_5"
         android:id="@+id/juhe_news_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" 标题"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
     <ImageView
         android:id="@+id/juhe_news_img_iv"
@@ -27,12 +22,14 @@
         android:scaleType="fitXY" />
 
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/juhe_news_author_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/juhe_news_img_iv" />
 
     <TextView
+        android:layout_margin="@dimen/dp_5"
         android:id="@+id/juhe_news_date_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
