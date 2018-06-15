@@ -3,6 +3,7 @@ package com.binny.openapi.mvp.view.fghome.juhe.news;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -20,6 +21,8 @@ import com.smart.holder.iinterface.IViewHolder;
 import com.smart.holder.iinterface.IViewHolderHelper;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
  * Created by binny on 2018/6/8.
@@ -46,16 +49,9 @@ public class JuheViewHolderHelper implements IViewHolderHelper<JuheViewHolder, J
             imgUrl= iBaseBeanList.get(position).getThumbnail_pic_s03();
         }
         Glide.with(context).load(imgUrl)
-                .asBitmap()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
-                .thumbnail(0.1f)//先加载原图大小的十分之一
-                .into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-
-                        viewHolder.mImageView.setImageBitmap(resource);
-                    }
-                });
+                .bitmapTransform(new RoundedCornersTransformation(context, 30, 0,
+                        RoundedCornersTransformation.CornerType.ALL))
+                .into(viewHolder.mImageView);
         String content = iBaseBeanList.get(position).getAuthor_name();
 
         viewHolder.mAuthor.setText("来源：" + content);

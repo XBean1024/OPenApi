@@ -8,7 +8,7 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/home_tab_layout"
         android:layout_width="match_parent"
-        app:tabIndicatorColor="@color/colorBlue"
+        app:tabIndicatorColor="@color/crimson"
         app:tabGravity="center"
         app:tabPaddingStart="12dp"
         app:tabPaddingEnd="8dp"

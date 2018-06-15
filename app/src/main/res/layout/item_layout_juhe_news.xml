@@ -2,13 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/dp_10"
-    android:paddingRight="@dimen/dp_10"
+    android:padding="@dimen/dp_10"
     android:id="@+id/item_rl"
     android:background="@drawable/article_card_view_shape_blue">
 
     <com.binny.openapi.widget.MyTextView
-        android:layout_margin="@dimen/dp_5"
         android:id="@+id/juhe_news_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,8 +27,8 @@
         android:layout_below="@id/juhe_news_img_iv" />
 
     <TextView
-        android:layout_margin="@dimen/dp_5"
         android:id="@+id/juhe_news_date_tv"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
