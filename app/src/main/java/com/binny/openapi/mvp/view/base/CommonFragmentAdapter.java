@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.view.fghome;
+package com.binny.openapi.mvp.view.base;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,11 +13,13 @@ import java.util.List;
 /**
  * author  binny
  * date 5/22
+ *
+ * 嵌套 适配器
  */
-public class HomeFragmentAdapter extends FragmentStatePagerAdapter {
+public class CommonFragmentAdapter extends FragmentStatePagerAdapter {
     private List<BaseFragment> mFragmentList;
     private String [] mTitles;
-    public HomeFragmentAdapter(final FragmentManager fm, final List<BaseFragment> fragmentList, final String[] titles) {
+    public CommonFragmentAdapter(final FragmentManager fm, final List<BaseFragment> fragmentList, final String[] titles) {
         super(fm);
         mFragmentList = fragmentList;
         mTitles = titles;

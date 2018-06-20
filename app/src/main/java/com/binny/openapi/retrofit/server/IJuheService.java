@@ -8,9 +8,9 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-import static com.binny.openapi.constant.UrlConstant.JUHE_HISTORY_DETAIL_URL;
-import static com.binny.openapi.constant.UrlConstant.JUHE_HISTORY_URL;
-import static com.binny.openapi.constant.UrlConstant.JUHE_NEWS_URL;
+import static com.binny.openapi.constant.ConstantUrl.JUHE_HISTORY_DETAIL_URL;
+import static com.binny.openapi.constant.ConstantUrl.JUHE_HISTORY_URL;
+import static com.binny.openapi.constant.ConstantUrl.JUHE_NEWS_URL;
 
 /**
  * Created by binny on 2018/5/30.

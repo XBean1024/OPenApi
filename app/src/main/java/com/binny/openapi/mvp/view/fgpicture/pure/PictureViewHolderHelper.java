@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.view.fgpicture;
+package com.binny.openapi.mvp.view.fgpicture.pure;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -21,6 +21,8 @@ import com.smart.holder.iinterface.IViewHolder;
 import com.smart.holder.iinterface.IViewHolderHelper;
 
 import java.util.List;
+
+import static com.binny.openapi.constant.ConstantParams.PICTURE_FILE_NAME;
 
 /**
  * author  binny
@@ -66,7 +68,7 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
                     .setOnXHttpCallback(new OnXHttpCallback() {
                         @Override
                         public void onSuccess(final Response response) {
-                            BitmapUtils.savePicture(response.toBitmap(), "美女", System.currentTimeMillis() + url.substring(url.lastIndexOf("."), url.length()));
+                            BitmapUtils.savePicture(response.toBitmap(), PICTURE_FILE_NAME, System.currentTimeMillis() + url.substring(url.lastIndexOf("."), url.length()));
                             Toast.makeText(context, "保存成功！", Toast.LENGTH_SHORT).show();
                         }
 

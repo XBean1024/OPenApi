@@ -1,6 +1,8 @@
 package com.binny.openapi.mvp.view.fgmine;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import com.binny.openapi.R;
 import com.binny.openapi.callback.OnPermissionCallback;
+import com.binny.openapi.constant.ConstantParams;
 import com.binny.openapi.mvp.view.base.BaseFragment;
 import com.binny.openapi.util.FileUtils;
 import com.binny.openapi.util.UtilsLog;
@@ -87,9 +90,25 @@ public class MineFragment extends BaseFragment {
         rlClearCache.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FileUtils.cleanApplicationData(getActivity(), "");
-                String size = getSize();
-                tvCacheSize.setText(size);
+                AlertDialog.Builder  builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("敏感操作，谨慎选择");
+                builder.setMessage("确定要删除所有缓存么，包括文字、picture、音乐和视频?");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FileUtils.cleanApplicationData(getActivity(), ConstantParams.PATH_PICTURE);
+                        String size = getSize();
+                        tvCacheSize.setText(size);
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                            UtilsLog.i("取消删除缓存!");
+                    }
+                });
+                builder.show();
+
             }
         });
     }
@@ -106,8 +125,7 @@ public class MineFragment extends BaseFragment {
     }
 
     private String getSize() {
-        String size = FileUtils.getTotalCacheSize(getActivity(), Environment.getExternalStorageDirectory()
-                .getAbsoluteFile() + "/美女/");
+        String size = FileUtils.getTotalCacheSize(getActivity(), ConstantParams.PATH_PICTURE);
         return size;
     }
 

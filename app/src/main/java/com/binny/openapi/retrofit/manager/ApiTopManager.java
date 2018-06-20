@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.binny.openapi.constant.UrlConstant.TOP_API_BASE_URL;
+import static com.binny.openapi.constant.ConstantUrl.TOP_API_BASE_URL;
 
 /** topApi的接口
  * author  binny

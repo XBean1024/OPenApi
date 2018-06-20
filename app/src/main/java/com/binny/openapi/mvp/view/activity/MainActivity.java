@@ -13,7 +13,7 @@ import com.binny.openapi.mvp.view.base.BaseActivity;
 import com.binny.openapi.mvp.view.fghome.HomeFragment;
 import com.binny.openapi.mvp.view.fgmine.MineFragment;
 import com.binny.openapi.mvp.view.fgmusic.MusicFragment;
-import com.binny.openapi.mvp.view.fgpicture.PictureFragment;
+import com.binny.openapi.mvp.view.fgpicture.pure.PureImgFragment;
 import com.binny.openapi.mvp.view.fgvideo.VideoFragment;
 import com.binny.openapi.util.UtilsLog;
 import com.binny.openapi.util.UtilsPerMission;
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private FragmentTransaction mFragmentTransaction;
 
     private HomeFragment mHomeFragment;
-    private PictureFragment mPictureFragment;
+    private PureImgFragment mPictureFragment;
     private MusicFragment mMusicFragment;
     private VideoFragment mVideoFragment;
     private MineFragment mMineFragment;
@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private void initFragment() {
 
         mHomeFragment = new HomeFragment();
-        mPictureFragment = new PictureFragment();
+        mPictureFragment = new PureImgFragment();
         mMusicFragment = new MusicFragment();
         mVideoFragment = new VideoFragment();
         mMineFragment = new MineFragment();

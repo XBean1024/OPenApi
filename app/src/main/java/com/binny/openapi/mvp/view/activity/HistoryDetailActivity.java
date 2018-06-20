@@ -3,7 +3,7 @@ package com.binny.openapi.mvp.view.activity;
 import android.widget.TextView;
 
 import com.binny.openapi.R;
-import com.binny.openapi.constant.UrlConstant;
+import com.binny.openapi.constant.ConstantUrl;
 import com.binny.openapi.bean.HistoryDetailBean;
 import com.binny.openapi.mvp.view.base.BaseActivity;
 import com.binny.openapi.util.UtilsRetrofit;
@@ -28,7 +28,7 @@ public class HistoryDetailActivity extends BaseActivity {
     protected void initView() {
         mTextView = findViewById(R.id.history_detail);
         IJuheService s = UtilsRetrofit.getJuheService();
-        s.getDetailDate(UrlConstant.JUHE_HOSITORY_KEY,id)
+        s.getDetailDate(ConstantUrl.JUHE_HOSITORY_KEY,id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<HistoryDetailBean>() {

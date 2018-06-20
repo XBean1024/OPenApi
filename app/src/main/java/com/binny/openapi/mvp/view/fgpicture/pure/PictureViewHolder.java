@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.view.fgpicture;
+package com.binny.openapi.mvp.view.fgpicture.pure;
 
 import android.widget.ImageView;
 import android.widget.TextView;

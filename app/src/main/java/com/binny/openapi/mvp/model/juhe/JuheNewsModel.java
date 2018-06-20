@@ -10,7 +10,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.binny.openapi.constant.UrlConstant.JUHE_NEWS_KEY;
+import static com.binny.openapi.constant.ConstantUrl.JUHE_NEWS_KEY;
 
 /**
  * Created by binny on 2018/6/8.

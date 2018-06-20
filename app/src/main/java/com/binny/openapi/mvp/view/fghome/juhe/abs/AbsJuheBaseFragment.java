@@ -20,7 +20,7 @@ public abstract class AbsJuheBaseFragment extends BaseFragment {
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_layout_home_common;
+        return R.layout.fragment_home_juehe_common;
     }
 
     @Override

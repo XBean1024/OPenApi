@@ -46,7 +46,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
         UtilsLog.i(TAG + "    setUserVisibleHint  = " + isVisibleToUser);
         if (mIsFirstBindData && mContainerView != null && isVisibleToUser) {
             mIsFirstBindData = false;
-            getData();
+            getData();//创建其他fragment 时  不加载数据，当 该fragment 可见时，加载数据
         }
     }
 
@@ -105,9 +105,9 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
         }
         if (getUserVisibleHint()) {
             mIsFirstBindData = false;
-            getData();
+            getData();//第一个 可见的 fragment 要加载数据
         }
-        initImmersionBar();
+        afterInitView();
         return mContainerView;
     }
 
@@ -125,11 +125,13 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
     protected abstract void initView(View view);
 
     /**
-     * 实例化下来刷新的框架
-     *
-     * @param containerView
+     * 实例化下来刷新的框架,需要实例化 mRefreshLayout  {@link #mRefreshLayout}
+     * 需要刷新操作 重写此方法
+     * @param containerView 根视图
      */
-    protected abstract void initRefreshView(final View containerView);
+    protected void initRefreshView(final View containerView) {
+
+    }
 
     /**
      * 当孩子需要初始化数据，或者联网请求绑定数据，展示数据的 等等可以重写该方法
@@ -157,7 +159,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
     /**
      * 初始化沉浸式
      */
-    protected void initImmersionBar() {
+    protected void afterInitView() {
         mImmersionBar = ImmersionBar.with(this);
         mImmersionBar.keyboardEnable(true).navigationBarWithKitkatEnable(false).fitsSystemWindows(false).init();
 

@@ -4,7 +4,7 @@ package com.binny.openapi.constant;
  * author  binny
  * date 5/6
  */
-public class UrlConstant {
+public class ConstantUrl {
 
     /*
     * top api

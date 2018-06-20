@@ -24,8 +24,8 @@ public class MusicFragment extends BaseFragment {
     }
 
     @Override
-    protected void initImmersionBar() {
-        super.initImmersionBar();
+    protected void afterInitView() {
+        super.afterInitView();
         mImmersionBar.titleBar(imageView).init();
 
     }

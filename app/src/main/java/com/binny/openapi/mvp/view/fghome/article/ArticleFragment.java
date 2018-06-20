@@ -40,7 +40,7 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_layout_home_article;
+        return R.layout.fragment_home_article;
     }
 
     @Override

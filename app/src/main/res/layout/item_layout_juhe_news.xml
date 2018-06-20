@@ -13,9 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/article_card_view_shape_red"
-        android:paddingLeft="@dimen/value_5dp"
-        android:paddingRight="@dimen/value_5dp">
-
+        android:padding="@dimen/value_5dp"
+        >
         <com.binny.openapi.widget.MyTextView
             android:id="@+id/juhe_news_title_tv"
             android:layout_width="match_parent"
