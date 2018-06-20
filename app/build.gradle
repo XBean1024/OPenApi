@@ -56,7 +56,7 @@ dependencies {
     implementation libs.android_lottie
     implementation libs.permissions
     implementation libs.rxbinding2
-//    implementation libs.image_loader
+    //    implementation libs.image_loader
     implementation libs.recyclerview_adapter
     implementation project(':pinlockview')
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'

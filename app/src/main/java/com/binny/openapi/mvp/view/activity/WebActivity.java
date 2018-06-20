@@ -39,8 +39,8 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void handleIntent() {
         mLoadUrl = getIntent().getStringExtra("loadUrl");
-        mTitle= getIntent().getStringExtra("title");
-        mContent= getIntent().getStringExtra("content");
+        mTitle = getIntent().getStringExtra("title");
+        mContent = getIntent().getStringExtra("content");
         bNeedAdBlock = getIntent().getBooleanExtra("adblock", false);
     }
 
@@ -48,7 +48,7 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void initView() {
         mSimpleTitleBar = findViewById(R.id.simple_title_bar);
-        mSimpleTitleBar.setTitle(mTitle);
+        mSimpleTitleBar.setTitle("");
         mImmersionBar.titleBar(mSimpleTitleBar).init();
         this.mWebView = findViewById(R.id.web_view_protocol);
         WebSettings webSettings = mWebView.getSettings();
@@ -65,29 +65,18 @@ public class WebActivity extends BaseActivity {
         //自适应屏幕
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webSettings.setLoadWithOverviewMode(true);
-        mWebView.setWebViewClient(new WebViewClient(){
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                mSimpleTitleBar.setTitle(view.getTitle());
-                super.onPageFinished(view, url);
-            }
+        mWebView.setWebViewClient(new WebViewClient() {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 adBlock(url);
-                return super.shouldOverrideUrlLoading(view, url);
+                return true;
             }
         });
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
-                setTitle(title);
             }
         });
         if (bNeedAdBlock) {
@@ -114,8 +103,7 @@ public class WebActivity extends BaseActivity {
         }, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mActivity, "分享", Toast.LENGTH_SHORT).show();
-                shareText("1111","33333", mLoadUrl);
+                shareText(mWebView.getTitle(), "33333", mLoadUrl);
             }
 
         });
@@ -129,10 +117,11 @@ public class WebActivity extends BaseActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
-//            mWebView.goBack();// 返回前一个页面
-//            return true;
-//        }
+        UtilsLog.i(mWebView.getUrl());
+        if (keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
+            mWebView.goBack();// 返回前一个页面
+            return true;
+        }
         return super.onKeyDown(keyCode, event);
     }
 
@@ -151,9 +140,9 @@ public class WebActivity extends BaseActivity {
                         String strUrl = url;
                         String host = "";
                         try {
-                            URL url = new URL(strUrl);
-                            host = url.getHost();
-                            strUrl = String.format("%s://%s", url.getProtocol(), url.getHost());
+                            URL urls = new URL(strUrl);
+                            host = urls.getHost();
+                            strUrl = String.format("%s://%s", urls.getProtocol(), urls.getHost());
 
                             Matcher m = p.matcher(html);
                             while (m.find()) {
@@ -163,7 +152,7 @@ public class WebActivity extends BaseActivity {
                             }
 
                             mWebView.loadDataWithBaseURL(strUrl, html,
-                                    "text/html", "utf-8", "file:///android_asset/error_page.html");
+                                    "text/html", "utf-8", url);
                         } catch (MalformedURLException e) {
                             e.printStackTrace();
                         }
@@ -180,9 +169,9 @@ public class WebActivity extends BaseActivity {
     /**
      * 分享文字内容
      *
-     * @param title 分享对话框标题
-     * @param subject  主题
-     * @param content  分享内容（文字）
+     * @param title   分享对话框标题
+     * @param subject 主题
+     * @param content 分享内容（文字）
      */
     private void shareText(String title, String subject, String content) {
         if (content == null || "".equals(content)) {
@@ -191,10 +180,10 @@ public class WebActivity extends BaseActivity {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         if (subject != null && !"".equals(subject)) {
-            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "rrrrr");
         }
 
-        intent.putExtra(Intent.EXTRA_TEXT, content);
+        intent.putExtra(Intent.EXTRA_TEXT, title + "\n" + content);
 
         // 设置弹出框标题
         if (title != null && !"".equals(title)) { // 自定义标题
