@@ -6,9 +6,9 @@ import com.binny.openapi.R;
 import com.binny.openapi.bean.HistoryDayBean;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.juhe.HistoryTodayPresenter;
-import com.binny.openapi.mvp.view.fghome.juhe.abs.AbsJuheBaseFragment;
+import com.binny.openapi.mvp.view.base.AbsNavigationContentFragment;
 import com.binny.openapi.util.UtilsLog;
-import com.smart.holder.CommonAdapter;
+import com.smart.holder.iinterface.IViewHolderHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +18,9 @@ import java.util.List;
  *
  */
 
-public class JuheHistoryFragment extends AbsJuheBaseFragment implements DataCallback<HistoryDayBean> {
+public class HistoryViewHolderFragment extends AbsNavigationContentFragment implements DataCallback<HistoryDayBean> {
     protected List<HistoryDayBean.ResultBean> mHistoryDayBeanList = new ArrayList<>();
 
-    @Override
-    protected void initAdapter() {
-        mCommonAdapter = new CommonAdapter(getActivity(),mHistoryDayBeanList, R.layout.item_layout_home_history_lv,new HistoryTodayViewHolderHelper());
-
-    }
     @Override
     public void onError(String result) {
         UtilsLog.e(result);
@@ -48,6 +43,21 @@ public class JuheHistoryFragment extends AbsJuheBaseFragment implements DataCall
     }
 
     @Override
+    protected IViewHolderHelper initViewHolderHelper() {
+        return new HistoryTodayViewHolderHelper();
+    }
+
+    @Override
+    protected int initItem() {
+        return R.layout.item_fragment_home_history_lv;
+    }
+
+    @Override
+    protected List initListBean() {
+        return mHistoryDayBeanList;
+    }
+
+    @Override
     public void onSuccess(HistoryDayBean historyDayBean) {
         int size = historyDayBean.getResult().size();
         for (int i = 0; i < size; i++) {
@@ -61,8 +71,4 @@ public class JuheHistoryFragment extends AbsJuheBaseFragment implements DataCall
         new HistoryTodayPresenter().getDate(this);
     }
 
-    @Override
-    protected void loadNet() {
-
-    }
 }

@@ -5,7 +5,7 @@ import android.widget.TextView;
 import com.binny.openapi.R;
 import com.binny.openapi.constant.ConstantUrl;
 import com.binny.openapi.bean.HistoryDetailBean;
-import com.binny.openapi.mvp.view.base.BaseActivity;
+import com.binny.openapi.mvp.view.base.AbsBaseActivity;
 import com.binny.openapi.util.UtilsRetrofit;
 import com.binny.openapi.retrofit.server.IJuheService;
 import com.binny.openapi.util.UtilsLog;
@@ -15,7 +15,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class HistoryDetailActivity extends BaseActivity {
+public class HistoryDetailActivity extends AbsBaseActivity {
 
     private String id ;
     private TextView mTextView;

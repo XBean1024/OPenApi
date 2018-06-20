@@ -3,7 +3,6 @@ package com.binny.openapi.mvp.view.fgmine;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 import com.binny.openapi.R;
 import com.binny.openapi.callback.OnPermissionCallback;
 import com.binny.openapi.constant.ConstantParams;
-import com.binny.openapi.mvp.view.base.BaseFragment;
+import com.binny.openapi.mvp.view.base.AbsBaseFragment;
 import com.binny.openapi.util.FileUtils;
 import com.binny.openapi.util.UtilsLog;
 import com.binny.openapi.util.UtilsPerMission;
@@ -28,7 +27,7 @@ import io.reactivex.disposables.Disposable;
  * author  binny
  * date 5/9
  */
-public class MineFragment extends BaseFragment {
+public class MineFragment extends AbsBaseFragment {
     private MultiWaveHeader waveHeader;
     private ImageView profileImage;
     private RelativeLayout rlClearCache;

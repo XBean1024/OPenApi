@@ -6,8 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
-import com.binny.openapi.mvp.view.base.BaseFragment;
-
 import java.util.List;
 
 /**
@@ -17,9 +15,9 @@ import java.util.List;
  * 嵌套 适配器
  */
 public class CommonFragmentAdapter extends FragmentStatePagerAdapter {
-    private List<BaseFragment> mFragmentList;
+    private List<AbsBaseFragment> mFragmentList;
     private String [] mTitles;
-    public CommonFragmentAdapter(final FragmentManager fm, final List<BaseFragment> fragmentList, final String[] titles) {
+    public CommonFragmentAdapter(final FragmentManager fm, final List<AbsBaseFragment> fragmentList, final String[] titles) {
         super(fm);
         mFragmentList = fragmentList;
         mTitles = titles;

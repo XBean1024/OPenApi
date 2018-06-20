@@ -15,15 +15,15 @@ import java.util.List;
  * @date 2018/6/20 14:24
  * @Description: 底部导航栏的容器类
  */
-public abstract class NavigationContainerFragment extends BaseFragment {
+public abstract class AbsNavigationContainerFragment extends AbsBaseFragment {
 
     protected ViewPager mViewPager;
     protected TabLayout mTab;
     private View mTopView;
 
-    protected List<BaseFragment> mFragments = new ArrayList<>();
+    protected List<AbsBaseFragment> mFragments = new ArrayList<>();
 
-    public NavigationContainerFragment() {
+    public AbsNavigationContainerFragment() {
         super();
 
     }
@@ -71,7 +71,7 @@ public abstract class NavigationContainerFragment extends BaseFragment {
      * 每一个 tab 对应的 fragment
      * @param fragments 集合
      */
-    protected abstract void initFragments(List<BaseFragment> fragments);
+    protected abstract void initFragments(List<AbsBaseFragment> fragments);
 
 
 

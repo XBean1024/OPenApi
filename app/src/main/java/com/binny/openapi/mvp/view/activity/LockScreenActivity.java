@@ -9,10 +9,10 @@ import com.andrognito.pinlockview.IndicatorDots;
 import com.andrognito.pinlockview.PinLockListener;
 import com.andrognito.pinlockview.PinLockView;
 import com.binny.openapi.R;
-import com.binny.openapi.mvp.view.base.BaseActivity;
+import com.binny.openapi.mvp.view.base.AbsBaseActivity;
 import com.binny.openapi.util.UtilsLog;
 
-public class LockScreenActivity extends BaseActivity implements PinLockListener {
+public class LockScreenActivity extends AbsBaseActivity implements PinLockListener {
 
 
     private PinLockView mPinLockView;

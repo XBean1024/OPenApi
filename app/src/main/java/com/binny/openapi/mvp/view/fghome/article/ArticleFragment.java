@@ -8,7 +8,7 @@ import com.binny.openapi.R;
 import com.binny.openapi.bean.ArticleBean;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.mine.ArticlePresenter;
-import com.binny.openapi.mvp.view.base.BaseFragment;
+import com.binny.openapi.mvp.view.base.AbsBaseFragment;
 import com.binny.openapi.util.UtilSP;
 import com.binny.openapi.util.Utils;
 import com.binny.openapi.util.UtilsLog;
@@ -23,7 +23,7 @@ import java.util.List;
  * author  binny
  * date 5/22
  */
-public class ArticleFragment extends BaseFragment implements DataCallback<ArticleBean> {
+public class ArticleFragment extends AbsBaseFragment implements DataCallback<ArticleBean> {
     private ArticlePresenter mArticlePresenter;
 
     private List<ArticleBean> mArticleBeans = new ArrayList<>();
@@ -48,7 +48,7 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
 //        ListView listView = view.findViewById(R.id.article_list_view);
         RecyclerView listView = view.findViewById(R.id.article_list_view);
         listView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        mArticleAdapter = new ArticleAdapter(R.layout.item_layout_home_article_lv, mArticleBeans);
+        mArticleAdapter = new ArticleAdapter(R.layout.item_fragment_home_article_lv, mArticleBeans);
         mArticleAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         mArticleAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
@@ -77,7 +77,7 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
         });
         listView.setAdapter(mArticleAdapter);
 
-//        mCommonAdapter = new CommonAdapter<>(getActivity(), mArticleBeans, R.layout.item_layout_home_article_lv, new ArticleViewHolderHelper());
+//        mCommonAdapter = new CommonAdapter<>(getActivity(), mArticleBeans, R.layout.item_fragment_home_article_lv, new ArticleViewHolderHelper());
 //        listView.setAdapter(mCommonAdapter);
     }
 

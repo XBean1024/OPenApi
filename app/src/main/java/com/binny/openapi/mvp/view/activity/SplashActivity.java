@@ -3,10 +3,10 @@ package com.binny.openapi.mvp.view.activity;
 import android.os.Handler;
 
 import com.binny.openapi.R;
-import com.binny.openapi.mvp.view.base.BaseActivity;
+import com.binny.openapi.mvp.view.base.AbsBaseActivity;
 
 
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends AbsBaseActivity {
 
 
     @Override

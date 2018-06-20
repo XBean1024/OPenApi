@@ -21,7 +21,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
  * author  binny
  * date 5/9
  */
-public abstract class BaseFragment extends Fragment implements OnRefreshListener, OnLoadMoreListener {
+public abstract class AbsBaseFragment extends Fragment implements OnRefreshListener, OnLoadMoreListener {
 
     protected Activity mActivity;
     protected final String TAG;
@@ -32,7 +32,7 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
     protected boolean mIsLoadMore;
 
     protected ImmersionBar mImmersionBar;
-    public BaseFragment() {
+    public AbsBaseFragment() {
         this.TAG = this.getClass().getSimpleName();
     }
 
@@ -135,6 +135,8 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
 
     /**
      * 当孩子需要初始化数据，或者联网请求绑定数据，展示数据的 等等可以重写该方法
+     *
+     * 加载本地数据 或者网络数据
      */
     protected abstract void getData();
 
@@ -145,6 +147,9 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
         onRefresh();
     }
 
+    /**
+     * 下拉刷新操作 ，用子类来实现
+     */
     protected abstract void onRefresh();
 
     @Override
@@ -154,6 +159,9 @@ public abstract class BaseFragment extends Fragment implements OnRefreshListener
         onLoadMore();
     }
 
+    /**
+     * 加载更多的逻辑由子类来实现
+     */
     protected abstract void onLoadMore();
 
     /**

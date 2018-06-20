@@ -9,11 +9,11 @@ import android.widget.RadioGroup;
 
 import com.binny.openapi.R;
 import com.binny.openapi.callback.OnPermissionCallback;
-import com.binny.openapi.mvp.view.base.BaseActivity;
+import com.binny.openapi.mvp.view.base.AbsBaseActivity;
 import com.binny.openapi.mvp.view.fghome.HomeFragment;
 import com.binny.openapi.mvp.view.fgmine.MineFragment;
 import com.binny.openapi.mvp.view.fgmusic.MusicFragment;
-import com.binny.openapi.mvp.view.fgpicture.pure.PureImgFragment;
+import com.binny.openapi.mvp.view.fgpicture.PictureFragment;
 import com.binny.openapi.mvp.view.fgvideo.VideoFragment;
 import com.binny.openapi.util.UtilsLog;
 import com.binny.openapi.util.UtilsPerMission;
@@ -26,7 +26,7 @@ import java.util.List;
 * 切换fragment
 *  */
 
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends AbsBaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup mRadioGroup;
     private RadioButton mButtonHome;
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private FragmentTransaction mFragmentTransaction;
 
     private HomeFragment mHomeFragment;
-    private PureImgFragment mPictureFragment;
+    private PictureFragment mPictureFragment;
     private MusicFragment mMusicFragment;
     private VideoFragment mVideoFragment;
     private MineFragment mMineFragment;
@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private void initFragment() {
 
         mHomeFragment = new HomeFragment();
-        mPictureFragment = new PureImgFragment();
+        mPictureFragment = new PictureFragment();
         mMusicFragment = new MusicFragment();
         mVideoFragment = new VideoFragment();
         mMineFragment = new MineFragment();

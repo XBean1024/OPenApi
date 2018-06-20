@@ -1,15 +1,13 @@
 package com.binny.openapi.mvp.view.fgpicture.pure;
 
 import android.view.View;
-import android.widget.ListView;
 
 import com.binny.openapi.R;
 import com.binny.openapi.bean.PictureBean;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.picture.PresenterPicture;
-import com.binny.openapi.mvp.view.base.BaseFragment;
+import com.binny.openapi.mvp.view.base.AbsNavigationContentFragment;
 import com.binny.openapi.util.UtilsLog;
-import com.smart.holder.CommonAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +16,12 @@ import java.util.List;
 /**
  * author  binny
  * date 5/9
- *
+ * <p>
  * 纯图片 展示
  * {@link com.binny.openapi.constant.ConstantUrl#TOP_API_URL_PICTURE}
- *
  */
-public class PureImgFragment extends BaseFragment implements DataCallback<PictureBean> {
+public class PureImgFragment extends AbsNavigationContentFragment implements DataCallback<PictureBean> {
 
-    private ListView mListView;
-    private CommonAdapter mAdapter;
     private List<PictureBean.DataBean> mPictureBeans = new ArrayList<>();
 
     private PresenterPicture mPresenterPicture;
@@ -45,6 +40,8 @@ public class PureImgFragment extends BaseFragment implements DataCallback<Pictur
         mPresenterPicture.getDate(mPage);
     }
 
+
+
     @Override
     protected void onLoadMore() {
         UtilsLog.i("上啦刷新。。。。");
@@ -52,23 +49,27 @@ public class PureImgFragment extends BaseFragment implements DataCallback<Pictur
         mPresenterPicture.getDate(mPage);
     }
 
+
     @Override
-    protected void initView(View view) {
-        mListView = view.findViewById(R.id.picture_lv);
-        mAdapter = new CommonAdapter(getActivity(), mPictureBeans, R.layout.item_layout_picture_lv, new PictureViewHolderHelper());
-        mPresenterPicture = new PresenterPicture(this);
-        mListView.setAdapter(mAdapter);
+    protected PictureViewHolderHelper initViewHolderHelper() {
+        return new PictureViewHolderHelper();
+    }
+
+    @Override
+    protected int initItem() {
+        return R.layout.item_fragment_picture_lv;
+    }
+
+    @Override
+    protected List initListBean() {
+        return mPictureBeans;
     }
 
     @Override
     protected void initRefreshView(final View containerView) {
-        mRefreshLayout = containerView.findViewById(R.id.picture_refreshLayout);
+        mRefreshLayout = containerView.findViewById(R.id.common_refreshLayout);
     }
 
-    @Override
-    protected int getFragmentLayout() {
-        return R.layout.fragment_pure;
-    }
 
     @Override
     public void onError(final String result) {
@@ -90,7 +91,7 @@ public class PureImgFragment extends BaseFragment implements DataCallback<Pictur
     public void onSuccess(final PictureBean pictureBean) {
         int size = pictureBean.getData().size();
         PictureBean.DataBean dataBean;
-        UtilsLog.i(" 拉取几张图片 = "+size);
+        UtilsLog.i(" 拉取几张图片 = " + size);
         for (int i = 0; i < size; i++) {
             dataBean = pictureBean.getData().get(i);
             if (mIsRefresh) {
@@ -101,7 +102,7 @@ public class PureImgFragment extends BaseFragment implements DataCallback<Pictur
         }
         mIsRefresh = false;
         mIsLoadMore = false;
-        mAdapter.notifyDataSetChanged();
+        mCommonAdapter.notifyDataSetChanged();
         mRefreshLayout.finishRefresh();
     }
 }

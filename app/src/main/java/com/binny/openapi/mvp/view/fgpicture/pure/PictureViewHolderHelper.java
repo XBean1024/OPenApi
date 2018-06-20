@@ -12,6 +12,7 @@ import com.bean.xhttp.response.Response;
 import com.binny.openapi.R;
 import com.binny.openapi.bean.PictureBean;
 import com.binny.openapi.util.BitmapUtils;
+import com.binny.openapi.util.UtilsLog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -41,6 +42,7 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
 
     @Override
     public void bindListDataToView(final Context context, final List<PictureBean.DataBean> iBaseBeanList, final PictureViewHolder viewHolder, final int position) {
+        UtilsLog.i("ssssssssssss");
         String url = iBaseBeanList.get(position).getUrl();
         String urlTemp = (String) viewHolder.mImageView.getTag();
         if (url.equals(urlTemp)) {

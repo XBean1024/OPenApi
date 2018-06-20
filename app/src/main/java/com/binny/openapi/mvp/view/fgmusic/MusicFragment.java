@@ -4,13 +4,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.binny.openapi.R;
-import com.binny.openapi.mvp.view.base.BaseFragment;
+import com.binny.openapi.mvp.view.base.AbsBaseFragment;
 
 /**
  * author  binny
  * date 5/9
  */
-public class MusicFragment extends BaseFragment {
+public class MusicFragment extends AbsBaseFragment {
     private ImageView imageView;
 
     @Override

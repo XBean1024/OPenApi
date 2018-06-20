@@ -1,20 +1,18 @@
 package com.binny.openapi.mvp.view.fghome;
 
-import android.view.View;
-
-import com.binny.openapi.mvp.view.base.BaseFragment;
-import com.binny.openapi.mvp.view.base.NavigationContainerFragment;
+import com.binny.openapi.mvp.view.base.AbsBaseFragment;
+import com.binny.openapi.mvp.view.base.AbsNavigationContainerFragment;
 import com.binny.openapi.mvp.view.fghome.article.ArticleFragment;
-import com.binny.openapi.mvp.view.fghome.juhe.history.JuheHistoryFragment;
-import com.binny.openapi.mvp.view.fghome.juhe.news.JuheAmusementFragment;
-import com.binny.openapi.mvp.view.fghome.juhe.news.JuheFashionFragment;
-import com.binny.openapi.mvp.view.fghome.juhe.news.JuheFinaceFragment;
-import com.binny.openapi.mvp.view.fghome.juhe.news.JuheGymFragment;
-import com.binny.openapi.mvp.view.fghome.juhe.news.JuheInternalFragment;
-import com.binny.openapi.mvp.view.fghome.juhe.news.JuheMilitrayFragment;
-import com.binny.openapi.mvp.view.fghome.juhe.news.JuheSCFragment;
-import com.binny.openapi.mvp.view.fghome.juhe.news.JuheSocialFragment;
-import com.binny.openapi.mvp.view.fghome.juhe.news.JuheTouTiaoFrgment;
+import com.binny.openapi.mvp.view.fghome.juhe.history.HistoryViewHolderFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.news.AmusementFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.news.FashionFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.news.FinaceFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.news.GymFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.news.InternalFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.news.MilitrayFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.news.SCFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.news.SocialFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.news.TouTiaoFrgment;
 
 import java.util.List;
 
@@ -22,7 +20,7 @@ import java.util.List;
  * author  binny
  * date 5/9
  */
-public class HomeFragment extends NavigationContainerFragment {
+public class HomeFragment extends AbsNavigationContainerFragment {
 
     /**
      */
@@ -49,17 +47,17 @@ public class HomeFragment extends NavigationContainerFragment {
      * @param fragments 集合
      */
     @Override
-    protected void initFragments(List<BaseFragment> fragments) {
-        fragments.add(new JuheTouTiaoFrgment());//头条
+    protected void initFragments(List<AbsBaseFragment> fragments) {
+        fragments.add(new TouTiaoFrgment());//头条
         fragments.add(new ArticleFragment());//每日一文
-        fragments.add(new JuheHistoryFragment());//历史上的今天
-        fragments.add(new JuheSocialFragment());//社会
-        fragments.add(new JuheInternalFragment());//国内
-        fragments.add(new JuheAmusementFragment());//娱乐
-        fragments.add(new JuheGymFragment());//体育
-        fragments.add(new JuheMilitrayFragment());//军事
-        fragments.add(new JuheSCFragment());//科技
-        fragments.add(new JuheFinaceFragment());//财经
-        fragments.add(new JuheFashionFragment());//时尚
+        fragments.add(new HistoryViewHolderFragment());//历史上的今天
+        fragments.add(new SocialFragment());//社会
+        fragments.add(new InternalFragment());//国内
+        fragments.add(new AmusementFragment());//娱乐
+        fragments.add(new GymFragment());//体育
+        fragments.add(new MilitrayFragment());//军事
+        fragments.add(new SCFragment());//科技
+        fragments.add(new FinaceFragment());//财经
+        fragments.add(new FashionFragment());//时尚
     }
 }

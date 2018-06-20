@@ -3,13 +3,13 @@ package com.binny.openapi.mvp.view.fgvideo;
 import android.view.View;
 
 import com.binny.openapi.R;
-import com.binny.openapi.mvp.view.base.BaseFragment;
+import com.binny.openapi.mvp.view.base.AbsBaseFragment;
 
 /**
  * author  binny
  * date 5/9
  */
-public class VideoFragment extends BaseFragment {
+public class VideoFragment extends AbsBaseFragment {
     @Override
     protected int getFragmentLayout() {
         return R.layout.fragment_video;

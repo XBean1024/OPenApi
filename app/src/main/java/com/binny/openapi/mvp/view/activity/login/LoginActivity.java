@@ -20,11 +20,11 @@ import com.binny.openapi.mvp.presenter.login.LoginPresenter;
 import com.binny.openapi.mvp.view.activity.MainActivity;
 import com.binny.openapi.mvp.view.activity.WebActivity;
 import com.binny.openapi.mvp.view.activity.register.RegisterActivity;
-import com.binny.openapi.mvp.view.base.BaseActivity;
+import com.binny.openapi.mvp.view.base.AbsBaseActivity;
 import com.binny.openapi.widget.KeyValueLayout;
 import com.binny.openapi.widget.SplashVideoView;
 
-public class LoginActivity extends BaseActivity implements DataCallback<LoginBean>,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
+public class LoginActivity extends AbsBaseActivity implements DataCallback<LoginBean>,MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private com.binny.openapi.widget.SplashVideoView mSplashVideo;
     private KeyValueLayout mLoginPhone;

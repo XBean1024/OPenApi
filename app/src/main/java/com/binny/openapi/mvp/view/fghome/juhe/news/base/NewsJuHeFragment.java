@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.view.fghome.juhe.news;
+package com.binny.openapi.mvp.view.fghome.juhe.news.base;
 
 import android.view.View;
 
@@ -7,24 +7,26 @@ import com.binny.openapi.bean.JuheNewsBean;
 import com.binny.openapi.cache.DiskLruCacheHelper;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.juhe.JuheNewsPresenter;
-import com.binny.openapi.mvp.view.fghome.juhe.abs.AbsJuheBaseFragment;
+import com.binny.openapi.mvp.view.base.AbsNavigationContentFragment;
+import com.binny.openapi.mvp.view.fghome.juhe.news.JuheViewHolderHelper;
 import com.binny.openapi.util.UtilsLog;
-import com.smart.holder.CommonAdapter;
+import com.smart.holder.iinterface.IViewHolderHelper;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by binny on 2018/6/8.
+ *
+ * 聚合数据
  */
 
-public class JuheNewsBaseFragment extends AbsJuheBaseFragment implements DataCallback<JuheNewsBean> {
+public class NewsJuHeFragment extends AbsNavigationContentFragment implements DataCallback<JuheNewsBean> {
 
     private JuheNewsPresenter mPresenter;
 
     protected String mType;
-    private List<JuheNewsBean.ResultBean.DataBean> mDataBeanList = new ArrayList<>();
+    private ArrayList<JuheNewsBean.ResultBean.DataBean> mDataBeanList = new ArrayList<>();
 
     @Override
     protected void initRefreshView(View containerView) {
@@ -35,27 +37,33 @@ public class JuheNewsBaseFragment extends AbsJuheBaseFragment implements DataCal
     }
 
     @Override
-    protected void initAdapter() {
+    protected IViewHolderHelper initViewHolderHelper() {
         mPresenter = new JuheNewsPresenter();
-        mCommonAdapter = new CommonAdapter(getActivity(), mDataBeanList, R.layout.item_layout_juhe_news, new JuheViewHolderHelper());
+        return new JuheViewHolderHelper();
     }
+
+    @Override
+    protected int initItem() {
+        return R.layout.item_fragment_juhe_news;
+    }
+
+    @Override
+    protected ArrayList<JuheNewsBean.ResultBean.DataBean> initListBean() {
+        return mDataBeanList;
+    }
+
 
     @Override
     protected void getData() {
+        //优先加载本地数据
         if (loadLocal()) {
             return;
         }
-        loadNet();
-    }
 
-    /**
-     * 从网络上加载数据
-     */
-    @Override
-    protected void loadNet() {
-        UtilsLog.i("loadNet");
+        //从网络上加载数据
         mPresenter.getNewsData(mType, this);
     }
+
 
     @Override
     public void onError(String result) {
@@ -87,7 +95,7 @@ public class JuheNewsBaseFragment extends AbsJuheBaseFragment implements DataCal
             }
             mCommonAdapter.notifyDataSetChanged();
             return true;
-        } catch (IOException |NullPointerException  e) {
+        } catch (IOException | NullPointerException e) {
             UtilsLog.e(e.getMessage());
             return false;
         }
@@ -131,9 +139,15 @@ public class JuheNewsBaseFragment extends AbsJuheBaseFragment implements DataCal
             dataBean.setThumbnail_pic_s02(resultBean.getData().get(i).getThumbnail_pic_s02());
             dataBean.setThumbnail_pic_s03(resultBean.getData().get(i).getThumbnail_pic_s03());
             dataBean.setTitle(resultBean.getData().get(i).getTitle());
-            mDataBeanList.add(0,dataBean);
+            mDataBeanList.add(0, dataBean);
         }
         mCommonAdapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    protected void onRefresh() {
+        super.onRefresh();
+        mPresenter.getNewsData(mType, this);
     }
 }

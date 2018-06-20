@@ -14,8 +14,8 @@ import com.binny.openapi.util.UtilsLog;
  * 时间: 5/24
  * 描述:
  */
-public abstract class BaseActivity extends FragmentActivity {
-    protected BaseActivity mActivity;
+public abstract class AbsBaseActivity extends FragmentActivity {
+    protected AbsBaseActivity mActivity;
     protected ImmersionBar mImmersionBar;
     protected Intent mIntent;
     @Override

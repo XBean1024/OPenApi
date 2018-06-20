@@ -2,21 +2,18 @@ package com.binny.openapi.mvp.view.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import com.bean.xhttp.XHttp;
 import com.bean.xhttp.callback.OnXHttpCallback;
 import com.bean.xhttp.response.Response;
 import com.binny.openapi.R;
-import com.binny.openapi.mvp.view.base.BaseActivity;
+import com.binny.openapi.mvp.view.base.AbsBaseActivity;
 import com.binny.openapi.util.UtilsLog;
 import com.binny.openapi.widget.titlebar.SimpleTitleBar;
 
@@ -25,7 +22,7 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class WebActivity extends BaseActivity {
+public class WebActivity extends AbsBaseActivity {
 
     private WebView mWebView;
     private java.lang.String mLoadUrl;
