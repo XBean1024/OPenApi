@@ -28,6 +28,8 @@ public class WebActivity extends AbsBaseActivity {
     private java.lang.String mLoadUrl;
     private String mTitle;
     private String mContent;
+    private String mCharSet = "utf-8";
+
 
     private boolean bNeedAdBlock;//是否去出第三方广告链接
 
@@ -37,6 +39,7 @@ public class WebActivity extends AbsBaseActivity {
     protected void handleIntent() {
         mLoadUrl = getIntent().getStringExtra("loadUrl");
         mTitle = getIntent().getStringExtra("title");
+        mCharSet = getIntent().getStringExtra("charset");
         mContent = getIntent().getStringExtra("content");
         bNeedAdBlock = getIntent().getBooleanExtra("adblock", false);
     }
@@ -66,7 +69,11 @@ public class WebActivity extends AbsBaseActivity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                adBlock(url);
+                if (bNeedAdBlock) {
+                    adBlock(url);
+                } else {
+                    view.loadUrl(url);
+                }
                 return true;
             }
         });
@@ -149,7 +156,7 @@ public class WebActivity extends AbsBaseActivity {
                             }
 
                             mWebView.loadDataWithBaseURL(strUrl, html,
-                                    "text/html", "utf-8", url);
+                                    "text/html", mCharSet, url);
                         } catch (MalformedURLException e) {
                             e.printStackTrace();
                         }

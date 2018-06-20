@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.view.fgpicture;
 
 import com.binny.openapi.mvp.view.base.AbsBaseFragment;
-import com.binny.openapi.mvp.view.base.AbsNavigationContainerFragment;
+import com.binny.openapi.mvp.view.base.AbsNavigationChildContainerFragment;
 import com.binny.openapi.mvp.view.fgpicture.meizi.MeiZiFragment;
 import com.binny.openapi.mvp.view.fgpicture.pure.PureImgFragment;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * @date 2018/6/20 14:21
  * @Description: 图片类
  */
-public class PictureFragment extends AbsNavigationContainerFragment {
+public class PictureFragment extends AbsNavigationChildContainerFragment {
 
     @Override
     protected String[] initTitles() {

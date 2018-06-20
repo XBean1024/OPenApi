@@ -1,5 +1,7 @@
 package com.binny.openapi.mvp.view.fgpicture.meizi;
 
+import android.view.View;
+
 import com.bean.xhttp.XHttp;
 import com.bean.xhttp.callback.OnXHttpCallback;
 import com.bean.xhttp.response.Response;
@@ -22,7 +24,7 @@ import java.util.List;
 public class MeiZiFragment extends AbsNavigationContentFragment implements OnXHttpCallback {
 
     List<MeiZiTuBean.ShowapiResBodyBean.NewslistBean> mNewslistBeans = new ArrayList<>();
-    private int page;
+    private int mPage;
 
 
     @Override
@@ -43,14 +45,13 @@ public class MeiZiFragment extends AbsNavigationContentFragment implements OnXHt
     @Override
     protected void getData() {
         //加载数据  缓存中 或者 网络
-        XHttp.getInstance().get("http://route.showapi.com/197-1?showapi_appid=34276&showapi_sign=731d68d6d56b4d789d6571f530ee28ef&num=100&page=0")
+        XHttp.getInstance().get("http://route.showapi.com/197-1?showapi_appid=34276&showapi_sign=731d68d6d56b4d789d6571f530ee28ef&num=5&page=0")
                 .setTag("meizitu")
                 .setOnXHttpCallback(this);
     }
 
     @Override
     public void onSuccess(Response response) {
-        page++;
         String json = response.toString();
         Gson gson = new Gson();
         MeiZiTuBean meiZiTuBean = gson.fromJson(json, MeiZiTuBean.class);
@@ -59,8 +60,36 @@ public class MeiZiFragment extends AbsNavigationContentFragment implements OnXHt
             return;
         }
         List<MeiZiTuBean.ShowapiResBodyBean.NewslistBean> newslistBeans = meiZiTuBean.getShowapi_res_body().getNewslist();
-        mNewslistBeans.addAll(newslistBeans);
+        if (mIsRefresh) {
+            mIsRefresh =false;
+            mNewslistBeans.addAll(0,newslistBeans);
+        }else {
+            mNewslistBeans.addAll(newslistBeans);
+        }
         mCommonAdapter.notifyDataSetChanged();
+        mRefreshLayout.finishLoadMore();
+        mRefreshLayout.finishRefresh();
+    }
+    @Override
+    protected void onRefresh() {
+        super.onRefresh();
+        mPage++;
+        //加载数据  缓存中 或者 网络
+        XHttp.getInstance().get("http://route.showapi.com/197-1")
+                .setParams("num", "5")
+                .setParams("showapi_appid", "34276")
+                .setParams("showapi_sign", "731d68d6d56b4d789d6571f530ee28ef")
+                .setParams("page", String.valueOf(mPage))
+                .setTag("meizitu")
+                .setOnXHttpCallback(this);
+    }
+
+
+
+    @Override
+    protected void onLoadMore() {
+        super.onLoadMore();
+        mPage++;
     }
 
     @Override
@@ -72,5 +101,11 @@ public class MeiZiFragment extends AbsNavigationContentFragment implements OnXHt
     public void onDestroy() {
         super.onDestroy();
         XHttp.getInstance().cancel("meizitu");
+    }
+
+    @Override
+    protected void initRefreshView(View containerView) {
+        super.initRefreshView(containerView);
+        mRefreshLayout.setEnableLoadMore(false);
     }
 }

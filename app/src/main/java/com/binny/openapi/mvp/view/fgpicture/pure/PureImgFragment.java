@@ -35,7 +35,7 @@ public class PureImgFragment extends AbsNavigationContentFragment implements Dat
 
     @Override
     protected void onRefresh() {
-        UtilsLog.i("下啦刷新。。。。");
+        super.onRefresh();
         mPage++;
         mPresenterPicture.getDate(mPage);
     }
@@ -44,7 +44,7 @@ public class PureImgFragment extends AbsNavigationContentFragment implements Dat
 
     @Override
     protected void onLoadMore() {
-        UtilsLog.i("上啦刷新。。。。");
+        super.onLoadMore();
         mPage++;
         mPresenterPicture.getDate(mPage);
     }
@@ -91,7 +91,6 @@ public class PureImgFragment extends AbsNavigationContentFragment implements Dat
     public void onSuccess(final PictureBean pictureBean) {
         int size = pictureBean.getData().size();
         PictureBean.DataBean dataBean;
-        UtilsLog.i(" 拉取几张图片 = " + size);
         for (int i = 0; i < size; i++) {
             dataBean = pictureBean.getData().get(i);
             if (mIsRefresh) {
@@ -102,6 +101,7 @@ public class PureImgFragment extends AbsNavigationContentFragment implements Dat
         }
         mIsRefresh = false;
         mIsLoadMore = false;
+        UtilsLog.i(" 拉取几张图片 = "+mPictureBeans.size());
         mCommonAdapter.notifyDataSetChanged();
         mRefreshLayout.finishRefresh();
     }

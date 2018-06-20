@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.binny.openapi.R;
+import com.binny.openapi.util.UtilsLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  * @date 2018/6/20 14:24
  * @Description: 底部导航栏的容器类
  */
-public abstract class AbsNavigationContainerFragment extends AbsBaseFragment {
+public abstract class AbsNavigationChildContainerFragment extends AbsBaseFragment {
 
     protected ViewPager mViewPager;
     protected TabLayout mTab;
@@ -23,13 +24,11 @@ public abstract class AbsNavigationContainerFragment extends AbsBaseFragment {
 
     protected List<AbsBaseFragment> mFragments = new ArrayList<>();
 
-    public AbsNavigationContainerFragment() {
+    public AbsNavigationChildContainerFragment() {
         super();
 
     }
 
-    public  void tabTitles(){};
-    
     /**
      * @return 通用布局文件
      */
@@ -59,7 +58,8 @@ public abstract class AbsNavigationContainerFragment extends AbsBaseFragment {
         super.afterInitView();
         mImmersionBar.titleBar(mTopView).init();
         initFragments(mFragments);
-        mViewPager.setAdapter(new CommonFragmentAdapter(getFragmentManager(), mFragments, initTitles()));
+        UtilsLog.i("天劫楼  "+mFragments.size());
+        mViewPager.setAdapter(new CommonFragmentAdapter(getChildFragmentManager(), mFragments, initTitles()));
     }
 
     /**

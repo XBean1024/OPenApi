@@ -12,7 +12,9 @@
 
     <TextView
         android:id="@+id/meizi_title"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:layout_height="wrap_content"
         android:layout_below="@id/meizi_img"
         android:text="阿萨达大大所" />
