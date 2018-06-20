@@ -51,6 +51,7 @@ public final class UtilSP {
             }
          }
       }
+      instance = new UtilSP(context);
       return instance;
    }
 
@@ -145,7 +146,16 @@ public final class UtilSP {
    }
 
 
-   public <T> UtilSP putObj(String objKeyName, T object) {
+   /**
+    *
+    * 保存序列化对象
+    *
+    * @param objKeyName
+    * @param object
+    * @param <T>
+    * @return
+    */
+   public <T> UtilSP putSerializableObj(String objKeyName, T object) {
       // 创建字节输出流
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       ObjectOutputStream oos = null;
@@ -157,9 +167,9 @@ public final class UtilSP {
          // 将字节流编码成base64的字符窜
          String obj_Base64 = new String(Base64.encodeBase64(baos.toByteArray()));
          putString(objKeyName, obj_Base64);
-
+         UtilsLog.i("存储成功");
       } catch (IOException e) {
-         // TODO Auto-generated
+         UtilsLog.e(e.toString());
       } finally {
          try {
             if (baos != null) {
@@ -172,7 +182,7 @@ public final class UtilSP {
             e.printStackTrace();
          }
       }
-      UtilsLog.i("存储成功");
+
       return instance;
    }
 
@@ -208,8 +218,7 @@ public final class UtilSP {
 
          e.printStackTrace();
       } catch (IOException e) {
-
-         e.printStackTrace();
+         UtilsLog.e(e.getMessage());
       } finally {
          try {
             if (bais != null) {
@@ -222,7 +231,7 @@ public final class UtilSP {
             e.printStackTrace();
          }
       }
-      return null;
+      return value;
    }
 
    /************************************************************

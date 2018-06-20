@@ -2,7 +2,6 @@ package com.binny.openapi.mvp.view.fghome.article;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.binny.openapi.R;
@@ -10,11 +9,11 @@ import com.binny.openapi.bean.ArticleBean;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.mine.ArticlePresenter;
 import com.binny.openapi.mvp.view.base.BaseFragment;
+import com.binny.openapi.util.UtilSP;
 import com.binny.openapi.util.Utils;
 import com.binny.openapi.util.UtilsLog;
 import com.binny.openapi.widget.dialog.ArticleDetailDialog;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.scwang.smartrefresh.layout.impl.RefreshHeaderWrapper;
 import com.smart.holder.CommonAdapter;
 
 import java.util.ArrayList;
@@ -31,6 +30,9 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
     private CommonAdapter mCommonAdapter;
 
     private ArticleAdapter mArticleAdapter;
+    private String mType = "meiri";
+
+    private ArticleBean.DataBean mDateBean = new ArticleBean.DataBean();
 
     public ArticleFragment() {
         mArticlePresenter = new ArticlePresenter(this);
@@ -82,8 +84,8 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
     @Override
     protected void initRefreshView(final View containerView) {
         mRefreshLayout = containerView.findViewById(R.id.article_refreshLayout);
-        View imageView = LayoutInflater.from(mActivity).inflate(R.layout.header_layout,null);
-        mRefreshLayout.setRefreshHeader(new RefreshHeaderWrapper(imageView));
+//        View imageView = LayoutInflater.from(mActivity).inflate(R.layout.header_layout,null);
+//        mRefreshLayout.setRefreshHeader(new RefreshHeaderWrapper(imageView));
     }
 
     @Override
@@ -92,14 +94,40 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
         mRefreshLayout.finishLoadMore(false);
     }
 
+
     @Override
     protected void getData() {
-        mArticlePresenter.getArticle();
+        List<ArticleBean> articleBeans = new ArrayList<>();
+        articleBeans =UtilSP.getInstance(getActivity())
+                .setFileName(mType)
+                .getObj(mType, articleBeans);
+        mArticleBeans.addAll(articleBeans);
+        if (mArticleBeans.size()==0) {
+            mArticlePresenter.getArticle();
+            return;
+        }
+        mArticleAdapter.notifyDataSetChanged();
     }
 
 
     @Override
     public void onSuccess(final ArticleBean articleBean) {
+        if (articleBean == null) {
+            return;
+        }
+
+        if (articleBean.getData() == null) {
+            return;
+        }
+        UtilsLog.i(articleBean.toString());
+
+        int s = mArticleBeans.size();
+        for (int i = 0; i < s; i++) {
+            if (articleBean.getData().getDate().getCurr().equals(mArticleBeans.get(i).getData().getDate().getCurr())) {
+                    return;
+            }
+        }
+
         if (mIsRefresh) {
             mIsRefresh = false;
             if (mArticleBeans.size() > 0) {
@@ -119,7 +147,7 @@ public class ArticleFragment extends BaseFragment implements DataCallback<Articl
         }
 //        mCommonAdapter.notifyDataSetChanged();
         mArticleAdapter.notifyDataSetChanged();
-
+        UtilSP.getInstance(getActivity()).setFileName(mType).putSerializableObj(mType, mArticleBeans).commit();
     }
 
     @Override

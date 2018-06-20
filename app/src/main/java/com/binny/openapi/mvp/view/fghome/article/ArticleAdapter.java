@@ -4,6 +4,7 @@ import android.support.annotation.Nullable;
 
 import com.binny.openapi.R;
 import com.binny.openapi.bean.ArticleBean;
+import com.binny.openapi.util.UtilsLog;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -40,10 +41,11 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleBean,BaseViewHolder>
         } else {
             helper.setBackgroundRes(R.id.article_card_view,R.drawable.article_card_view_shape_gray);
         }
+        UtilsLog.i(time);
         helper.setText(R.id.article_time,time);
         helper.setText(R.id.article_author,author);
         helper.setText(R.id.article_digest,digest);
-        helper.setText(R.id.article_title,time);
+        helper.setText(R.id.article_title,title);
         helper.setText(R.id.article_character_count,count);
         helper.addOnClickListener(R.id.item_atricle);
     }

@@ -2,7 +2,6 @@
 <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/article_refreshLayout"
-    android:background="@color/home_orange"
     android:layout_height="match_parent">
 
     <com.scwang.smartrefresh.layout.header.ClassicsHeader
@@ -15,8 +14,8 @@
         android:columnWidth="@dimen/value_40dp"
         android:horizontalSpacing="@dimen/value_10dp"
         android:numColumns="1"
-        android:dividerHeight="@dimen/dp_5"
-        android:padding="@dimen/dp_5"
+        android:dividerHeight="0dp"
+        android:divider="@android:color/transparent"
         android:stretchMode="columnWidth"/>
 
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

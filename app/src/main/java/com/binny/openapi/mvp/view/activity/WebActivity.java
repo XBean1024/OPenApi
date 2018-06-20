@@ -2,9 +2,11 @@ package com.binny.openapi.mvp.view.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -46,6 +48,7 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void initView() {
         mSimpleTitleBar = findViewById(R.id.simple_title_bar);
+        mSimpleTitleBar.setTitle(mTitle);
         mImmersionBar.titleBar(mSimpleTitleBar).init();
         this.mWebView = findViewById(R.id.web_view_protocol);
         WebSettings webSettings = mWebView.getSettings();
@@ -62,7 +65,24 @@ public class WebActivity extends BaseActivity {
         //自适应屏幕
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webSettings.setLoadWithOverviewMode(true);
-        mWebView.setWebViewClient(new WebViewClient());
+        mWebView.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                mSimpleTitleBar.setTitle(view.getTitle());
+                super.onPageFinished(view, url);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                adBlock(url);
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+        });
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onReceivedTitle(WebView view, String title) {
@@ -71,7 +91,7 @@ public class WebActivity extends BaseActivity {
             }
         });
         if (bNeedAdBlock) {
-            adBlock();
+            adBlock(mLoadUrl);
         } else {
             mWebView.loadUrl(mLoadUrl);
         }
@@ -109,16 +129,16 @@ public class WebActivity extends BaseActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
-            mWebView.goBack();// 返回前一个页面
-            return true;
-        }
+//        if (keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
+//            mWebView.goBack();// 返回前一个页面
+//            return true;
+//        }
         return super.onKeyDown(keyCode, event);
     }
 
-    private void adBlock() {
+    private void adBlock(String url) {
         XHttp.getInstance()
-                .get(mLoadUrl)
+                .get(url)
                 .setTag("adblock")
                 .setOnXHttpCallback(new OnXHttpCallback() {
                     @Override
@@ -128,7 +148,7 @@ public class WebActivity extends BaseActivity {
 //                        ReadStreamOfJson(html);
                         final String regexStr = "<script\\b[^>]*?src=\"([^\"]*?)\"[^>]*></script>";
                         Pattern p = Pattern.compile(regexStr);
-                        String strUrl = mLoadUrl;
+                        String strUrl = url;
                         String host = "";
                         try {
                             URL url = new URL(strUrl);
@@ -141,6 +161,7 @@ public class WebActivity extends BaseActivity {
                                     html = html.replace(m.group(), "");
                                 }
                             }
+
                             mWebView.loadDataWithBaseURL(strUrl, html,
                                     "text/html", "utf-8", "file:///android_asset/error_page.html");
                         } catch (MalformedURLException e) {

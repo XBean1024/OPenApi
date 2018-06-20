@@ -12,7 +12,7 @@
     <color name="darkorange">#ff8c00</color> <!-- 暗桔黄色 -->
     <color name="red">#ff0000</color> <!-- 红色 -->
     <color name="antiquewhite">#faebd7</color> <!-- 古董白 -->
-    <color name="crimson">#dc143c</color> <!-- 暗深红色 -->
+    <color name="crimson">#d81e06</color> <!-- 暗深红色 -->
     <color name="mediumvioletred">#c71585</color> <!-- 中紫罗兰色 -->
     <color name="darkred">#8b0000</color> <!-- 暗红色 -->
     <color name="skyblue">#87ceeb</color> <!-- 天蓝色 -->
@@ -22,7 +22,5 @@
     <color name="dodgerblue">#1e90ff</color> <!-- 闪兰色 -->
     <color name="deepskyblue">#00bfff</color> <!-- 深天蓝色 -->
 
-    <color name="home_orange">#ff4500</color>
-    <color name="cranberry">#D65B72</color>
     <color name="black">#000000</color>
 </resources>

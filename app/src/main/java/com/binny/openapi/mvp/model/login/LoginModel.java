@@ -35,7 +35,7 @@ public class LoginModel implements ILoginModel {
                     public void onNext(LoginBean loginBean) {
                         loginCallback.onSuccess(loginBean);
                         UtilSP.getInstance(mApp).setFileName("login")
-                                .putObj("login", loginBean)
+                                .putSerializableObj("login", loginBean)
                                 .commit();
                     }
 

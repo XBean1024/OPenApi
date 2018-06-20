@@ -1,5 +1,7 @@
 package com.binny.openapi.mvp.view.fghome.juhe.history;
 
+import android.view.View;
+
 import com.binny.openapi.R;
 import com.binny.openapi.bean.HistoryDayBean;
 import com.binny.openapi.callback.DataCallback;
@@ -37,6 +39,12 @@ public class JuheHistoryFragment extends AbsJuheBaseFragment implements DataCall
     @Override
     public void onLoadDone() {
         UtilsLog.onLoadDone();
+    }
+
+    @Override
+    protected void initView(View view) {
+        super.initView(view);
+        mRefreshLayout.setEnableRefresh(false);
     }
 
     @Override

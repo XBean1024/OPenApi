@@ -1,36 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/dp_10"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_rl"
-    android:background="@drawable/article_card_view_shape_blue">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/value_5dp"
+    android:paddingRight="@dimen/value_5dp"
+    android:paddingTop="@dimen/value_5dp">
 
-    <com.binny.openapi.widget.MyTextView
-        android:id="@+id/juhe_news_title_tv"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white" />
+        android:background="@drawable/article_card_view_shape_red"
+        android:paddingLeft="@dimen/value_5dp"
+        android:paddingRight="@dimen/value_5dp">
 
-    <ImageView
-        android:id="@+id/juhe_news_img_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/juhe_news_title_tv"
-        android:scaleType="fitXY" />
+        <com.binny.openapi.widget.MyTextView
+            android:id="@+id/juhe_news_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white" />
 
-    <TextView
-        android:textColor="@color/white"
-        android:id="@+id/juhe_news_author_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/juhe_news_img_iv" />
+        <ImageView
+            android:id="@+id/juhe_news_img_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/juhe_news_title_tv"
+            android:scaleType="fitXY" />
 
-    <TextView
-        android:id="@+id/juhe_news_date_tv"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/juhe_news_img_iv" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/juhe_news_author_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/juhe_news_img_iv"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/juhe_news_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/juhe_news_img_iv"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</LinearLayout>

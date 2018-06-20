@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OPenApp</string>
+    <string name="app_name">聚合新闻</string>
     <string name="forget_password">忘记密码？</string>
     <string name="register_new">新用户注册</string>
     <string name="telephone">请输入您的手机号</string>
