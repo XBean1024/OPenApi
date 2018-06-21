@@ -14,6 +14,7 @@ import com.binny.openapi.bean.PictureBean;
 import com.binny.openapi.glide.GlideCircleTransform;
 import com.binny.openapi.glide.GlideRoundTransform;
 import com.binny.openapi.util.BitmapUtils;
+import com.binny.openapi.util.GlideUtils;
 import com.binny.openapi.util.UtilsLog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -50,13 +51,14 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
     public void bindListDataToView(final Context context, final List<PictureBean.DataBean> iBaseBeanList, final PictureViewHolder viewHolder, final int position) {
         String url = iBaseBeanList.get(position).getUrl();
 
-        Glide.with(context).load(url)
-                .crossFade()
-                .bitmapTransform(new RoundedCornersTransformation(context, 90, 0,
-                        RoundedCornersTransformation.CornerType.ALL))
-                .transform(new GlideRoundTransform(context))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
-                .into(viewHolder.mImageView);
+//        Glide.with(context).load(url)
+//                .crossFade()
+//                .bitmapTransform(new RoundedCornersTransformation(context, 90, 0,
+//                        RoundedCornersTransformation.CornerType.ALL))
+//                .transform(new GlideRoundTransform(context))
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
+//                .into(viewHolder.mImageView);
+        GlideUtils.loadImg(context,url,viewHolder.mImageView);
 
 
         viewHolder.mImageView.setOnLongClickListener(v -> {

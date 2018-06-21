@@ -18,9 +18,9 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 public class GlideUtils {
     public static void loadImg(Context context, String picUrl, ImageView imageView){
         Glide.with(context).load(picUrl).crossFade()
-                .bitmapTransform(new RoundedCornersTransformation(context, 120, 0,
+                .bitmapTransform(new RoundedCornersTransformation(context, 90, 10,
                         RoundedCornersTransformation.CornerType.ALL))
-                .transform(new GlideRoundTransform(context))
+//                .transform(new GlideRoundTransform(context))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
                 .into(imageView);
     }
