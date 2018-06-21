@@ -103,11 +103,11 @@ public abstract class AbsBaseFragment extends Fragment implements OnRefreshListe
             mRefreshLayout.setOnLoadMoreListener(this);
             mRefreshLayout.setEnableLoadMore(false);
         }
+        afterInitView();
         if (getUserVisibleHint()) {
             mIsFirstBindData = false;
             getData();//第一个 可见的 fragment 要加载数据
         }
-        afterInitView();
         return mContainerView;
     }
 

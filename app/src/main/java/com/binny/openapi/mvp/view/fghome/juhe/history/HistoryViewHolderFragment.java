@@ -5,8 +5,8 @@ import android.view.View;
 import com.binny.openapi.R;
 import com.binny.openapi.bean.HistoryDayBean;
 import com.binny.openapi.callback.DataCallback;
-import com.binny.openapi.mvp.presenter.juhe.HistoryTodayPresenter;
-import com.binny.openapi.mvp.view.base.AbsNavigationContentListFragment;
+import com.binny.openapi.mvp.presenter.Presenter;
+import com.binny.openapi.mvp.view.base.AbsTopNavigationTabBaseFragment;
 import com.binny.openapi.util.UtilsLog;
 import com.smart.holder.iinterface.IViewHolderHelper;
 
@@ -18,7 +18,7 @@ import java.util.List;
  *
  */
 
-public class HistoryViewHolderFragment extends AbsNavigationContentListFragment implements DataCallback<HistoryDayBean> {
+public class HistoryViewHolderFragment extends AbsTopNavigationTabBaseFragment implements DataCallback<HistoryDayBean> {
     protected List<HistoryDayBean.ResultBean> mHistoryDayBeanList = new ArrayList<>();
 
     @Override
@@ -68,7 +68,7 @@ public class HistoryViewHolderFragment extends AbsNavigationContentListFragment 
 
     @Override
     protected void getData() {
-        new HistoryTodayPresenter().getDate(this);
+        new Presenter().getHistoryDate(this);
     }
 
 }

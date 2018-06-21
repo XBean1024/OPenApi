@@ -5,23 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.binny.openapi.R;
+import com.binny.openapi.mvp.presenter.Presenter;
 import com.binny.openapi.widget.KeyValueLayout;
 import com.binny.openapi.bean.RegisterBean;
 import com.binny.openapi.callback.DataCallback;
-import com.binny.openapi.mvp.presenter.register.IRegisterPresenter;
-import com.binny.openapi.mvp.presenter.register.RegisterPresenter;
 import com.binny.openapi.util.UtilsLog;
 
 public class RegisterActivity extends AppCompatActivity implements DataCallback<RegisterBean> {
 
 
-    private IRegisterPresenter mRegisterPresenter;
+    private Presenter mRegisterPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        mRegisterPresenter = new RegisterPresenter(this);
+        mRegisterPresenter = new Presenter();
+        mRegisterPresenter.initRegisterModel(this);
     }
 
 

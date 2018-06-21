@@ -3,6 +3,7 @@ package com.binny.openapi.mvp.view.fgpicture.pure;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.binny.openapi.widget.RoundImageView;
 import com.smart.holder.iinterface.IViewHolder;
 
 /**

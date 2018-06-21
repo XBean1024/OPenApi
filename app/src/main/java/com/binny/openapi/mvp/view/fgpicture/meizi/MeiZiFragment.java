@@ -1,16 +1,17 @@
 package com.binny.openapi.mvp.view.fgpicture.meizi;
 
 import android.view.View;
+import android.widget.GridView;
 
 import com.bean.xhttp.XHttp;
 import com.bean.xhttp.callback.OnXHttpCallback;
 import com.bean.xhttp.response.Response;
 import com.binny.openapi.R;
 import com.binny.openapi.bean.MeiZiTuBean;
-import com.binny.openapi.mvp.view.base.AbsNavigationContentListFragment;
-import com.binny.openapi.mvp.view.fgpicture.AbsNavigationGridFragment;
+import com.binny.openapi.mvp.view.base.AbsTopNavigationTabBaseFragment;
 import com.binny.openapi.util.UtilsLog;
 import com.google.gson.Gson;
+import com.smart.holder.CommonAdapter;
 import com.smart.holder.iinterface.IViewHolderHelper;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import java.util.List;
  * @date 2018/6/20 16:09
  * @Description:
  */
-public class MeiZiFragment extends AbsNavigationGridFragment implements OnXHttpCallback {
+public class MeiZiFragment extends AbsTopNavigationTabBaseFragment implements OnXHttpCallback {
 
     List<MeiZiTuBean.ShowapiResBodyBean.NewslistBean> mNewslistBeans = new ArrayList<>();
     private int mPage =1;
@@ -30,6 +31,17 @@ public class MeiZiFragment extends AbsNavigationGridFragment implements OnXHttpC
     private final String url = "http://route.showapi.com/197-1";
     private String num = "6";
 
+    @Override
+    protected int getFragmentLayout() {
+        return R.layout.fragment_common_grid;
+    }
+
+    @Override
+    protected void initView(View view) {
+        GridView l = view.findViewById(R.id.home_common_lv);
+        mCommonAdapter = new CommonAdapter(getActivity(),initListBean(), initItem(),initViewHolderHelper());
+        l.setAdapter(mCommonAdapter);
+    }
     @Override
     protected IViewHolderHelper initViewHolderHelper() {
         return new MeiZiViewHolderHelper();

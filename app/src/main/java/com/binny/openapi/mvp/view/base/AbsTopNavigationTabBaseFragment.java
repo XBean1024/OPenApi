@@ -13,10 +13,10 @@ import java.util.List;
 /**
  * Created by binny on 2018/5/30.
  *
- * 各个导航栏目下得 tab 的 对应基础界面
+ * 各个导航栏目下得 tab 的 对应基础界面  列表形式
  */
 
-public abstract class AbsNavigationContentListFragment extends AbsBaseFragment {
+public abstract class AbsTopNavigationTabBaseFragment extends AbsBaseFragment {
 
     protected CommonAdapter mCommonAdapter;
 
@@ -27,7 +27,7 @@ public abstract class AbsNavigationContentListFragment extends AbsBaseFragment {
 
     @Override
     protected void initView(View view) {
-        ListView l = view.findViewById(R.id.home_common_gv);
+        ListView l = view.findViewById(R.id.home_common_lv);
         mCommonAdapter = new CommonAdapter(getActivity(),initListBean(), initItem(),initViewHolderHelper());
         l.setAdapter(mCommonAdapter);
     }

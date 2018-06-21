@@ -22,6 +22,7 @@ import static com.binny.openapi.constant.ConstantUrl.JUHE_HOSITORY_KEY;
 public class HistoryModel {
 
 
+    @SuppressLint("CheckResult")
     public void getArticle(DataCallback<HistoryDayBean> mCallback) {
         IJuheService service = UtilsRetrofit.getJuheService();
         @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("M/d");

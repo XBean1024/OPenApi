@@ -1,7 +1,7 @@
 package com.binny.openapi.mvp.view.fghome;
 
 import com.binny.openapi.mvp.view.base.AbsBaseFragment;
-import com.binny.openapi.mvp.view.base.AbsNavigationChildContainerFragment;
+import com.binny.openapi.mvp.view.base.AbsBottomNavigationTabBaseFragment;
 import com.binny.openapi.mvp.view.fghome.article.ArticleFragment;
 import com.binny.openapi.mvp.view.fghome.juhe.history.HistoryViewHolderFragment;
 import com.binny.openapi.mvp.view.fghome.juhe.news.AmusementFragment;
@@ -20,7 +20,7 @@ import java.util.List;
  * author  binny
  * date 5/9
  */
-public class HomeFragment extends AbsNavigationChildContainerFragment {
+public class HomeFragment extends AbsBottomNavigationTabBaseFragment {
 
     /**
      */

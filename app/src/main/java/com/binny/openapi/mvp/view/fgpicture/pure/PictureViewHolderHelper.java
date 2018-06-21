@@ -12,6 +12,7 @@ import com.bean.xhttp.response.Response;
 import com.binny.openapi.R;
 import com.binny.openapi.bean.PictureBean;
 import com.binny.openapi.glide.GlideCircleTransform;
+import com.binny.openapi.glide.GlideRoundTransform;
 import com.binny.openapi.util.BitmapUtils;
 import com.binny.openapi.util.UtilsLog;
 import com.bumptech.glide.Glide;
@@ -51,8 +52,9 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
 
         Glide.with(context).load(url)
                 .crossFade()
-//                .bitmapTransform(new BlurTransformation(context,23,4))
-                .transform(new GlideCircleTransform(context))
+                .bitmapTransform(new RoundedCornersTransformation(context, 90, 0,
+                        RoundedCornersTransformation.CornerType.ALL))
+                .transform(new GlideRoundTransform(context))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
                 .into(viewHolder.mImageView);
 

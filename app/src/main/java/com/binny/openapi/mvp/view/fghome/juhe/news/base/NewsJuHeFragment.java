@@ -6,8 +6,8 @@ import com.binny.openapi.R;
 import com.binny.openapi.bean.JuheNewsBean;
 import com.binny.openapi.cache.DiskLruCacheHelper;
 import com.binny.openapi.callback.DataCallback;
-import com.binny.openapi.mvp.presenter.juhe.JuheNewsPresenter;
-import com.binny.openapi.mvp.view.base.AbsNavigationContentListFragment;
+import com.binny.openapi.mvp.presenter.Presenter;
+import com.binny.openapi.mvp.view.base.AbsTopNavigationTabBaseFragment;
 import com.binny.openapi.mvp.view.fghome.juhe.news.JuheViewHolderHelper;
 import com.binny.openapi.util.UtilsLog;
 import com.smart.holder.iinterface.IViewHolderHelper;
@@ -21,9 +21,9 @@ import java.util.ArrayList;
  * 聚合数据
  */
 
-public class NewsJuHeFragment extends AbsNavigationContentListFragment implements DataCallback<JuheNewsBean> {
+public class NewsJuHeFragment extends AbsTopNavigationTabBaseFragment implements DataCallback<JuheNewsBean> {
 
-    private JuheNewsPresenter mPresenter;
+    private Presenter mPresenter;
 
     protected String mType;
     private ArrayList<JuheNewsBean.ResultBean.DataBean> mDataBeanList = new ArrayList<>();
@@ -38,7 +38,7 @@ public class NewsJuHeFragment extends AbsNavigationContentListFragment implement
 
     @Override
     protected IViewHolderHelper initViewHolderHelper() {
-        mPresenter = new JuheNewsPresenter();
+        mPresenter = new Presenter();
         return new JuheViewHolderHelper();
     }
 
@@ -61,7 +61,7 @@ public class NewsJuHeFragment extends AbsNavigationContentListFragment implement
         }
 
         //从网络上加载数据
-        mPresenter.getNewsData(mType, this);
+        mPresenter.getJuheNewsData(mType, this);
     }
 
 
@@ -148,6 +148,6 @@ public class NewsJuHeFragment extends AbsNavigationContentListFragment implement
     @Override
     protected void onRefresh() {
         super.onRefresh();
-        mPresenter.getNewsData(mType, this);
+        mPresenter.getJuheNewsData(mType, this);
     }
 }

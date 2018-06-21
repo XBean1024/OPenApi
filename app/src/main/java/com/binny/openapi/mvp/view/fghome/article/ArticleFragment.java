@@ -7,7 +7,7 @@ import android.view.View;
 import com.binny.openapi.R;
 import com.binny.openapi.bean.ArticleBean;
 import com.binny.openapi.callback.DataCallback;
-import com.binny.openapi.mvp.presenter.mine.ArticlePresenter;
+import com.binny.openapi.mvp.presenter.Presenter;
 import com.binny.openapi.mvp.view.base.AbsBaseFragment;
 import com.binny.openapi.util.UtilSP;
 import com.binny.openapi.util.Utils;
@@ -24,7 +24,7 @@ import java.util.List;
  * date 5/22
  */
 public class ArticleFragment extends AbsBaseFragment implements DataCallback<ArticleBean> {
-    private ArticlePresenter mArticlePresenter;
+    private Presenter mArticlePresenter;
 
     private List<ArticleBean> mArticleBeans = new ArrayList<>();
     private CommonAdapter mCommonAdapter;
@@ -35,7 +35,8 @@ public class ArticleFragment extends AbsBaseFragment implements DataCallback<Art
     private ArticleBean.DataBean mDateBean = new ArticleBean.DataBean();
 
     public ArticleFragment() {
-        mArticlePresenter = new ArticlePresenter(this);
+        mArticlePresenter = new Presenter();
+        mArticlePresenter.initArticleModel(this);
     }
 
     @Override

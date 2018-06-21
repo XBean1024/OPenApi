@@ -1,6 +1,6 @@
 package com.binny.openapi.retrofit.manager;
 
-import com.binny.openapi.retrofit.server.IDownLoader;
+import com.binny.openapi.retrofit.server.IGankFuLiService;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -21,7 +21,7 @@ public class DownloaderManager {
                 .build();
     }
 
-    public IDownLoader getRetrofit() {
-        return mRetrofit.create(IDownLoader.class);
+    public IGankFuLiService getRetrofit() {
+        return mRetrofit.create(IGankFuLiService.class);
     }
 }

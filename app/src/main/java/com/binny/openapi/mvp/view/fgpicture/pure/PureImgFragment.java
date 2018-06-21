@@ -5,8 +5,8 @@ import android.view.View;
 import com.binny.openapi.R;
 import com.binny.openapi.bean.PictureBean;
 import com.binny.openapi.callback.DataCallback;
-import com.binny.openapi.mvp.presenter.picture.PresenterPicture;
-import com.binny.openapi.mvp.view.fgpicture.AbsNavigationGridFragment;
+import com.binny.openapi.mvp.presenter.Presenter;
+import com.binny.openapi.mvp.view.base.AbsTopNavigationTabBaseFragment;
 import com.binny.openapi.util.UtilsLog;
 
 import java.util.ArrayList;
@@ -20,24 +20,48 @@ import java.util.List;
  * 纯图片 展示
  * {@link com.binny.openapi.constant.ConstantUrl#TOP_API_URL_PICTURE}
  */
-public class PureImgFragment extends AbsNavigationGridFragment implements DataCallback<PictureBean> {
+public class PureImgFragment extends AbsTopNavigationTabBaseFragment implements DataCallback<PictureBean> {
 
     private List<PictureBean.DataBean> mPictureBeans = new ArrayList<>();
 
-    private PresenterPicture mPresenterPicture;
+    private Presenter mPresenterPicture;
     private int mPage = 0;
+
+    private PureImgAdapter mPureImgAdapter;
+//    @Override
+//    protected int getFragmentLayout() {
+//        return R.layout.fragment_common_rv;
+//    }
+//
+//    @Override
+//    protected void initView(View view) {
+//        RecyclerView recyclerView = view.findViewById(R.id.home_common_rv);
+////        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));
+//        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+//        mPureImgAdapter = new PureImgAdapter(initItem(),initListBean());
+//        recyclerView.setAdapter(mPureImgAdapter);
+//    }
+
+
+
+    @Override
+    protected void afterInitView() {
+        super.afterInitView();
+        mPresenterPicture = new Presenter();
+
+    }
 
     @Override
     protected void getData() {
-        mPresenterPicture = new PresenterPicture(this);
-        mPresenterPicture.getDate(mPage);
+        mPresenterPicture.getPureImgDate(mPage,this);
     }
 
     @Override
     protected void onRefresh() {
         super.onRefresh();
         mPage++;
-        mPresenterPicture.getDate(mPage);
+        mPresenterPicture.getPureImgDate(mPage,this);
+
     }
 
 
@@ -46,7 +70,7 @@ public class PureImgFragment extends AbsNavigationGridFragment implements DataCa
     protected void onLoadMore() {
         super.onLoadMore();
         mPage++;
-        mPresenterPicture.getDate(mPage);
+        mPresenterPicture.getPureImgDate(mPage,this);
     }
 
 
@@ -73,6 +97,7 @@ public class PureImgFragment extends AbsNavigationGridFragment implements DataCa
 
     @Override
     public void onError(final String result) {
+        UtilsLog.e(result);
         mRefreshLayout.finishRefresh(false);
         mRefreshLayout.finishLoadMore(false);
     }
@@ -102,6 +127,7 @@ public class PureImgFragment extends AbsNavigationGridFragment implements DataCa
         mIsRefresh = false;
         mIsLoadMore = false;
         UtilsLog.i(" 拉取几张图片 = "+mPictureBeans.size());
+//        mPureImgAdapter.notifyDataSetChanged();
         mCommonAdapter.notifyDataSetChanged();
         mRefreshLayout.finishRefresh();
     }

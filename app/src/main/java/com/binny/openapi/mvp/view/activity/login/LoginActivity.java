@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.binny.openapi.R;
 import com.binny.openapi.bean.LoginBean;
 import com.binny.openapi.callback.DataCallback;
-import com.binny.openapi.mvp.presenter.login.LoginPresenter;
+import com.binny.openapi.mvp.presenter.Presenter;
 import com.binny.openapi.mvp.view.activity.MainActivity;
 import com.binny.openapi.mvp.view.activity.WebActivity;
 import com.binny.openapi.mvp.view.activity.register.RegisterActivity;
@@ -31,7 +31,7 @@ public class LoginActivity extends AbsBaseActivity implements DataCallback<Login
     private KeyValueLayout mLoginPassword;
     private android.widget.TextView mItemTv;
 
-    private LoginPresenter mLoginPresenter;
+    private Presenter mLoginPresenter;
 
     @Override
     protected void handleIntent() {
@@ -40,7 +40,8 @@ public class LoginActivity extends AbsBaseActivity implements DataCallback<Login
 
     @Override
     protected void initView() {
-        mLoginPresenter = new LoginPresenter(this);
+        mLoginPresenter = new Presenter();
+        mLoginPresenter.initLoginModel(this);
         this.mItemTv = (TextView) findViewById(R.id.item);
         this.mLoginPassword = (KeyValueLayout) findViewById(R.id.login_password);
         this.mLoginPhone = (KeyValueLayout) findViewById(R.id.login_phone);
@@ -124,7 +125,7 @@ public class LoginActivity extends AbsBaseActivity implements DataCallback<Login
     }
 
     public void login(View view) {
-        mLoginPresenter.getData(mLoginPhone.getValue(),mLoginPassword.getValue());
+        mLoginPresenter.getLoginData(mLoginPhone.getValue(),mLoginPassword.getValue());
     }
 
     public void toRegister(View view) {

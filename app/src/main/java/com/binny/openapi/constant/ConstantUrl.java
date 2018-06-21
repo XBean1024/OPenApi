@@ -36,4 +36,8 @@ public class ConstantUrl {
     public static final String JUHE_NEWS_KEY = "b36b0671233f5c3b16cb037674652720";
 
 
+    public static final String GANK_FILI_URL = "http://gank.io/api/";//福利
+
+
+
 }

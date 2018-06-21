@@ -2,9 +2,11 @@ package com.binny.openapi.util;
 
 
 import com.binny.openapi.retrofit.manager.ApiArticleManger;
+import com.binny.openapi.retrofit.manager.ApiGankManager;
 import com.binny.openapi.retrofit.manager.ApiJuheManager;
 import com.binny.openapi.retrofit.manager.ApiTopManager;
 import com.binny.openapi.retrofit.server.IArticleService;
+import com.binny.openapi.retrofit.server.IGankFuLiService;
 import com.binny.openapi.retrofit.server.IJuheService;
 import com.binny.openapi.retrofit.server.ITopApiService;
 
@@ -24,5 +26,9 @@ public class UtilsRetrofit {
 
     public static IJuheService getJuheService() {
         return ApiJuheManager.getInstance().createArticleRetrofitService();
+    }
+
+    public static IGankFuLiService getGankFuLiService() {
+        return ApiGankManager.getInstance().createArticleRetrofitService();
     }
 }
