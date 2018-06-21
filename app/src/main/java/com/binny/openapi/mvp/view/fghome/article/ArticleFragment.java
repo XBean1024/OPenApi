@@ -36,7 +36,6 @@ public class ArticleFragment extends AbsBaseFragment implements DataCallback<Art
 
     public ArticleFragment() {
         mArticlePresenter = new Presenter();
-        mArticlePresenter.initArticleModel(this);
     }
 
     @Override
@@ -55,13 +54,13 @@ public class ArticleFragment extends AbsBaseFragment implements DataCallback<Art
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 List<ArticleBean> dataBean = adapter.getData();
-//                Toast.makeText(mActivity, ""+dataBean.get(position).getData().getAuthor(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mActivity, ""+dataBean.get(position).getRegisterData().getAuthor(), Toast.LENGTH_SHORT).show();
 
-//                String time = dataBean.get(0).getData().getDate().getCurr();
+//                String time = dataBean.get(0).getRegisterData().getDate().getCurr();
 
                 final String author = dataBean.get(position).getData().getAuthor();
 
-//                String digest = dataBean.get(0).getData().getDigest();
+//                String digest = dataBean.get(0).getRegisterData().getDigest();
 
                 final String count = "共" + dataBean.get(position).getData().getWc() + "字   ";
 
@@ -104,7 +103,7 @@ public class ArticleFragment extends AbsBaseFragment implements DataCallback<Art
                 .getObj(mType, articleBeans);
         mArticleBeans.addAll(articleBeans);
         if (mArticleBeans.size()==0) {
-            mArticlePresenter.getArticle();
+            mArticlePresenter.getArticle(0,this);
             return;
         }
         mArticleAdapter.notifyDataSetChanged();
@@ -163,18 +162,12 @@ public class ArticleFragment extends AbsBaseFragment implements DataCallback<Art
 
     @Override
     protected void onRefresh() {
-        mArticlePresenter.getArticleRandom();
+        mArticlePresenter.getArticle(1,this);
     }
-
 
     @Override
     protected void onLoadMore() {
-        Utils.mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mArticlePresenter.getArticleRandom();
-            }
-        }, 500);
 
     }
+
 }

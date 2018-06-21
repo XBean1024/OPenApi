@@ -41,7 +41,6 @@ public class LoginActivity extends AbsBaseActivity implements DataCallback<Login
     @Override
     protected void initView() {
         mLoginPresenter = new Presenter();
-        mLoginPresenter.initLoginModel(this);
         this.mItemTv = (TextView) findViewById(R.id.item);
         this.mLoginPassword = (KeyValueLayout) findViewById(R.id.login_password);
         this.mLoginPhone = (KeyValueLayout) findViewById(R.id.login_phone);
@@ -125,7 +124,7 @@ public class LoginActivity extends AbsBaseActivity implements DataCallback<Login
     }
 
     public void login(View view) {
-        mLoginPresenter.getLoginData(mLoginPhone.getValue(),mLoginPassword.getValue());
+        mLoginPresenter.getLoginData(mLoginPhone.getValue(),mLoginPassword.getValue(),this);
     }
 
     public void toRegister(View view) {

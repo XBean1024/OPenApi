@@ -21,6 +21,7 @@ public class ApiArticleManger {
     }
 
     private IArticleService mIArticleService;
+
     private ApiArticleManger() {
         if (mRetrofitArticleApi == null) {
             mRetrofitArticleApi = new Retrofit.Builder()

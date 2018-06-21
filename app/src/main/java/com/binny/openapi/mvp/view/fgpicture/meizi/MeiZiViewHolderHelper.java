@@ -13,6 +13,7 @@ import com.binny.openapi.bean.MeiZiTuBean;
 import com.binny.openapi.mvp.view.activity.MainActivity;
 import com.binny.openapi.mvp.view.activity.WebActivity;
 import com.binny.openapi.util.BitmapUtils;
+import com.binny.openapi.util.GlideUtils;
 import com.binny.openapi.util.UtilsLog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -46,10 +47,8 @@ public class MeiZiViewHolderHelper implements IViewHolderHelper<MeiZiViewHolder,
         String picUrl = iBaseBeanList.get(position).getPicUrl();
         String url = iBaseBeanList.get(position).getUrl();
 
-        Glide.with(context).load(picUrl).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
-//                .placeholder(R.mipmap.place_holder)
-                .into(viewHolder.mImageView);
 
+        GlideUtils.loadImg(context,picUrl,viewHolder.mImageView);
         viewHolder.mImageView.setOnLongClickListener(v -> {
             XHttp.getInstance()
                     .get(picUrl)

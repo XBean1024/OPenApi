@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:padding="@dimen/value_5dp"
     android:layout_margin="@dimen/dp_10"
+    android:gravity="center"
     android:layout_height="match_parent">
 
     <ImageView
@@ -16,6 +17,7 @@
         android:layout_width="match_parent"
         android:ellipsize="end"
         android:singleLine="true"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:layout_below="@id/meizi_img"
         android:text="阿萨达大大所" />

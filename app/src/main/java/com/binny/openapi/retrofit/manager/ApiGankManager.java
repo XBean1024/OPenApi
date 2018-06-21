@@ -1,5 +1,6 @@
 package com.binny.openapi.retrofit.manager;
 
+import com.binny.openapi.constant.ConstantUrl;
 import com.binny.openapi.retrofit.server.IGankFuLiService;
 import com.binny.openapi.retrofit.server.IJuheService;
 
@@ -27,7 +28,7 @@ public class ApiGankManager {
     private ApiGankManager() {
         if (mRetrofitArticleApi == null) {
             mRetrofitArticleApi = new Retrofit.Builder()
-                    .baseUrl(JUHE_BASE_URL)
+                    .baseUrl(ConstantUrl.GANK_FILI_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();

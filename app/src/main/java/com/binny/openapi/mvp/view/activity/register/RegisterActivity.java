@@ -21,14 +21,13 @@ public class RegisterActivity extends AppCompatActivity implements DataCallback<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mRegisterPresenter = new Presenter();
-        mRegisterPresenter.initRegisterModel(this);
     }
 
 
     public void register(View view) {
         KeyValueLayout keyValueLayoutName = findViewById(R.id.register_phone);
         KeyValueLayout keyValueLayoutPwd = findViewById(R.id.register_password);
-        mRegisterPresenter.getData(keyValueLayoutName.getValue(), keyValueLayoutPwd.getValue(), "许彬彬", "", "", "other2", null);
+        mRegisterPresenter.getRegisterData(keyValueLayoutName.getValue(), keyValueLayoutPwd.getValue(), "许彬彬", "", "", "other2", null,this);
     }
 
     @Override

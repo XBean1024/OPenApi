@@ -2,6 +2,8 @@ package com.binny.openapi.retrofit.server;
 
 import android.graphics.Bitmap;
 
+import com.binny.openapi.bean.FuLiBean;
+
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -13,5 +15,5 @@ import retrofit2.http.Path;
 
 public interface IGankFuLiService {
     @GET("data/福利/10/{page}")
-    Observable<Bitmap> getGankFuLi(@Path("page") int page);
+    Observable<FuLiBean> getGankFuLi(@Path("page") int page);
 }

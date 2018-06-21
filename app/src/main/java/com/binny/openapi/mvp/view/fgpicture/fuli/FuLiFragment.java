@@ -7,6 +7,8 @@ import com.bean.xhttp.callback.OnXHttpCallback;
 import com.bean.xhttp.response.Response;
 import com.binny.openapi.R;
 import com.binny.openapi.bean.FuLiBean;
+import com.binny.openapi.callback.DataCallback;
+import com.binny.openapi.mvp.presenter.Presenter;
 import com.binny.openapi.mvp.view.base.AbsTopNavigationTabBaseFragment;
 import com.binny.openapi.util.URLEncoderURI;
 import com.binny.openapi.util.UtilsLog;
@@ -24,10 +26,12 @@ import java.util.List;
  * @date 2018/6/21 15:42
  * @Description:
  */
-public class FuLiFragment extends AbsTopNavigationTabBaseFragment implements OnXHttpCallback {
+public class FuLiFragment extends AbsTopNavigationTabBaseFragment implements DataCallback<FuLiBean> {
     private List<FuLiBean.ResultsBean> mResultsBeans = new ArrayList<>();
-    private String num="10";
+    private String num = "10";
     private int page = 1;
+
+    private Presenter mPresenter;
 
     @Override
     protected IViewHolderHelper initViewHolderHelper() {
@@ -36,7 +40,7 @@ public class FuLiFragment extends AbsTopNavigationTabBaseFragment implements OnX
 
     @Override
     protected int initItem() {
-        return R.layout.item_fragment_fuli;
+        return R.layout.item_fragment_meizi;
     }
 
     @Override
@@ -46,43 +50,48 @@ public class FuLiFragment extends AbsTopNavigationTabBaseFragment implements OnX
 
     @Override
     protected void getData() {
-
-    }
-
-
-
-    @Override
-    public void onSuccess(Response response) {
-        String json = response.toString();
-        UtilsLog.json(json);
-        Gson gson = new Gson();
-        FuLiBean fuLiBean = gson.fromJson(json, FuLiBean.class);
-        if (fuLiBean.isError()) {
-            Toast.makeText(mActivity, "0000", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (mIsRefresh) {
-            mIsRefresh =false;
-            mResultsBeans.addAll(0,fuLiBean.getResults());
-        }else {
-            mResultsBeans.addAll(fuLiBean.getResults());
-        }
-        mCommonAdapter.notifyDataSetChanged();
-        mRefreshLayout.finishRefresh();
-
+        mPresenter.getGankFuliData(page, this);
     }
 
     @Override
-    public void onFailure(Exception ex, String errorCode) {
-        Toast.makeText(mActivity, "1111", Toast.LENGTH_SHORT).show();
-        UtilsLog.e(ex.getMessage());
-        mRefreshLayout.finishRefresh();
-
+    protected void afterInitView() {
+        super.afterInitView();
+        mPresenter = new Presenter();
     }
 
     @Override
     protected void onRefresh() {
         super.onRefresh();
         page++;
+        mPresenter.getGankFuliData(page, this);
+    }
+
+    @Override
+    public void onLoading() {
+
+    }
+
+    @Override
+    public void onLoadDone() {
+
+    }
+
+    @Override
+    public void onError(String result) {
+        Toast.makeText(mActivity, "1111", Toast.LENGTH_SHORT).show();
+        UtilsLog.e(result);
+        mRefreshLayout.finishRefresh();
+    }
+
+    @Override
+    public void onSuccess(FuLiBean fuLiBean) {
+        if (mIsRefresh) {
+            mIsRefresh = false;
+            mResultsBeans.addAll(0, fuLiBean.getResults());
+        } else {
+            mResultsBeans.addAll(fuLiBean.getResults());
+        }
+        mCommonAdapter.notifyDataSetChanged();
+        mRefreshLayout.finishRefresh();
     }
 }
