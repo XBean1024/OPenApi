@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/common_refreshLayout"
+    android:background="@color/antiquewhite"
+    android:layout_height="match_parent">
+
+    <com.scwang.smartrefresh.layout.header.ClassicsHeader
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <GridView
+        android:id="@+id/home_common_gv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="@dimen/value_40dp"
+        android:horizontalSpacing="@dimen/value_10dp"
+        android:numColumns="2"
+        android:dividerHeight="0dp"
+        android:divider="@android:color/transparent"
+        android:stretchMode="columnWidth"/>
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

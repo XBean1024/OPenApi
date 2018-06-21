@@ -16,7 +16,7 @@ import java.util.List;
  * 各个导航栏目下得 tab 的 对应基础界面
  */
 
-public abstract class AbsNavigationContentFragment extends AbsBaseFragment {
+public abstract class AbsNavigationContentListFragment extends AbsBaseFragment {
 
     protected CommonAdapter mCommonAdapter;
 

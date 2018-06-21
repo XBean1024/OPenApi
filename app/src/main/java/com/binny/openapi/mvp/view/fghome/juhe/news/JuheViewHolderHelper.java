@@ -51,6 +51,7 @@ public class JuheViewHolderHelper implements IViewHolderHelper<JuheViewHolder, J
         Glide.with(context).load(imgUrl)
                 .bitmapTransform(new RoundedCornersTransformation(context, 30, 0,
                         RoundedCornersTransformation.CornerType.ALL))
+                .crossFade()
                 .into(viewHolder.mImageView);
         String content = iBaseBeanList.get(position).getAuthor_name();
 

@@ -7,7 +7,7 @@ import com.binny.openapi.bean.JuheNewsBean;
 import com.binny.openapi.cache.DiskLruCacheHelper;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.juhe.JuheNewsPresenter;
-import com.binny.openapi.mvp.view.base.AbsNavigationContentFragment;
+import com.binny.openapi.mvp.view.base.AbsNavigationContentListFragment;
 import com.binny.openapi.mvp.view.fghome.juhe.news.JuheViewHolderHelper;
 import com.binny.openapi.util.UtilsLog;
 import com.smart.holder.iinterface.IViewHolderHelper;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * 聚合数据
  */
 
-public class NewsJuHeFragment extends AbsNavigationContentFragment implements DataCallback<JuheNewsBean> {
+public class NewsJuHeFragment extends AbsNavigationContentListFragment implements DataCallback<JuheNewsBean> {
 
     private JuheNewsPresenter mPresenter;
 

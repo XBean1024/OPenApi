@@ -6,7 +6,7 @@ import com.binny.openapi.R;
 import com.binny.openapi.bean.PictureBean;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.picture.PresenterPicture;
-import com.binny.openapi.mvp.view.base.AbsNavigationContentFragment;
+import com.binny.openapi.mvp.view.fgpicture.AbsNavigationGridFragment;
 import com.binny.openapi.util.UtilsLog;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import java.util.List;
  * 纯图片 展示
  * {@link com.binny.openapi.constant.ConstantUrl#TOP_API_URL_PICTURE}
  */
-public class PureImgFragment extends AbsNavigationContentFragment implements DataCallback<PictureBean> {
+public class PureImgFragment extends AbsNavigationGridFragment implements DataCallback<PictureBean> {
 
     private List<PictureBean.DataBean> mPictureBeans = new ArrayList<>();
 

@@ -11,10 +11,12 @@ import com.bean.xhttp.callback.OnXHttpCallback;
 import com.bean.xhttp.response.Response;
 import com.binny.openapi.R;
 import com.binny.openapi.bean.PictureBean;
+import com.binny.openapi.glide.GlideCircleTransform;
 import com.binny.openapi.util.BitmapUtils;
 import com.binny.openapi.util.UtilsLog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
@@ -22,6 +24,9 @@ import com.smart.holder.iinterface.IViewHolder;
 import com.smart.holder.iinterface.IViewHolderHelper;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 import static com.binny.openapi.constant.ConstantParams.PICTURE_FILE_NAME;
 
@@ -42,24 +47,14 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
 
     @Override
     public void bindListDataToView(final Context context, final List<PictureBean.DataBean> iBaseBeanList, final PictureViewHolder viewHolder, final int position) {
-        UtilsLog.i("ssssssssssss");
         String url = iBaseBeanList.get(position).getUrl();
-        String urlTemp = (String) viewHolder.mImageView.getTag();
-        if (url.equals(urlTemp)) {
-            return;
-        }
-        viewHolder.mImageView.setTag(url);
-        Glide.with(context).load(iBaseBeanList.get(position).getUrl())
-                .asBitmap()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
-                .thumbnail(0.1f)//先加载原图大小的十分之一
-                .into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
 
-                        viewHolder.mImageView.setBackground(new BitmapDrawable(context.getResources(), resource));
-                    }
-                });
+        Glide.with(context).load(url)
+                .crossFade()
+//                .bitmapTransform(new BlurTransformation(context,23,4))
+                .transform(new GlideCircleTransform(context))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
+                .into(viewHolder.mImageView);
 
 
         viewHolder.mImageView.setOnLongClickListener(v -> {
@@ -76,6 +71,7 @@ public class PictureViewHolderHelper implements IViewHolderHelper<PictureViewHol
 
                         @Override
                         public void onFailure(Exception ex, String errorCode) {
+                            UtilsLog.e(ex.getMessage());
                         }
                     });
 

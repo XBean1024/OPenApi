@@ -6,7 +6,7 @@ import com.binny.openapi.R;
 import com.binny.openapi.bean.HistoryDayBean;
 import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.juhe.HistoryTodayPresenter;
-import com.binny.openapi.mvp.view.base.AbsNavigationContentFragment;
+import com.binny.openapi.mvp.view.base.AbsNavigationContentListFragment;
 import com.binny.openapi.util.UtilsLog;
 import com.smart.holder.iinterface.IViewHolderHelper;
 
@@ -18,7 +18,7 @@ import java.util.List;
  *
  */
 
-public class HistoryViewHolderFragment extends AbsNavigationContentFragment implements DataCallback<HistoryDayBean> {
+public class HistoryViewHolderFragment extends AbsNavigationContentListFragment implements DataCallback<HistoryDayBean> {
     protected List<HistoryDayBean.ResultBean> mHistoryDayBeanList = new ArrayList<>();
 
     @Override

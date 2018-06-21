@@ -15,6 +15,7 @@ import com.binny.openapi.mvp.view.activity.WebActivity;
 import com.binny.openapi.util.BitmapUtils;
 import com.binny.openapi.util.UtilsLog;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.smart.holder.iinterface.IViewHolder;
 import com.smart.holder.iinterface.IViewHolderHelper;
 
@@ -28,26 +29,26 @@ import static com.binny.openapi.constant.ConstantParams.PICTURE_FILE_NAME;
  * @date 2018/6/20 16:19
  * @Description: 妹子图
  */
-public class MeiZiViewHolderHelper implements IViewHolderHelper <MeiZiViewHolder,MeiZiTuBean.ShowapiResBodyBean.NewslistBean>{
+public class MeiZiViewHolderHelper implements IViewHolderHelper<MeiZiViewHolder, MeiZiTuBean.ShowapiResBodyBean.NewslistBean> {
     @Override
     public IViewHolder initItemViewHolder(MeiZiViewHolder viewHolder, View convertView) {
         viewHolder = new MeiZiViewHolder();
         viewHolder.mImageView = convertView.findViewById(R.id.meizi_img);
         viewHolder.mDate = convertView.findViewById(R.id.meizi_create_time);
         viewHolder.mTitle = convertView.findViewById(R.id.meizi_title);
-        UtilsLog.i("初始化 item");
         return viewHolder;
     }
 
     @Override
     public void bindListDataToView(Context context, List<MeiZiTuBean.ShowapiResBodyBean.NewslistBean> iBaseBeanList, MeiZiViewHolder viewHolder, int position) {
-        UtilsLog.i("绑定 item  =    "+iBaseBeanList.get(position).getUrl());
         viewHolder.mTitle.setText(iBaseBeanList.get(position).getTitle());
         viewHolder.mDate.setText(iBaseBeanList.get(position).getCtime());
         String picUrl = iBaseBeanList.get(position).getPicUrl();
         String url = iBaseBeanList.get(position).getUrl();
 
-        Glide.with(context).load(picUrl).asBitmap().placeholder(R.mipmap.place_holder).into(viewHolder.mImageView);
+        Glide.with(context).load(picUrl).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL)// 缓存所有尺寸的图片
+//                .placeholder(R.mipmap.place_holder)
+                .into(viewHolder.mImageView);
 
         viewHolder.mImageView.setOnLongClickListener(v -> {
             XHttp.getInstance()
@@ -68,17 +69,17 @@ public class MeiZiViewHolderHelper implements IViewHolderHelper <MeiZiViewHolder
 
             return true;
         });
-        MainActivity activity = (MainActivity) context;
-        viewHolder.mImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, WebActivity.class);
-                UtilsLog.i(picUrl);
-                intent.putExtra("loadUrl", url);
-                intent.putExtra("adblock", true);
-                intent.putExtra("chaeset", "gb2312");
-                activity.intoActivityWithAnimotion(intent);
-            }
-        });
+//        MainActivity activity = (MainActivity) context;
+//        viewHolder.mImageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(activity, WebActivity.class);
+//                UtilsLog.i(picUrl);
+//                intent.putExtra("loadUrl", url);
+//                intent.putExtra("adblock", false);
+//                intent.putExtra("chaeset", "gb2312");
+//                activity.intoActivityWithAnimotion(intent);
+//            }
+//        });
     }
 }
