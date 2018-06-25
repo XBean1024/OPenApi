@@ -1,134 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/crimson"
     android:orientation="vertical">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/header_vg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.design.widget.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/crimson"
-                app:layout_scrollFlags="scroll">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/header"
-                        android:layout_width="wrap_content"
-                        android:layout_height="96dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/value_30dp"
-                        android:src="@mipmap/header" />
-
-                    <TextView
-                        android:id="@+id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/header"
-                        android:layout_marginTop="@dimen/value_10dp"
-                        android:gravity="center"
-                        android:shadowColor="@color/darkorange"
-                        android:shadowDx="0"
-                        android:shadowDy="0"
-                        android:shadowRadius="25"
-                        android:text="欧阳慕远"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/value_20sp"
-                        android:textStyle="italic" />
-                </RelativeLayout>
-            </android.support.design.widget.CollapsingToolbarLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/value_40dp"
-                android:background="@color/orange"
-                android:gravity="center"
-                android:text="悬浮的部分" />
-        </android.support.design.widget.AppBarLayout>
-
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <RelativeLayout style="@style/app_setting_container">
-
-                    <TextView
-                        style="@style/app_setting_text_left"
-                        android:drawableLeft="@mipmap/star"
-                        android:text="我&#8194;收&#8194;藏" />
-
-                    <TextView style="@style/app_setting_text_right" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/test"
-                    style="@style/app_setting_container">
-
-                    <TextView
-
-                        style="@style/app_setting_text_left"
-                        android:drawableLeft="@mipmap/clear"
-                        android:text="测&#8194;&#8194;&#8194;&#8194;试" />
-
-                    <TextView style="@style/app_setting_text_right" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rl_clear_cache"
-                    style="@style/app_setting_container">
-
-                    <TextView
-                        style="@style/app_setting_text_left"
-                        android:drawableLeft="@mipmap/clear"
-                        android:text="清除缓存" />
-
-                    <TextView
-                        android:id="@+id/tv_cache_size"
-                        style="@style/app_setting_text_right" />
-                </RelativeLayout>
-            </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
-    </android.support.design.widget.CoordinatorLayout>
-
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/value_100dp">
+        android:id="@+id/rl_clear_cache"
+        style="@style/app_setting_container"
+        android:layout_marginTop="@dimen/value_30dp">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/value_10dp"
-            android:background="@mipmap/message"
-            android:contentDescription="setting" />
+        <TextView
+            style="@style/app_setting_text_left"
+            android:text="缓存" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="@dimen/value_10dp"
-            android:background="@mipmap/setting"
-            android:contentDescription="setting" />
+        <TextView
+            android:id="@+id/tv_cache_size"
+            style="@style/app_setting_text_right" />
     </RelativeLayout>
-</RelativeLayout>
+
+    <GridView
+        android:id="@+id/tool_gv"
+        android:padding="@dimen/value_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/value_30dp"
+        android:gravity="center"
+        android:numColumns="3" />
+</LinearLayout>

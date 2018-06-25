@@ -55,6 +55,6 @@
             android:id="@+id/rb_mine"
             style="@style/bottom_btn_style"
             android:drawableTop="@drawable/mine_selector"
-            android:text="我的" />
+            android:text="工具" />
     </RadioGroup>
 </LinearLayout>

@@ -10,9 +10,9 @@ import com.binny.openapi.callback.DataCallback;
 import com.binny.openapi.mvp.presenter.Presenter;
 import com.binny.openapi.mvp.view.base.AbsBaseFragment;
 import com.binny.openapi.util.UtilSP;
-import com.binny.openapi.util.Utils;
 import com.binny.openapi.util.UtilsLog;
 import com.binny.openapi.widget.dialog.ArticleDetailDialog;
+import com.binny.openapi.widget.dialog.HuoDongDialog;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.smart.holder.CommonAdapter;
 

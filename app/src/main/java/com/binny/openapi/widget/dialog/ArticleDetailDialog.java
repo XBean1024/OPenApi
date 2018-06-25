@@ -96,7 +96,7 @@ public class ArticleDetailDialog extends Dialog {
         setCanceledOnTouchOutside(true);
         Window dialogWindow = getWindow();
         dialogWindow.setWindowAnimations(R.style.push_up_in_out);//设置对话框的进出效果
-        initDialog();
+        configDialog();
         findViews();
         bindView();
     }
@@ -109,7 +109,7 @@ public class ArticleDetailDialog extends Dialog {
         mWebView.loadDataWithBaseURL(null, html, "text/html", "utf-8", null);
         mWebView.setWebViewClient(new WebViewClient());
     }
-    private void initDialog() {
+    private void configDialog() {
         ResolutionUtil resolutionUtil = new ResolutionUtil(mContext);
         Window window = this.getWindow();
         window.setGravity(Gravity.CENTER);
