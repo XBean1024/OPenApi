@@ -1,1 +1,1 @@
-include ':app', ':pinlockview', ':switchbtn'
+include ':app', ':pinlockview', ':switchbtn', ':stagger'

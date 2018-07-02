@@ -12,11 +12,9 @@
         android:id="@+id/home_common_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="@dimen/value_40dp"
-        android:horizontalSpacing="@dimen/value_10dp"
-        android:numColumns="2"
+        android:horizontalSpacing="@dimen/value_2dp"
+        android:numColumns="4"
         android:dividerHeight="0dp"
-        android:divider="@android:color/transparent"
-        android:stretchMode="columnWidth"/>
+        android:divider="@android:color/transparent"/>
 
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

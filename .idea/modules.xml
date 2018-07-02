@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/OPenApi.iml" filepath="$PROJECT_DIR$/OPenApi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinlockview/pinlockview.iml" filepath="$PROJECT_DIR$/pinlockview/pinlockview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stagger/stagger.iml" filepath="$PROJECT_DIR$/stagger/stagger.iml" />
       <module fileurl="file://$PROJECT_DIR$/switchbtn/switchbtn.iml" filepath="$PROJECT_DIR$/switchbtn/switchbtn.iml" />
     </modules>
   </component>

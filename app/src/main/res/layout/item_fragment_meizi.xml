@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="@dimen/value_5dp"
-    android:layout_margin="@dimen/dp_10"
     android:gravity="center"
+    android:padding="@dimen/value_1dp"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/meizi_img"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:scaleType="fitXY" />
 
     <TextView

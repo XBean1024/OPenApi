@@ -34,8 +34,10 @@ import com.bumptech.glide.Glide;
 public class HuoDongDialog extends Dialog {
     private Activity mContext;
 
-    private float mScaleWidth = 0.8f;
-    private float mScaleHeight = 0.8f;
+    private double mScaleWidth = 0.8f;
+    private double mScaleHeight = 0.8f;
+    private double mScaleWH;//宽高比
+
     private ImageView mImageView;
     private String mImgUrl;//背景
     private String mMessage;//弹窗显示信息
@@ -67,18 +69,19 @@ public class HuoDongDialog extends Dialog {
 
         if (TextUtils.isEmpty(mMessage)) {
             mMessageTv.setVisibility(View.GONE);
-        }else {
+        } else {
             mMessageTv.setText(mMessage);
             if (mMarginPoxBottom != -1) {
                 LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mMessageTv.getLayoutParams();
-                lp.setMargins(0,0,0,mMarginPoxBottom);
+                lp.setMargins(0, 0, 0, mMarginPoxBottom);
                 mMessageTv.setLayoutParams(lp);
+//                mHuoDongBtn.setVisibility(View.GONE);
             }
 
         }
         if (!TextUtils.isEmpty(mBtnColorString)) {
             GradientDrawable drawable = (GradientDrawable) mHuoDongBtn.getBackground();
-            drawable.setColor(Color.parseColor("#"+mBtnColorString));
+            drawable.setColor(Color.parseColor("#" + mBtnColorString));
             mHuoDongBtn.setBackground(drawable);
         }
         Glide.with(mContext)
@@ -103,7 +106,7 @@ public class HuoDongDialog extends Dialog {
             params = window.getAttributes();
             if (params != null) {
                 params.width = (int) (screenWidth * mScaleWidth);
-                params.height = (int) (screenHeight * mScaleHeight);
+                params.height = (int) (screenWidth / mScaleWH);
                 window.setAttributes(params);
             }
         }
@@ -112,42 +115,57 @@ public class HuoDongDialog extends Dialog {
 
     /**
      * 设置弹窗的宽度缩放比
+     *
      * @param scaleWidth 宽度缩放比 浮点值
      */
-    public HuoDongDialog setScaleWidth(float scaleWidth) {
+    public HuoDongDialog setScaleWidth(double scaleWidth) {
         mScaleWidth = scaleWidth;
         return this;
     }
 
     /**
+     * 设置弹窗的宽高比
+     *
+     * @param scaleWidth 宽度缩放比 浮点值
+     */
+    public HuoDongDialog setScaleWH(double scaleWidth) {
+        mScaleWH = scaleWidth;
+        return this;
+    }
+
+    /**
      * 设置弹窗的 高度缩放比
+     *
      * @param scaleHeight 高度缩放比  浮点值
      */
-    public HuoDongDialog setScaleHeight(float scaleHeight) {
+    public HuoDongDialog setScaleHeight(double scaleHeight) {
         mScaleHeight = scaleHeight;
         return this;
     }
 
     /**
      * 设置活动弹窗的背景图
+     *
      * @param url URL
      */
-    public HuoDongDialog setHuoDongImgUrl(String url){
+    public HuoDongDialog setHuoDongImgUrl(String url) {
         mImgUrl = url;
         return this;
     }
 
-    /**设置活动展示信息
+    /**
+     * 设置活动展示信息
      *
      * @param message 展示信息
      */
-    public HuoDongDialog setHuoDongMessage(String message){
+    public HuoDongDialog setHuoDongMessage(String message) {
         mMessage = message;
         return this;
     }
 
     /**
      * 设置 活动距离底部弹窗底部的距离
+     *
      * @param marginPoxBottom 距离 像素值
      */
     public HuoDongDialog setMarginBottom(int marginPoxBottom) {
@@ -157,9 +175,10 @@ public class HuoDongDialog extends Dialog {
 
     /**
      * 设置点击按钮的背景色
+     *
      * @param btnColorString 背景色
      */
-    public HuoDongDialog setBtnBgColor(String btnColorString){
+    public HuoDongDialog setBtnBgColor(String btnColorString) {
         mBtnColorString = btnColorString;
         return this;
     }

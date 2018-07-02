@@ -43,7 +43,7 @@ public class MineFragment extends AbsBaseFragment implements IToolItemClickedLis
     protected void initView(View view) {
         tvCacheSize = view.findViewById(R.id.tv_cache_size);
         RelativeLayout textView = view.findViewById(R.id.rl_clear_cache);
-
+        mImmersionBar.with(this).titleBar(view.findViewById(R.id.tool_ll)).init();
         mGridView = view.findViewById(R.id.tool_gv);
         textView.setOnClickListener(v -> UtilsPerMission.getPermission(new OnPermissionCallback() {
             @Override
@@ -111,10 +111,10 @@ public class MineFragment extends AbsBaseFragment implements IToolItemClickedLis
             case 0://活动弹窗
                 new HuoDongDialog(mActivity)
                         .setBtnBgColor("35462156")
-                        .setMarginBottom(30)
-                        .setHuoDongMessage("adafasfnsljkfhsljkfhsf\nfadhsashasasas\ndhlhgalhashad\n")
+                        .setMarginBottom(0)
+                        .setHuoDongMessage("1、要很少的控制点就能够生成复杂平滑曲线要很少的控制点就能够生成复杂平滑曲线\n2、要很少的控制点就能够生成复杂平滑曲线\n3、的方法，来辅助汽车车体的工业设计")
                         .setHuoDongImgUrl("http://dynamic-image.yesky.com/740x-/uploadImages/2015/163/50/690V3VHW0P77.jpg")
-                        .setScaleHeight(0.8f)
+                        .setScaleWH(1.0)
                         .setScaleWidth(0.8f)
                         .show();
                 break;

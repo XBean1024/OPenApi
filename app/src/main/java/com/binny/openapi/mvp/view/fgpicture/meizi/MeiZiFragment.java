@@ -29,7 +29,7 @@ public class MeiZiFragment extends AbsTopNavigationTabBaseFragment implements On
     private int mPage =1;
 
     private final String url = "http://route.showapi.com/197-1";
-    private String num = "6";
+    private String num = "20";
 
     @Override
     protected int getFragmentLayout() {
