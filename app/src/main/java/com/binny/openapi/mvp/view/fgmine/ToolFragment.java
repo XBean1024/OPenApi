@@ -3,6 +3,7 @@ package com.binny.openapi.mvp.view.fgmine;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
@@ -13,6 +14,7 @@ import com.binny.openapi.R;
 import com.binny.openapi.bean.ToolBean;
 import com.binny.openapi.callback.OnPermissionCallback;
 import com.binny.openapi.constant.ConstantParams;
+import com.binny.openapi.mvp.view.activity.BluetoochActivity;
 import com.binny.openapi.mvp.view.base.AbsBaseFragment;
 import com.binny.openapi.util.FileUtils;
 import com.binny.openapi.util.UtilsLog;
@@ -28,11 +30,14 @@ import java.util.List;
  * author  binny
  * date 5/9
  */
-public class MineFragment extends AbsBaseFragment implements IToolItemClickedListener {
+public class ToolFragment extends AbsBaseFragment implements IToolItemClickedListener {
+    private final String[] itemString = new String[]{
+            "活动对话框",
+            "清除缓存",
+            "请求权限", "蓝牙"
+    };
     private TextView tvCacheSize;
-
     private GridView mGridView;
-
 
     @Override
     protected int getFragmentLayout() {
@@ -43,7 +48,7 @@ public class MineFragment extends AbsBaseFragment implements IToolItemClickedLis
     protected void initView(View view) {
         tvCacheSize = view.findViewById(R.id.tv_cache_size);
         RelativeLayout textView = view.findViewById(R.id.rl_clear_cache);
-        mImmersionBar.with(this).titleBar(view.findViewById(R.id.tool_ll)).init();
+        mImmersionBar.with(this).titleBar(view.findViewById(R.id.tool_ll)).execute();
         mGridView = view.findViewById(R.id.tool_gv);
         textView.setOnClickListener(v -> UtilsPerMission.getPermission(new OnPermissionCallback() {
             @Override
@@ -151,12 +156,11 @@ public class MineFragment extends AbsBaseFragment implements IToolItemClickedLis
                     }
                 }, getActivity(), view, Manifest.permission.WRITE_EXTERNAL_STORAGE);
                 break;
+            case 3:
+                startActivity(new Intent(mActivity, BluetoochActivity.class));
+                break;
+
         }
     }
 
-    private final String[] itemString = new String[]{
-            "活动对话框",
-            "清除缓存",
-            "请求权限"
-    };
 }

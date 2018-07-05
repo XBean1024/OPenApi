@@ -70,8 +70,8 @@ task binny {
 
     println '11111'
 }
-task binnyTest(dependsOn:binny){
-    doFirst{
+task binnyTest(dependsOn: binny) {
+    doFirst {
         println '22222'
     }
 }

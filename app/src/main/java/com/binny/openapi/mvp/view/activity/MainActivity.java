@@ -11,7 +11,7 @@ import com.binny.openapi.R;
 import com.binny.openapi.callback.OnPermissionCallback;
 import com.binny.openapi.mvp.view.base.AbsBaseActivity;
 import com.binny.openapi.mvp.view.fghome.HomeFragment;
-import com.binny.openapi.mvp.view.fgmine.MineFragment;
+import com.binny.openapi.mvp.view.fgmine.ToolFragment;
 import com.binny.openapi.mvp.view.fgmusic.MusicFragment;
 import com.binny.openapi.mvp.view.fgpicture.PictureFragment;
 import com.binny.openapi.mvp.view.fgvideo.VideoFragment;
@@ -42,7 +42,7 @@ public class MainActivity extends AbsBaseActivity implements RadioGroup.OnChecke
     private PictureFragment mPictureFragment;
     private MusicFragment mMusicFragment;
     private VideoFragment mVideoFragment;
-    private MineFragment mMineFragment;
+    private ToolFragment mMineFragment;
 
     private List<Fragment> mFragmentList = new ArrayList<>();
     private int mPostion;
@@ -91,7 +91,7 @@ public class MainActivity extends AbsBaseActivity implements RadioGroup.OnChecke
         mPictureFragment = new PictureFragment();
         mMusicFragment = new MusicFragment();
         mVideoFragment = new VideoFragment();
-        mMineFragment = new MineFragment();
+        mMineFragment = new ToolFragment();
 
         mFragmentList.add(mHomeFragment);
         mFragmentList.add(mPictureFragment);

@@ -1374,9 +1374,9 @@ public class ImmersionBar {
     }
 
     /**
-     * 通过上面配置后初始化后方可成功调用
+     * 通过上面配置后初始化后方可成功调用，使配置生效
      */
-    public void init() {
+    public void execute() {
         mMap.put(mImmersionBarName, mBarParams);
         initBar();   //初始化沉浸式
         setStatusBarView();  //通过状态栏高度动态设置状态栏布局

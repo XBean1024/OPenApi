@@ -169,7 +169,7 @@ public abstract class AbsBaseFragment extends Fragment implements OnRefreshListe
      */
     protected void afterInitView() {
         mImmersionBar = ImmersionBar.with(this);
-        mImmersionBar.keyboardEnable(true).navigationBarWithKitkatEnable(false).fitsSystemWindows(false).init();
+        mImmersionBar.keyboardEnable(true).navigationBarWithKitkatEnable(false).fitsSystemWindows(false).execute();
 
     }
     @Override
@@ -183,6 +183,6 @@ public abstract class AbsBaseFragment extends Fragment implements OnRefreshListe
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden && mImmersionBar != null)
-            mImmersionBar.init();
+            mImmersionBar.execute();
     }
 }

@@ -10,4 +10,5 @@
     <string name="action_register">注      册</string>
     <string name="test">"    在1434年前的今天，0582年4月5日 (农历二月廿七)，君士坦丁堡大主教尤提齐乌斯去世。\n    尤提齐乌斯(c.512 - 5 April 582)死后，被天主教和东正教封圣。\n    尤提齐乌斯出生在小亚细亚西部，他的父亲是罗马军队的将领。尤提齐乌斯30岁时成为修士。在君士坦丁堡的一家大修道院院长去世后，优提齐乌斯接任了这一职务。\n    尤提齐乌斯在成为君士坦丁堡大主教后，与查士丁尼一世在宗教问题上发生冲突。被捕，并被流放。\n    577年，尤提齐乌斯重新成为君士坦丁堡大主教。\n    582年复活节后的星期日，尤提齐乌斯在任上安静地去世。临死前，他对周围说，“我忏悔， 我们都将重生。” 出自《旧约·约伯记》\n  评论：东正教与天主教分裂过程中的重要人物\n"</string>
     <string name="title_activity_history">HistoryActivity</string>
+    <string name="title_activity_blue_tooch">BlueToochActivity</string>
 </resources>

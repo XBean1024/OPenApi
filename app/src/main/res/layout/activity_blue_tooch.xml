@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mvp.view.activity.BluetoochActivity">
+    <TextView
+        android:id="@+id/header_ble"
+        android:layout_width="match_parent"
+        android:background="@color/crimson"
+        android:layout_height="@dimen/value_60dp" />
+
+    <RelativeLayout
+        android:padding="@dimen/value_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/open_ble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="openBLE"
+            android:text="打开蓝牙" />
+
+        <Button
+            android:id="@+id/closde_ble"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/open_ble"
+            android:onClick="closeBLE"
+            android:text="关闭蓝牙" />
+        <Button
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/closde_ble"
+            android:onClick="closeBLE"
+            android:text="获取已配对的蓝牙设备" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.binny.openapi.R;
+import com.binny.openapi.mvp.view.fgmine.ToolFragment;
 import com.binny.openapi.util.UtilsLog;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * {@link com.binny.openapi.mvp.view.fgpicture.PictureFragment}
  * {@link com.binny.openapi.mvp.view.fgmusic.MusicFragment}
  * {@link com.binny.openapi.mvp.view.fgvideo.VideoFragment}
- * {@link com.binny.openapi.mvp.view.fgmine.MineFragment}
+ * {@link ToolFragment}
  */
 public abstract class AbsBottomNavigationTabBaseFragment extends AbsBaseFragment {
 
@@ -66,7 +67,7 @@ public abstract class AbsBottomNavigationTabBaseFragment extends AbsBaseFragment
     @Override
     protected void afterInitView() {
         super.afterInitView();
-        mImmersionBar.titleBar(mTopView).init();
+        mImmersionBar.titleBar(mTopView).execute();
         initFragments(mFragments);
         UtilsLog.i("天劫楼  " + mFragments.size());
         mViewPager.setAdapter(new CommonFragmentAdapter(getChildFragmentManager(), mFragments, initTitles()));

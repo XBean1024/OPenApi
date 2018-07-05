@@ -49,7 +49,7 @@ public class WebActivity extends AbsBaseActivity {
     protected void initView() {
         mSimpleTitleBar = findViewById(R.id.simple_title_bar);
         mSimpleTitleBar.setTitle("");
-        mImmersionBar.titleBar(mSimpleTitleBar).init();
+        mImmersionBar.titleBar(mSimpleTitleBar).execute();
         this.mWebView = findViewById(R.id.web_view_protocol);
         WebSettings webSettings = mWebView.getSettings();
         //支持javascript

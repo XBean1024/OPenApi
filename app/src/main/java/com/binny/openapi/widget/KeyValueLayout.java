@@ -60,7 +60,7 @@ public class KeyValueLayout extends RelativeLayout {
         if (!TextUtils.isEmpty(value_text)) {
             mValueEt.setText(value_text);
         }
-        Log.i("key", "init" + key);
+        Log.i("key", "execute" + key);
 
     }
 

@@ -27,12 +27,13 @@ public abstract class AbsBaseActivity extends FragmentActivity {
         }
         setContentView(getLayoutId());
         mImmersionBar = ImmersionBar.with(this);
-        mImmersionBar.init();   //所有子类都将继承这些相同的属性
+        mImmersionBar.execute();   //所有子类都将继承这些相同的属性
         mActivity = this;
         handleIntent();
         initView();
         setListener();
     }
+
 
     protected void setListener() {
 
