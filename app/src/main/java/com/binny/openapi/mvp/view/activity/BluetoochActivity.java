@@ -1,6 +1,9 @@
 package com.binny.openapi.mvp.view.activity;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
@@ -8,6 +11,8 @@ import android.widget.Toast;
 
 import com.binny.openapi.R;
 import com.binny.openapi.mvp.view.base.AbsBaseActivity;
+
+import java.util.Set;
 
 public class BluetoochActivity extends AbsBaseActivity {
     BluetoothAdapter mBluetoothAdapter;
@@ -57,4 +62,13 @@ public class BluetoochActivity extends AbsBaseActivity {
         }
         mBluetoothAdapter.disable();
     }
+
+    public void getBLEList(View view) {
+        if (mBluetoothAdapter == null) {
+            Toast.makeText(mActivity, "不支持蓝牙设备", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Set<BluetoothDevice> Bondedlist =mBluetoothAdapter.getBondedDevices();
+    }
+
 }
