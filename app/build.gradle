@@ -10,6 +10,7 @@ android {
         targetSdkVersion configInfo.targetSdkVersion
         versionCode configInfo.versionCode
         versionName configInfo.versionName
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
