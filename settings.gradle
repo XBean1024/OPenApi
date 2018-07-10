@@ -1,1 +1,1 @@
-include ':app', ':pinlockview', ':switchbtn', ':stagger'
+include ':app', ':pinlockview', ':switchbtn', ':stagger', ':androidutils'

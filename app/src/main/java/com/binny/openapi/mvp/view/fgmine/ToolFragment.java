@@ -15,6 +15,7 @@ import com.binny.openapi.bean.ToolBean;
 import com.binny.openapi.callback.OnPermissionCallback;
 import com.binny.openapi.constant.ConstantParams;
 import com.binny.openapi.mvp.view.activity.BluetoochActivity;
+import com.binny.openapi.mvp.view.activity.WebActivity;
 import com.binny.openapi.mvp.view.base.AbsBaseFragment;
 import com.binny.openapi.util.FileUtils;
 import com.binny.openapi.util.UtilsLog;
@@ -34,7 +35,7 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
     private final String[] itemString = new String[]{
             "活动对话框",
             "清除缓存",
-            "请求权限", "蓝牙"
+            "请求权限", "蓝牙", "优词词典"
     };
     private TextView tvCacheSize;
     private GridView mGridView;
@@ -158,6 +159,12 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
                 break;
             case 3:
                 startActivity(new Intent(mActivity, BluetoochActivity.class));
+                break;
+            case 4:
+                Intent intent = new Intent(mActivity, WebActivity.class);
+                intent.putExtra("loadUrl","http://www.youdict.com/");
+                intent.putExtra("adblock",false);
+                startActivity(intent);
                 break;
 
         }

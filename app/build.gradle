@@ -26,7 +26,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
+    signingConfigs {
+        release {
+            storeFile file('open.jks')
+            storePassword '123456'
+            keyAlias 'binny'
+            keyPassword '123456'
+        }
+    }
 
 }
 //获取当前时间

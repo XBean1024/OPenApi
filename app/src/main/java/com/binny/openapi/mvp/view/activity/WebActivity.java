@@ -74,6 +74,7 @@ public class WebActivity extends AbsBaseActivity {
                 } else {
                     view.loadUrl(url);
                 }
+                mLoadUrl = url;
                 return true;
             }
         });
