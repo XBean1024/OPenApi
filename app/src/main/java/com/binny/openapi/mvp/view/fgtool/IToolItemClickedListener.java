@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.view.fgmine;
+package com.binny.openapi.mvp.view.fgtool;
 
 import android.view.View;
 

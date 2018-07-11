@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.binny.openapi.R;
-import com.binny.openapi.mvp.view.fgmine.ToolFragment;
+import com.binny.openapi.mvp.view.fgtool.ToolFragment;
 import com.binny.openapi.util.UtilsLog;
 
 import java.util.ArrayList;

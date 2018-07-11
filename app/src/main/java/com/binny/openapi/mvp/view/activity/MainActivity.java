@@ -11,7 +11,7 @@ import com.binny.openapi.R;
 import com.binny.openapi.callback.OnPermissionCallback;
 import com.binny.openapi.mvp.view.base.AbsBaseActivity;
 import com.binny.openapi.mvp.view.fghome.HomeFragment;
-import com.binny.openapi.mvp.view.fgmine.ToolFragment;
+import com.binny.openapi.mvp.view.fgtool.ToolFragment;
 import com.binny.openapi.mvp.view.fgmusic.MusicFragment;
 import com.binny.openapi.mvp.view.fgpicture.PictureFragment;
 import com.binny.openapi.mvp.view.fgvideo.VideoFragment;

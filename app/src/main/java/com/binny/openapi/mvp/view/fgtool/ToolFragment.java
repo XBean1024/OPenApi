@@ -1,4 +1,4 @@
-package com.binny.openapi.mvp.view.fgmine;
+package com.binny.openapi.mvp.view.fgtool;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -35,7 +35,7 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
     private final String[] itemString = new String[]{
             "活动对话框",
             "清除缓存",
-            "请求权限", "蓝牙", "优词词典"
+            "请求权限", "蓝牙", "优词词典","截图"
     };
     private TextView tvCacheSize;
     private GridView mGridView;
@@ -165,6 +165,9 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
                 intent.putExtra("loadUrl","http://www.youdict.com/");
                 intent.putExtra("adblock",false);
                 startActivity(intent);
+                break;
+            case 5:
+                //https://m.jb51.net/article/119881.htm
                 break;
 
         }
