@@ -11,7 +11,6 @@ import java.util.UUID;
 
 public class CommonMethod {
     //获得独一无二的Psuedo ID
-
     public static String getUniquePsuedoID() {
         String serial;
         String m_szDevIDShort = "35" +
