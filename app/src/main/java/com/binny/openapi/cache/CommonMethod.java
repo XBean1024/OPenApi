@@ -29,6 +29,7 @@ public class CommonMethod {
             //serial需要一个初始化
             serial = "serial"; // 随便一个初始化
         }
+
         //使用硬件信息拼凑出来的15位号码
         return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
     }
