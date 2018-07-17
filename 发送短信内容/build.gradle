@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            postprocessing {
+                removeUnusedCode false
+                removeUnusedResources false
+                obfuscate false
+                optimizeCode false
+                proguardFile 'proguard-rules.pro'
+            }
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file('mail.jks')
+            storePassword '123456'
+            keyAlias 'mail'
+            keyPassword '123456'
+        }
+    }
+
+}
+def libs = rootProject.ext.dependencies
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':send_email_libaray')
+    implementation libs.appcompat_v7
+//    implementation libs.permissions
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+    implementation "io.reactivex.rxjava2:rxjava:2.0.7"
+    implementation "com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar"
+    implementation "com.jakewharton.rxbinding2:rxbinding:2.1.1"
+}

@@ -1,1 +1,1 @@
-include ':app', ':pinlockview', ':switchbtn', ':stagger', ':androidutils'
+include ':app', ':pinlockview', ':switchbtn', ':stagger', ':androidutils', ':send_email_libaray', ':发送短信内容', ':library'

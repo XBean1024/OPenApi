@@ -43,7 +43,7 @@ public class LoginBean implements Serializable {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         @Override
         public String toString() {
             return "DataBean{" +
