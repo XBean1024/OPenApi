@@ -3,7 +3,9 @@ package com.xander.sendemaillib;
 /** 
 * 发送邮件需要使用的基本信息 
 */ 
-import java.util.Properties; 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 public class MailSenderInfo { 
 	// 发送邮件的服务器的IP和端口 
 	private String mailServerHost; 
@@ -11,7 +13,10 @@ public class MailSenderInfo {
 	// 邮件发送者的地址 
 	private String fromAddress; 
 	// 邮件接收者的地址 
-	private String toAddress; 
+	private String toAddress;
+
+	List<String> addrs = new ArrayList<>();
+
 	// 登陆邮件发送服务器的用户名和密码 
 	private String userName; 
 	private String password; 
@@ -74,7 +79,16 @@ public class MailSenderInfo {
 	} 
 	public void setToAddress(String toAddress) { 
 	  this.toAddress = toAddress; 
-	} 
+	}
+
+	public List<String> getAddrs() {
+		return addrs;
+	}
+
+	public void setToAddress(List<String> toAddress) {
+		addrs.addAll(toAddress);
+
+	}
 	public String getUserName() { 
 	  return userName; 
 	}

