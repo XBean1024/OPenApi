@@ -2,13 +2,20 @@ package com.binny.openapi.mvp.view.fgtool;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
+import android.os.SystemClock;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
@@ -22,7 +29,9 @@ import com.binny.openapi.callback.OnPermissionCallback;
 import com.binny.openapi.constant.ConstantParams;
 import com.binny.openapi.mvp.view.activity.BluetoochActivity;
 import com.binny.openapi.mvp.view.activity.WebActivity;
+import com.binny.openapi.mvp.view.activity.login.LoginActivity;
 import com.binny.openapi.mvp.view.base.AbsBaseFragment;
+import com.binny.openapi.mvp.view.fgtool.receiver.AutoReceiver;
 import com.binny.openapi.util.FileUtils;
 import com.binny.openapi.util.UtilsLog;
 import com.binny.openapi.util.UtilsPerMission;
@@ -37,12 +46,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.content.Context.ALARM_SERVICE;
+
 /**
  * author binny date 5/9
  */
 public class ToolFragment extends AbsBaseFragment implements IToolItemClickedListener {
     private final String[] itemString =
-            new String[]{"活动对话框", "清除缓存", "请求权限", "蓝牙", "优词词典", "截图", "短信"};
+            new String[]{"活动对话框", "清除缓存", "请求权限", "蓝牙", "优词词典", "截图", "短信","通知"};
     private TextView tvCacheSize;
     private GridView mGridView;
 
@@ -209,6 +220,19 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
                         Manifest.permission.READ_SMS);
 
                 break;
+            case 7:
+                Toast.makeText(mActivity, "通知", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(mActivity, AutoReceiver.class);
+                intent1.setAction("VIDEO_TIMER");
+                // PendingIntent这个类用于处理即将发生的事情
+                PendingIntent sender = PendingIntent.getBroadcast(mActivity, 0, intent1, 0);
+                AlarmManager am = (AlarmManager) mActivity.getSystemService(ALARM_SERVICE);
+                // AlarmManager.ELAPSED_REALTIME_WAKEUP表示闹钟在睡眠状态下会唤醒系统并执行提示功能，该状态下闹钟使用相对时间
+                // SystemClock.elapsedRealtime()表示手机开始到现在经过的时间
+                am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                        SystemClock.elapsedRealtime(), 10 * 1000, sender);
+                showNotification(mActivity,1,"通知栏测试","AlarmManager.ELAPSED_REALTIME_WAKEUP表示闹钟在睡眠状态下会唤醒系统并执行提示功能，该状态下闹钟使用相对时间");
+                break;
         }
     }
 
@@ -318,4 +342,28 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
         }.start();
         return smsBuilder.toString();
     }
+    private void showNotification(Context context, int id, String title, String text) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+        builder.setSmallIcon(R.drawable.video);
+        builder.setContentTitle(title);
+        builder.setContentText(text);
+        builder.setAutoCancel(true);
+        builder.setOnlyAlertOnce(true);
+        // 需要VIBRATE权限
+        builder.setDefaults(Notification.DEFAULT_VIBRATE);
+        builder.setPriority(Notification.PRIORITY_DEFAULT);
+
+        // Creates an explicit intent for an Activity in your app
+        //自定义打开的界面
+        Intent resultIntent = new Intent(context, LoginActivity.class);
+        resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
+                resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        NotificationManager notificationManager = (NotificationManager) context
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(id, builder.build());
+    }
+
 }
