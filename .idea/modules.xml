@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/OPenApi.iml" filepath="$PROJECT_DIR$/OPenApi.iml" />
       <module fileurl="file://$PROJECT_DIR$/androidutils/androidutils.iml" filepath="$PROJECT_DIR$/androidutils/androidutils.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinlockview/pinlockview.iml" filepath="$PROJECT_DIR$/pinlockview/pinlockview.iml" />
       <module fileurl="file://$PROJECT_DIR$/send_email_libaray/send_email_libaray.iml" filepath="$PROJECT_DIR$/send_email_libaray/send_email_libaray.iml" />
       <module fileurl="file://$PROJECT_DIR$/stagger/stagger.iml" filepath="$PROJECT_DIR$/stagger/stagger.iml" />

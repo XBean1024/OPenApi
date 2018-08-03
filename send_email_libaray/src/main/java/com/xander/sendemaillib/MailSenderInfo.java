@@ -87,7 +87,6 @@ public class MailSenderInfo {
 
 	public void setToAddress(List<String> toAddress) {
 		addrs.addAll(toAddress);
-
 	}
 	public String getUserName() { 
 	  return userName; 

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 def configInfo = rootProject.ext.android
 def libs = rootProject.ext.dependencies
+println '配置' + this.project.name
 android {
     compileSdkVersion configInfo.compileSdkVersion
     buildToolsVersion configInfo.buildToolsVersion

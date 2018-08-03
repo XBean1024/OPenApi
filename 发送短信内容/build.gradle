@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+println '配置' + this.project.name
 android {
     compileSdkVersion 26
 

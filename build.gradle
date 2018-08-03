@@ -2,6 +2,7 @@
 apply from: "config.gradle"
 def configInfo = rootProject.ext.android
 def libs = rootProject.ext.dependencies
+println '根项目的配置'
 buildscript {
     
     repositories {
