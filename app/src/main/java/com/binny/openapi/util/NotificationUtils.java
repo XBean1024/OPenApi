@@ -20,10 +20,16 @@ public class NotificationUtils extends ContextWrapper {
     public NotificationUtils(Context context) {
         super(context);
     }
+
     private NotificationManager getNotificationManage() {
         return (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     }
 
+    /**
+     * @param title 标题
+     * @param content 内容
+     * @param intent PendingIntent
+     */
     public void sendNotification(String title, String content, PendingIntent intent) {
         if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(id, name, NotificationManager.IMPORTANCE_HIGH);
@@ -31,24 +37,17 @@ public class NotificationUtils extends ContextWrapper {
             channel.enableLights(true);
             channel.enableVibration(true);
             getNotificationManage().createNotificationChannel(channel);
-            Notification.Builder builder = new Notification.Builder(getApplicationContext(), id)
-                    .setContentTitle(title)
-                    .setContentText(content)
-                    .setSmallIcon(R.mipmap.app)
-                    .setAutoCancel(true);
-            builder.setContentIntent(intent);
-            Notification notification = builder.build();
-            getNotificationManage().notify(1, notification);
-        } else {
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "default");
-            builder.setContentTitle(title)
-                    .setContentText(content)
-                    .setSmallIcon(android.R.drawable.stat_notify_more)
-                    .setContentIntent(intent)
-                    .setAutoCancel(true);
-            Notification notification = builder.build();
-            getNotificationManage().notify(1, notification);
+
         }
+        //未适配 4.1一下的版本，若适配4.1一下的，用 支持包中的
+        Notification.Builder builder = new Notification.Builder(getApplicationContext())
+                .setContentTitle(title)
+                .setContentText(content)
+                .setSmallIcon(R.mipmap.app)
+                .setAutoCancel(true);
+        builder.setContentIntent(intent);
+        Notification notification = builder.build();
+        getNotificationManage().notify(1, notification);
     }
 }
 
