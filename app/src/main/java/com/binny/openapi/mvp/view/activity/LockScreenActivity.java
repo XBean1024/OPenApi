@@ -56,7 +56,7 @@ public class LockScreenActivity extends AbsBaseActivity implements PinLockListen
     public void onComplete(String pin) {
 
         UtilsLog.i(pin);
-        if ("1234".equals(pin)) {
+        if ("2222".equals(pin)) {
             intoActivityWithAnimotion(MainActivity.class);
         }else {
             //设置震动周期，数组表示时间：等待+执行，单位是毫秒，下面操作代表:等待100，执行100，等待100，执行1000，

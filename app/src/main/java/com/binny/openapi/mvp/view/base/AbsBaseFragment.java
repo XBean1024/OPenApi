@@ -26,7 +26,7 @@ public abstract class AbsBaseFragment extends Fragment implements OnRefreshListe
     protected Activity mActivity;
     protected final String TAG;
     protected RefreshLayout mRefreshLayout;
-    private View mContainerView;
+    protected View mContainerView;
     protected boolean mIsFirstBindData = true;
     protected boolean mIsRefresh;
     protected boolean mIsLoadMore;

@@ -144,4 +144,9 @@
     <style name="app_splash_activity">
         <item name="android:background">@mipmap/fore_head</item>
     </style>
+
+    <style name="red_packet_share_in_out_style">
+        <item name="android:windowEnterAnimation">@anim/push_up_in</item>
+        <item name="android:windowExitAnimation">@anim/push_up_out</item>
+    </style>
 </resources>

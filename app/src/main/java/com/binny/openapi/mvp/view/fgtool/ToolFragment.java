@@ -2,24 +2,22 @@ package com.binny.openapi.mvp.view.fgtool;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.SystemClock;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.GridView;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,13 +27,10 @@ import com.binny.openapi.bean.ToolBean;
 import com.binny.openapi.callback.OnPermissionCallback;
 import com.binny.openapi.constant.ConstantParams;
 import com.binny.openapi.mvp.view.activity.BluetoochActivity;
-import com.binny.openapi.mvp.view.activity.MainActivity;
 import com.binny.openapi.mvp.view.activity.WebActivity;
-import com.binny.openapi.mvp.view.activity.login.LoginActivity;
 import com.binny.openapi.mvp.view.base.AbsBaseFragment;
-import com.binny.openapi.mvp.view.fgtool.receiver.AutoReceiver;
+import com.binny.openapi.notification.NotificationUtils;
 import com.binny.openapi.util.FileUtils;
-import com.binny.openapi.util.NotificationUtils;
 import com.binny.openapi.util.UtilsLog;
 import com.binny.openapi.util.UtilsPerMission;
 import com.binny.openapi.widget.dialog.HuoDongDialog;
@@ -45,20 +40,17 @@ import com.xander.sendemaillib.SendEmail;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import static android.content.Context.ALARM_SERVICE;
 
 /**
  * author binny date 5/9
  */
 public class ToolFragment extends AbsBaseFragment implements IToolItemClickedListener {
     private final String[] itemString =
-            new String[]{"活动对话框", "清除缓存", "请求权限", "蓝牙", "优词词典", "截图", "短信","通知"};
+            new String[]{"活动对话框", "清除缓存", "请求权限", "蓝牙", "优词词典", "截图", "短信", "通知", "弹窗"};
     private TextView tvCacheSize;
     private GridView mGridView;
+    private PopupWindow mPopupWindow;
 
     @Override
     protected int getFragmentLayout() {
@@ -224,14 +216,11 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
 
                 break;
             case 7:
-                Intent resultIntent = new Intent(mActivity, LoginActivity.class);
-                showNotification(mActivity,1,"通知栏测试","AlarmManager.ELAPSED_REALTIME_WAKEUP表示闹钟在睡眠状态下会唤醒系统并执行提示功能，该状态下闹钟使用相对时间");
-                TaskStackBuilder stackBuilder = TaskStackBuilder.create(mActivity);
-                stackBuilder.addParentStack(MainActivity.class);
-                stackBuilder.addNextIntent(resultIntent);
-                PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-                NotificationUtils notificationUtils = new NotificationUtils(mActivity);
-                notificationUtils.sendNotification("测试标题", "测试内容",resultPendingIntent);
+                NotificationUtils.getInstance().init(mActivity).setRelativeLongMill(6000).setTitle("biny").setContent("年终聚惠，手慢无").toggle(true);
+                break;
+            case 8:
+                Toast.makeText(mActivity, "弹窗", Toast.LENGTH_SHORT).show();
+                showPopWindow(mContainerView, R.layout.pop_window);
                 break;
         }
     }
@@ -342,28 +331,55 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
         }.start();
         return smsBuilder.toString();
     }
-    private void showNotification(Context context, int id, String title, String text) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-        builder.setSmallIcon(R.drawable.video);
-        builder.setContentTitle(title);
-        builder.setContentText(text);
-        builder.setAutoCancel(true);
-        builder.setOnlyAlertOnce(true);
-        // 需要VIBRATE权限
-        builder.setDefaults(Notification.DEFAULT_VIBRATE);
-        builder.setPriority(Notification.PRIORITY_DEFAULT);
 
-        // Creates an explicit intent for an Activity in your app
-        //自定义打开的界面
-        Intent resultIntent = new Intent(context, LoginActivity.class);
-        resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
-                resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(contentIntent);
+    /*
+     * 弹出选择直播方式的弹框
+     * View v ：显示在那个父view内
+     * int convertViewResource ：要填充到popupWindow中的布局文件id
+     * int drawbelResource ：int drawbelResource
+     * */
+    private void showPopWindow(View parentView, int convertViewResource) {
+        //创建一个popUpWindow
+        View popLayout = LayoutInflater.from(mActivity).inflate(convertViewResource, null);
+        //给popUpWindow内的空间设置点击事件
 
-        NotificationManager notificationManager = (NotificationManager) context
-                .getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(id, builder.build());
+        if (mPopupWindow == null) {
+            mPopupWindow = new PopupWindow(popLayout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            //产生背景变暗效果
+            WindowManager.LayoutParams lp = mActivity.getWindow().getAttributes();
+            lp.alpha = 0.3f;
+            mActivity.getWindow().setAttributes(lp);
+            //点击外面popupWindow消失
+            mPopupWindow.setOutsideTouchable(true);
+            //popupWindow获取焦点
+            mPopupWindow.setFocusable(true);
+            mPopupWindow.setTouchable(true);
+//            ColorDrawable dw = new ColorDrawable(-00000);
+//            mPopupWindow.setBackgroundDrawable(dw);
+            mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+            mPopupWindow.setAnimationStyle(R.style.red_packet_share_in_out_style);
+
+            //设置popupWindow消失时的监听
+            mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                //在dismiss中恢复透明度
+                public void onDismiss() {
+                    WindowManager.LayoutParams lp = mActivity.getWindow().getAttributes();
+                    lp.alpha = 1f;
+                    mActivity.getWindow().setAttributes(lp);
+                }
+            });
+            mPopupWindow.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
+        } else {
+            //如果popupWindow正在显示，接下来隐藏
+            if (mPopupWindow.isShowing()) {
+                mPopupWindow.dismiss();
+            } else {
+                //产生背景变暗效果
+                WindowManager.LayoutParams lp = mActivity.getWindow().getAttributes();
+                lp.alpha = 0.3f;
+                mActivity.getWindow().setAttributes(lp);
+                mPopupWindow.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
+            }
+        }
     }
-
 }

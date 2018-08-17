@@ -76,12 +76,13 @@
             android:label="@string/title_activity_blue_tooch"
             android:theme="@style/AppTheme" />
 
-        <receiver android:name="com.binny.openapi.mvp.view.fgtool.receiver.AutoReceiver"
-            android:exported="true">
+        <receiver android:name=".notification.AlarmReceiver"
+            android:exported="true"
+            android:enabled="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MY_NOTIFICATION"/>
             </intent-filter>
+
         </receiver>
     </application>
 
