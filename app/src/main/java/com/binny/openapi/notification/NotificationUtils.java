@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 
 
 /**
@@ -49,8 +50,9 @@ public class NotificationUtils {
     /**
      * @param activityTo 跳转到哪里
      */
-    public void setActivityTo(Activity activityTo) {
+    public NotificationUtils setActivityTo(Activity activityTo) {
         mActivityTo = activityTo;
+        return this;
     }
 
     private int update = 0;
@@ -216,11 +218,11 @@ public class NotificationUtils {
      * @param relativeTimes 相对时间
      */
     private void setAlarmData(long relativeTimes) {
-        Logger.i("设置", "多少秒后" + (relativeTimes / 1000 / 60) + "分，共 " + (relativeTimes / 1000) + "秒");
+        Log.i("设置", "多少秒后" + (relativeTimes / 1000 / 60) + "分，共 " + (relativeTimes / 1000) + "秒");
         requestCode++;
         Intent intent = new Intent(mActivity, AlarmReceiver.class);
         intent.setAction(BC_ACTION);
-        intent.setComponent(new ComponentName("com.ule.poststore", "com.ule.poststore.redpacket.AlarmReceiver"));
+        intent.setComponent(new ComponentName("com.binny.openapi", "com.binny.openapi.notification.AlarmReceiver"));
         PendingIntent pi = PendingIntent.getBroadcast(mActivity, requestCode, intent, 0);
         mPendingIntents.add(pi);
         relativeTimes = SystemClock.elapsedRealtime() + relativeTimes;
