@@ -3,20 +3,11 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT" />
+        </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/androidutils" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/pinlockview" />
-            <option value="$PROJECT_DIR$/send_email_libaray" />
-            <option value="$PROJECT_DIR$/stagger" />
-            <option value="$PROJECT_DIR$/switchbtn" />
-            <option value="$PROJECT_DIR$/发送短信内容" />
-          </set>
-        </option>
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>

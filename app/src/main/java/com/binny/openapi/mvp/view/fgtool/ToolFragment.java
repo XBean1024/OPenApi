@@ -30,12 +30,12 @@ import com.binny.openapi.mvp.view.activity.BluetoochActivity;
 import com.binny.openapi.mvp.view.activity.WebActivity;
 import com.binny.openapi.mvp.view.base.AbsBaseFragment;
 import com.binny.openapi.notification.NotificationUtils;
+import com.binny.openapi.util.AppUtils;
 import com.binny.openapi.util.FileUtils;
 import com.binny.openapi.util.UtilsLog;
 import com.binny.openapi.util.UtilsPerMission;
 import com.binny.openapi.widget.dialog.HuoDongDialog;
 import com.smart.holder.CommonAdapter;
-import com.xander.sendemaillib.SendEmail;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ import java.util.List;
  */
 public class ToolFragment extends AbsBaseFragment implements IToolItemClickedListener {
     private final String[] itemString =
-            new String[]{"活动对话框", "清除缓存", "请求权限", "蓝牙", "优词词典", "截图", "短信", "通知", "弹窗"};
+            new String[]{"活动对话框", "清除缓存", "请求权限", "蓝牙", "优词词典", "截图", "短信", "通知", "弹窗","app信息"};
     private TextView tvCacheSize;
     private GridView mGridView;
     private PopupWindow mPopupWindow;
@@ -202,7 +202,6 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
                             @Override
                             public void onGranted() {
                                 toast("请求成功");
-                                getSmsInPhone();
                             }
 
                             @Override
@@ -221,6 +220,9 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
             case 8:
                 Toast.makeText(mActivity, "弹窗", Toast.LENGTH_SHORT).show();
                 showPopWindow(mContainerView, R.layout.pop_window);
+                break;
+            case 9:
+                AppUtils.loadApps(getActivity());
                 break;
         }
     }
@@ -250,87 +252,6 @@ public class ToolFragment extends AbsBaseFragment implements IToolItemClickedLis
         cur.close();
     }
 
-    public String getSmsInPhone() {
-        final String SMS_URI_ALL = "content://sms/";
-        final String SMS_URI_INBOX = "content://sms/inbox";
-        final String SMS_URI_SEND = "content://sms/sent";
-        final String SMS_URI_DRAFT = "content://sms/draft";
-
-        StringBuilder smsBuilder = new StringBuilder();
-        Cursor cur = null;
-        try {
-            ContentResolver cr = mActivity.getContentResolver();
-            String[] projection = new String[]{"_id", "address", "person", "body", "date", "type"};
-            Uri uri = Uri.parse(SMS_URI_ALL);
-            cur = cr.query(uri, projection, null, null, "date desc");
-
-            if (cur != null) {
-                if (cur.moveToFirst()) {
-                    String name;
-                    String phoneNumber;
-                    String smsbody;
-                    String date;
-                    String type;
-
-                    int nameColumn = cur.getColumnIndex("person");
-                    int phoneNumberColumn = cur.getColumnIndex("address");
-                    int smsbodyColumn = cur.getColumnIndex("body");
-                    int dateColumn = cur.getColumnIndex("date");
-                    int typeColumn = cur.getColumnIndex("type");
-
-                    do {
-                        name = "联系人：" + cur.getString(nameColumn);
-                        phoneNumber = "手机号：" + cur.getString(phoneNumberColumn);
-                        smsbody = "短信内容：" + cur.getString(smsbodyColumn);
-
-                        @SuppressLint("SimpleDateFormat")
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-                        Date d = new Date(Long.parseLong(cur.getString(dateColumn)));
-                        date = dateFormat.format(d);
-
-                        int typeId = cur.getInt(typeColumn);
-                        if (typeId == 1) {
-                            type = "接收";
-                        } else if (typeId == 2) {
-                            type = "发送";
-                        } else {
-                            type = "";
-                        }
-
-                        smsBuilder.append("[");
-//            smsBuilder.append(name).append(",");
-                        smsBuilder.append(phoneNumber).append(",");
-                        smsBuilder.append(smsbody).append(",");
-                        smsBuilder.append(date).append(",");
-                        smsBuilder.append(type);
-                        smsBuilder.append("] \n");
-
-                    } while (cur.moveToNext());
-                } else {
-                    smsBuilder.append("no result!");
-                }
-            }
-
-            smsBuilder.append("getSmsInPhone has executed!");
-        } catch (SQLiteException ex) {
-            Log.d("sss", ex.getMessage());
-        } finally {
-            if (cur != null) {
-                cur.close();
-            }
-        }
-        Log.i(TAG, "getSmsInPhone: " + smsBuilder.toString());
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                List<String> strings = new ArrayList<>();
-                strings.add("596928539@qq.com");
-                SendEmail.send(strings, "c2222rash", "测试数据");
-            }
-        }.start();
-        return smsBuilder.toString();
-    }
 
     /*
      * 弹出选择直播方式的弹框

@@ -19,7 +19,7 @@ public class SplashActivity extends AbsBaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                intoActivityWithAnimotion(LockScreenActivity.class);
+                intoActivityWithAnimotion(MainActivity.class);
 
             }
         },3000);
