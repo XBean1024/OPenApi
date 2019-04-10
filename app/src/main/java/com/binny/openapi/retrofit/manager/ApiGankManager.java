@@ -16,7 +16,7 @@ import static com.binny.openapi.constant.ConstantUrl.JUHE_BASE_URL;
  * @date 2018/6/21 16:57
  * @Description:
  */
-public class ApiGankManager {
+public class ApiGankManager extends BaseManger{
     private static final ApiGankManager ourInstance = new ApiGankManager();
     private Retrofit mRetrofitArticleApi;
     private IGankFuLiService mJuheService;
@@ -29,6 +29,7 @@ public class ApiGankManager {
         if (mRetrofitArticleApi == null) {
             mRetrofitArticleApi = new Retrofit.Builder()
                     .baseUrl(ConstantUrl.GANK_FILI_URL)
+                    .client(client)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();

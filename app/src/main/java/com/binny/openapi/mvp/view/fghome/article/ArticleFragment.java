@@ -92,6 +92,7 @@ public class ArticleFragment extends AbsBaseFragment implements DataCallback<Art
     public void onError(final String result) {
         mRefreshLayout.finishRefresh(false);
         mRefreshLayout.finishLoadMore(false);
+        UtilsLog.e(result);
     }
 
 

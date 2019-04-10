@@ -12,7 +12,7 @@ import static com.binny.openapi.constant.ConstantUrl.ARTICLE_BASE_URL;
  * author  binny
  * date 5/22
  */
-public class ApiArticleManger {
+public class ApiArticleManger extends BaseManger{
     private static final ApiArticleManger ourInstance = new ApiArticleManger();
     private Retrofit mRetrofitArticleApi;
 
@@ -26,6 +26,7 @@ public class ApiArticleManger {
         if (mRetrofitArticleApi == null) {
             mRetrofitArticleApi = new Retrofit.Builder()
                     .baseUrl(ARTICLE_BASE_URL)
+                    .client(client)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();

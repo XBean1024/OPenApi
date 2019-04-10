@@ -69,6 +69,7 @@ public class ArticleModel {
                     @Override
                     public void onFailure(Exception ex, String errorCode) {
                         UtilsLog.i("ArticleModel","onDeny"+ex.getMessage());
+                        mCallback.onError("ArticleModel----onDeny"+ex.getMessage());
                     }
                 });
     }

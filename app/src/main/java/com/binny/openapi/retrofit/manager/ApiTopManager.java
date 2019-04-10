@@ -10,7 +10,7 @@ import static com.binny.openapi.constant.ConstantUrl.TOP_API_BASE_URL;
  * author  binny
  * date 5/9
  */
-public class ApiTopManager {
+public class ApiTopManager extends BaseManger{
 
     private static ApiTopManager mRetrofitManager;
     private static Retrofit mRetrofitTopApi;
@@ -32,6 +32,7 @@ public class ApiTopManager {
         if (mRetrofitTopApi == null) {
             mRetrofitTopApi = new Retrofit.Builder()
                     .baseUrl(TOP_API_BASE_URL)
+                    .client(client)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();

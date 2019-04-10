@@ -10,13 +10,14 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
  *
  */
 
-public class DownloaderManager {
+public class DownloaderManager extends BaseManger{
 
     private Retrofit mRetrofit;
 
     public DownloaderManager(String baseUrl) {
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
+                .client(client)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }

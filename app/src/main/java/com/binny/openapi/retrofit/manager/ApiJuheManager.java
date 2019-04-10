@@ -12,7 +12,7 @@ import static com.binny.openapi.constant.ConstantUrl.JUHE_BASE_URL;
  * Created by binny on 2018/5/30.
  */
 
-public class ApiJuheManager {
+public class ApiJuheManager extends BaseManger{
     private static final ApiJuheManager ourInstance = new ApiJuheManager();
     private Retrofit mRetrofitArticleApi;
     private IJuheService mJuheService;
@@ -25,6 +25,7 @@ public class ApiJuheManager {
         if (mRetrofitArticleApi == null) {
             mRetrofitArticleApi = new Retrofit.Builder()
                     .baseUrl(JUHE_BASE_URL)
+                    .client(client)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();

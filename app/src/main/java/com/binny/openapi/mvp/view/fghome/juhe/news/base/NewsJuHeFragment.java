@@ -68,6 +68,8 @@ public class NewsJuHeFragment extends AbsTopNavigationTabBaseFragment implements
     @Override
     public void onError(String result) {
         UtilsLog.e(result);
+        mRefreshLayout.finishRefresh(false);
+        mRefreshLayout.finishLoadMore(false);
         loadLocal();
     }
 
@@ -111,6 +113,7 @@ public class NewsJuHeFragment extends AbsTopNavigationTabBaseFragment implements
         UtilsLog.onLoadDone();
 
     }
+
 
     @Override
     public void onSuccess(JuheNewsBean juheNewsBean) {
